@@ -1,0 +1,154 @@
+﻿@model GasSolution.Web.Areas.Admin.Models.Promotions.PromotionListModel
+@{
+    ViewBag.Title = "促销管理";
+}
+
+<section class="content-header">
+    <h1>促销管理</h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="@Url.Action("List", "Promotion")">促销管理</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Keywords, new { @placeholder = "关键字查询", @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Time)
+                </div>
+            </div>
+            <div class="col-md-1 text-center">
+                <a href="#" class="reload btn btn-social-icon" id="search-promotion"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+
+        <div id="promotion-grid"></div>
+        @Html.AntiForgeryToken()
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#promotion-grid").kendoGrid({
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("List", "Promotion"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                error: function (e) {
+                    display_kendoui_grid_error(e);
+                    // Cancel the changes
+                    this.cancelChanges();
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: false,
+                serverSorting: false
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: [10, 20, 50]
+            },
+            scrollable: false,
+            columns: [
+                {
+                    field: "Id",
+                    title: "Id",
+                    width: 40,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "Gas",
+                    title: "加油站",
+                    width: 100,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "Address",
+                    title: "地址",
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "StartTime",
+                    title: "开始时间",
+                    width: 90,
+                    type: "date",
+                    format: "{0:G}",
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "EndTime",
+                    title: "结束时间",
+                    width: 90,
+                    type: "date",
+                    format: "{0:G}",
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "CreationTime",
+                    title: "创建时间",
+                    width: 90,
+                    type: "date",
+                    format: "{0:G}"
+                }, {
+                    field: "Gasoline_Price_Ninety_Two",
+                    title: "#92",
+                    width: 40,
+                }, {
+                    field: "Gasoline_Price_Ninety_Fine",
+                    title: "#95",
+                    width: 40,
+                }, {
+                    field: "Gasoline_Price_Ninety_Eight",
+                    title: "#98",
+                    width: 40,
+                }, {
+                    field: "Natural_Price",
+                    title: "天然气",
+                    width: 40,
+                }, {
+                    field: "Id",
+                    title: "操作",
+                    width: 200,
+                    template: '<a class="btn btn-success" href="Edit/#=Id#">编辑</a><a class="btn btn-danger">删除</a>'
+                }
+            ]
+        });
+
+        //search button
+        $('#search-promotion').click(function () {
+            var grid = $('#promotion-grid').data('kendoGrid');
+            grid.dataSource.page(0);
+        });
+    });
+    function additionalData() {
+        var data = {
+            Keywords: $('#@Html.FieldIdFor(model => model.Keywords)').val(),
+            Time: $('#@Html.FieldIdFor(model => model.Time)').val(),
+        };
+        addAntiForgeryToken(data);
+
+        return data;
+    }
+
+    window.onload = function () {
+        lingth_sidebar("promotion-list", "promotion");
+    };
+
+</script>

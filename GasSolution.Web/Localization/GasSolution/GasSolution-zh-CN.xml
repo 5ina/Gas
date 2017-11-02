@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="zh-CN">
+  <texts>
+    <text name="HomePage" value="今日降价" />
+    <text name="GasPage" value="今日油价" />    
+  </texts>
+</localizationDictionary>

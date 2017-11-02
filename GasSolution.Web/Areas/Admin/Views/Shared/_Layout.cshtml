@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/admin/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/admin/jquery")
+    @Scripts.Render("~/Bundles/vendor/js/top")
+    @RenderSection("scripts_top", required: false)
+</head>
+<body class="skin-blue" data-spy="scroll" data-target="#scrollspy">
+
+    <div class="wrapper">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="../index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>LT</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b>LTE</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li><a href="https://adminlte.io">Almsaeed Studio</a></li>
+                        <li><a href="https://adminlte.io/premium">Premium Templates</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        @Html.Partial("_Sidebar")
+
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.1
+            </div>
+            <strong>Copyright &copy; 2017-2019 <a href="https://adminlte.io">Kelvin - Hoo - Studio</a>.</strong> All rights
+            reserved.
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/admin/kendo")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        kendo.culture("zh-CN");
+
+        function lingth_sidebar(pagename, catename) {
+            $(".treeview").removeClass("menu-open");
+            $(".treeview").removeClass("active");
+            $("#" + catename).addClass("menu-open");
+            $("." + pagename).addClass("active");
+        }
+    </script>
+
+</body>
+</html>

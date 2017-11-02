@@ -1,0 +1,196 @@
+﻿@model GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.GasStationId)
+
+<div id="promotion-edit">
+    <div class="row">
+        <div class="col-md-7">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-info"></i>
+                            <h3 class="box-title">基本信息</h3>
+                        </div>
+
+                        <table class="adminContent">
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.StartTime)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.GasEditorFor(model => model.StartTime)
+                                        @Html.ValidationMessageFor(model => model.StartTime)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.EndTime)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.EndTime)
+                                        @Html.ValidationMessageFor(model => model.EndTime)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr id="gaso-line-panel">
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Notice)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextAreaFor(model => model.Notice, 8, 55, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Notice)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-info"></i>
+                            <h3 class="box-title">降价信息</h3>
+                        </div>
+
+                        <table class="adminContent">
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Gasoline_Market_Ninety_Eight)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Gasoline_Market_Ninety_Eight, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Gasoline_Market_Ninety_Eight)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Gasoline_Price_Ninety_Eight)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Gasoline_Price_Ninety_Eight, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Gasoline_Price_Ninety_Eight)
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Gasoline_Market_Ninety_Fine)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Gasoline_Market_Ninety_Fine, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Gasoline_Market_Ninety_Fine)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Gasoline_Price_Ninety_Fine)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Gasoline_Price_Ninety_Fine, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Gasoline_Price_Ninety_Fine)
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Gasoline_Market_Ninety_Two)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Gasoline_Market_Ninety_Two, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Gasoline_Market_Ninety_Two)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Gasoline_Price_Ninety_Two)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Gasoline_Price_Ninety_Two, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Gasoline_Price_Ninety_Two)
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Natural_Market)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Natural_Market, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Natural_Market)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Natural_Price)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Natural_Price, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Natural_Price)
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

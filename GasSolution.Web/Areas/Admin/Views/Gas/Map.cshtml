@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "地图加油站";
+}
+
+@Html.IncludeScript("http://api.map.baidu.com/api?v=2.0&ak=yccG7GWikwgRd7f3mZ26NQ4tsbeXmiga")
+
+@Html.AntiForgeryToken()
+
+<section class="content-header">
+    <h1>地图加油站列表</h1>
+</section>
+<section class="content">
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="map" id="all-map"></div>
+                            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<script type="text/javascript">
+       
+
+    function createMap() {
+        var lng = "114.518147";
+        var lat = "38.048545";
+        var stCtrl = new BMap.PanoramaControl(); //构造全景控件
+        stCtrl.setOffset(new BMap.Size(50, 10));
+        var map = new BMap.Map("all-map");
+        map.centerAndZoom(new BMap.Point(lng, lat), 15);
+        var myIcon = new BMap.Icon("/images/user.png", new BMap.Size(32, 32));
+        var gpsPoint = new BMap.Point(lng, lat);
+        map.addControl(new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_LARGE }));
+        map.addControl(new BMap.ScaleControl());
+        map.addControl(new BMap.OverviewMapControl());
+        map.centerAndZoom(gpsPoint, 15);
+        //当前位置
+        var marker = new BMap.Marker(gpsPoint, { icon: myIcon });
+        map.addOverlay(marker);
+        map.addControl(stCtrl);//添加全景控件
+        // 添加定位控件
+        var geolocationControl = new BMap.GeolocationControl({
+            anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+            showAddressBar: false,
+            offset: new BMap.Size(5, 5)
+
+        });
+
+        map.addControl(geolocationControl);
+
+
+        $.ajax({
+            url: "GasList",
+            type: "POST",
+            dataType: 'json',
+            data: addAntiForgeryToken(),
+            success: function (gas) {
+                $.each(gas.Data, function (i, val) {
+                    var pt = new BMap.Point(val.Longitude, val.Dimension);
+                    var myIcon = new BMap.Icon("/images/gas.png", new BMap.Size(24, 24));
+                    var marker = new BMap.Marker(pt, { icon: myIcon });  // 创建标注
+                    map.addOverlay(marker);
+                    //marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+                    var opts = {
+                        width: 200,     // 信息窗口宽度
+                        height: 100,     // 信息窗口高度
+                        title: val.GasName, // 信息窗口标题
+                        enableMessage: true,//设置允许信息窗发送短息
+                    }
+                    var infoWindow = new BMap.InfoWindow(val.Address, opts);  // 创建信息窗口对象 
+                    marker.addEventListener("click", function () {
+                        map.openInfoWindow(infoWindow, pt); //开启信息窗口
+                    });
+                });
+            }
+        });
+
+
+    }
+
+    window.onload = function () {
+        $('.map').height($(document).height() -180);
+        lingth_sidebar("gas-list", "gas");
+        createMap();//创建地图
+    };
+</script>

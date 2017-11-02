@@ -1,0 +1,38 @@
+body {
+}
+.text-red{
+    color:#ff0000;
+}
+.navbar.navbar-fixed-top {
+    margin: 0;
+    padding: 0
+}
+.promotion-page .promotion-title {
+    text-align: center;
+    border-bottom: 1px #ffd800 solid;
+}
+.promotion-page .promotion-title h1{
+    padding:0;
+    margin:0;
+}
+.promotion-page .promotion-content {
+    
+}
+.promotion-page .promotion-content .promotions,
+.promotion-page .promotion-content .promotions li {
+    margin: 0;
+    padding: 0;
+    list-style:none;
+}
+    .promotion-page .promotion-content .promotions li {
+        margin-bottom:12px;
+        padding:5px 12px;
+        border-bottom :1px solid #ccc;
+    }
+    .promotion-page .promotion-content .promotions li:first-child{
+        margin-top:5px;
+    }
+    
+    .promotion-page .promotion-content .promotions li h5 {
+        font-weight: 700;
+    }

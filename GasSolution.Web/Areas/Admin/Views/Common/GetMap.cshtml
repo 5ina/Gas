@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+    <style type="text/css">
+
+        #container {
+           width:500px;
+           height:500px;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yccG7GWikwgRd7f3mZ26NQ4tsbeXmiga">
+
+    </script>
+
+    <div id="container"></div>
+    <script type="text/javascript">
+
+        window.onload = function() {
+            var map = new BMap.Map("container");
+            var point = new BMap.Point(116.404, 39.915);
+            map.centerAndZoom(point, 15);
+        }
+    </script>

@@ -1,0 +1,144 @@
+﻿@model GasSolution.Web.Areas.Admin.Models.Gas.GasStationListModel
+@{
+    ViewBag.Title = "加油站管理";
+}
+
+<section class="content-header">
+    <h1>加油站管理</h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="@Url.Action("List", "Gas")">加油站管理</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Keywords, new { @placeholder = "关键字查询", @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.AreaId, Model.Areas, "全部", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-1 text-center">
+                <a href="#" class="reload btn btn-social-icon" id="search-gas"><i class="fa fa-search"></i></a>
+            </div>
+            <div class="col-md-1 col-md-offset-1">
+                <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fa fa-fw fa-plus-square"></i>新增加油站</a>
+            </div>
+        </div>
+
+        <div id="gas-grid"></div>
+        @Html.AntiForgeryToken()
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#gas-grid").kendoGrid({
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("List", "Gas"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                error: function (e) {
+                    display_kendoui_grid_error(e);
+                    // Cancel the changes
+                    this.cancelChanges();
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: false,
+                serverSorting: false
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: [10, 20, 50]
+            },
+            scrollable: false,
+            columns: [
+                {
+                    field: "Id",
+                    title: "Id",
+                    width: 60,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "GasName",
+                    title: "名称",
+                    width: 190,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "Address",
+                    title: "地址",
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "Contacts",
+                    title: "联系人",
+                    width: 80,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "Tel",
+                    title: "电话",
+                    width: 80,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "IsClose",
+                    title: "是否关闭",
+                    width: 40,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                    template: '# if(IsClose) {# <i class="fa fa-check true-icon"></i> #} else {# <i class="fa fa-close false-icon"></i> #} #'
+                }, {
+                    field: "DisplayOrder",
+                    title: "权重",
+                    width: 60,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "Id",
+                    title: "操作",
+                    width: 200,
+                    template: '<a class="btn btn-primary" href="/Admin/Promotion/Create?stationId=#=Id#">降价</a><a class="btn btn-success" href="Edit/#=Id#">编辑</a><a class="btn btn-danger">删除</a>'
+                }
+            ]
+        });
+
+        //search button
+        $('#search-gas').click(function () {
+            var grid = $('#gas-grid').data('kendoGrid');
+            grid.dataSource.page(0);
+        });
+    });
+    function additionalData() {
+        var data = {
+            Keywords: $('#@Html.FieldIdFor(model => model.Keywords)').val(),
+            AreaId: $('#@Html.FieldIdFor(model => model.AreaId)').val(),
+        };
+        addAntiForgeryToken(data);
+
+        return data;
+    }
+
+    window.onload = function () {
+        lingth_sidebar("gas-list", "gas");
+    };
+
+</script>

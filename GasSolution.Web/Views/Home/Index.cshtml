@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "今日降价信息";
+    ViewBag.ActiveMenu = "Home"; //The menu item will be active for this page.
+}
+@Html.IncludeScript("/Scripts/admin.common.js")
+
+<div class="promotion-page">
+  <div class="promotion-title">
+      <h1>今日油价降价信息</h1>
+  </div>
+    <div class="promotion-content">
+        @Html.Hidden("pageIndex", "0")
+        <ul class="promotions">
+
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $.ajax({
+        url: "@Url.Action("GasPromotions", "Gas")",
+            type: "POST",
+            dataType: 'json',
+            data: additionalData(),
+            success: function (gas) {
+                var content = $(".promotions");
+                $.each(gas.Data, function (i, val) {
+                    var gasName = "<h5>" + val.GasName + "</h5>";
+                    var gasAddress = "<p>地址：" + val.Address + "</p>";
+                    var price = "<div class=\"text-red\">" + val.Promotion + " </div>";
+                    var date = "<div>活动开始时间：" + val.Start + " , 活动结束时间：" + val.End + "</div>";
+                    var notice = "<div>" + val.Notice + "</div>";
+                    var li = "<li>" + gasName + gasAddress + price + date + notice + "</li>";
+                    content.append(li);
+                });
+
+                $('#pageIndex').val(gas.NextPage);
+            }
+    });
+
+    function additionalData() {
+        var data = {
+            pageIndex: $('#pageIndex').val(),
+            pageSize: 20,
+        };
+        addAntiForgeryToken(data);
+
+        return data;
+    }
+</script>

@@ -1,0 +1,375 @@
+﻿@model GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+
+@Html.IncludeScript("http://api.map.baidu.com/api?v=2.0&ak=yccG7GWikwgRd7f3mZ26NQ4tsbeXmiga")
+
+<style>
+    #map {
+        width: 100%;
+        height: 500px;
+    }
+
+    .modal-content .search {
+        line-height: 34px;
+    }
+</style>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#@Html.FieldIdFor(model => model.IsNatural)").click(activateNatural);
+        $("#@Html.FieldIdFor(model => model.IsGasoLine)").click(activateGasoLine);
+        $("#@Html.FieldIdFor(model => model.IsDieselOil)").click(activateDieselOil);
+        activateNatural();
+        activateGasoLine();
+        activateDieselOil();
+    });
+
+    function activateNatural() {
+        if ($('#@Html.FieldIdFor(model => model.IsNatural)').is(':checked'))
+            $('.natura-panel').show();
+        else
+            $('.natura-panel').hide();
+    }
+
+    function activateGasoLine() {
+        if ($('#@Html.FieldIdFor(model => model.IsGasoLine)').is(':checked'))
+            $('.gaso-line-panel').show();
+        else
+            $('.gaso-line-panel').hide();
+    }
+
+
+    function activateDieselOil() {
+        if ($('#@Html.FieldIdFor(model => model.IsDieselOil)').is(':checked'))
+            $('.diesel-oil-panel').show();
+        else
+            $('.diesel-oil-panel').hide();
+    }
+
+</script>
+<div id="category-edit">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-info"></i>
+                            <h3 class="box-title">基本信息</h3>
+                        </div>
+                        <table class="adminContent">
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.GasName)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-text-width"></i></span>
+                                        @Html.GasEditorFor(model => model.GasName)
+                                        @Html.ValidationMessageFor(model => model.GasName)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.IsGasoLine)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.IsGasoLine)
+                                        @Html.ValidationMessageFor(model => model.IsGasoLine)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr class="gaso-line-panel">
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.GasoLineLength)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.GasoLineLength, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.GasoLineLength)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.IsDieselOil)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.IsDieselOil)
+                                        @Html.ValidationMessageFor(model => model.IsDieselOil)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr class="diesel-oil-panel">
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.DieselOilLength)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.DieselOilLength, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DieselOilLength)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.IsNatural)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.IsNatural)
+                                        @Html.ValidationMessageFor(model => model.IsNatural)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr class="natura-panel">
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.NaturalLength)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.NaturalLength, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.NaturalLength)
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-location-arrow"></i>
+                            <h3 class="box-title">位置信息</h3>
+                        </div>
+                        <table class="adminContent">
+
+                            <tr>
+                                <td class="adminTitle">
+                                    <label>地理位置</label>
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.HiddenFor(model=>model.Longitude)
+                                        @Html.HiddenFor(model => model.Dimension)
+                                        @Html.EditorFor(model => model.Address, new { @class = "form-control" })
+                                        <a class="btn btn-primary" data-target="#map-modal" data-toggle="modal">
+                                            详细位置
+                                        </a>
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model=>model.Contacts)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.Contacts, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Contacts)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Tel)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.Tel, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Tel)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.AreaId)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(model => model.AreaId, Model.Areas, "选择区县", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Tel)
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">公告信息</h3>
+                        </div>
+                        <table class="adminContent">
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Notice)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextAreaFor(model => model.Notice,5,65, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Notice)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.IsClose)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.IsClose)
+                                        @Html.ValidationMessageFor(model => model.IsClose)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.DisplayOrder)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.DisplayOrder, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DisplayOrder)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="map-modal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="suggestId" placeholder="请输入关键字进行查询" />
+
+                    </div>
+                    <div class="col-md-2"><a class="search"><i class="fa fa-search fa-2x"></i></a></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"><div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="map">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+    var map;
+    window.onload = function () {
+
+        map = new BMap.Map("map");  // 创建Map实例
+        @if (Model.Id > 0)
+        {
+            <text>map.centerAndZoom(new BMap.Point(@(Model.Longitude), @(Model.Dimension)), 15);</text>
+        }
+        else {
+
+            <text> map.centerAndZoom(new BMap.Point(114.52031, 38.053654), 15);</text>
+        }
+
+        var menu = new BMap.ContextMenu();
+        var txtMenuItem = [
+            {
+                text: '选定当前位置',
+                callback: function (e) {
+                    //选定后设定参数
+                    var myGeo = new BMap.Geocoder();
+                    var address = "";
+                    myGeo.getLocation(new BMap.Point(e.lng, e.lat), function (result) {
+                        $("#@Html.FieldIdFor(model=>model.Address)").val(result.address);
+                        
+                        var addComp = result.addressComponents;
+                        address = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+                    });
+
+                    $("#@Html.FieldIdFor(model=>model.Longitude)").val(e.lng);
+                    $("#@Html.FieldIdFor(model=>model.Dimension)").val(e.lat);
+                    $('#map-modal').modal('toggle')
+                }
+            },
+        ];
+        for (var i = 0; i < txtMenuItem.length; i++) {
+            menu.addItem(new BMap.MenuItem(txtMenuItem[i].text, txtMenuItem[i].callback, 100));
+        }
+        map.addContextMenu(menu);
+
+
+        lingth_sidebar("gas-list", "gas");
+    }
+
+    $(function () {
+        $(".search").click(function () {
+            var local = new BMap.LocalSearch(map, {
+                renderOptions: { map: map }
+            });
+            local.search($("#suggestId").val());
+        });
+    })
+
+</script>

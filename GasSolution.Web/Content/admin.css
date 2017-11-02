@@ -1,0 +1,56 @@
+﻿.wrapper .content-wrapper .content-header{border-bottom:2px solid #808080;}
+
+.section-header::after,
+.section-header::before {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+.section-header ol,
+.section-header li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.adminContent {
+    width: 100%;
+    background: #fff;
+}
+
+    .adminContent tbody tr td {
+        padding: 9px;
+    }
+
+    .adminContent .adminTitle,
+    .adminContent .adminData {
+        padding-top: 8px;
+    }
+
+    .adminContent .adminTitle {
+        text-align: right;
+        padding-right: 12px;
+        width: 25%;
+    }
+
+    .adminContent .adminData {
+        width: 75%;
+    }
+
+.content-wrapper .section-header {
+    width: 100%;
+    display: block;
+}
+
+    .content-wrapper .section-header .breadcrumbs li {
+        list-style:none;
+        
+    }
+
+.k-grid .btn{
+    margin-right:5px;
+}
+ .map {
+    width: 100%;
+    height:auto;
