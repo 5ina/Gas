@@ -27,53 +27,30 @@ namespace GasSolution.Domain.Gas
         /// </summary>
         [MaxLength(1000)]
         public string Notice { get; set; }
-
-        /// <summary>
-        /// #89市场价
-        /// </summary>
-        public decimal Gasoline_Market_Eighty_Nine { get; set; }
+        
         /// <summary>
         /// #89现价
         /// </summary>
-        public decimal Gasoline_Price_Eighty_Nine { get; set; }
-
-
-        /// <summary>
-        /// #92市场价
-        /// </summary>
-        public decimal Gasoline_Market_Ninety_Two { get; set; }
+        public decimal Gasoline_Eighty_Nine { get; set; }
+        
         /// <summary>
         /// #92现价
         /// </summary>
-        public decimal Gasoline_Price_Ninety_Two { get; set; }
-
-
-        /// <summary>
-        /// #95市场价
-        /// </summary>
-        public decimal Gasoline_Market_Ninety_Fine { get; set; }
+        public decimal Gasoline_Ninety_Two { get; set; }
+        
         /// <summary>
         /// #95现价
         /// </summary>
-        public decimal Gasoline_Price_Ninety_Fine { get; set; }
-
-
-        /// <summary>
-        /// #98市场价
-        /// </summary>
-        public decimal Gasoline_Market_Ninety_Eight { get; set; }
+        public decimal Gasoline_Ninety_Fine { get; set; }
+        
         /// <summary>
         /// #98现价
         /// </summary>
-        public decimal Gasoline_Price_Ninety_Eight { get; set; }
-        /// <summary>
-        /// 天然气原价
-        /// </summary>
-        public decimal Natural_Market { get; set; }
+        public decimal Gasoline_Ninety_Eight { get; set; }
         /// <summary>
         /// 天然气现价
         /// </summary>
-        public decimal Natural_Price { get; set; }
+        public decimal Natural { get; set; }
 
         /// <summary>
         /// 创建时间（不需要处理）

@@ -24,25 +24,37 @@ namespace GasSolution.Web.Framework.WeChat
         public string LoadEvent(ILogger logger)
         {
             xmlDoc.LoadXml(this._xml);
+            var xmlJson = Newtonsoft.Json.JsonConvert.SerializeXmlNode(xmlDoc);
+            logger.Debug("xml格式：" + _xml);
             var msgType = xmlDoc.SelectSingleNode("/xml/MsgType").InnerText;
             if (!String.IsNullOrWhiteSpace(msgType) && msgType == "event")
             {
-                logger.Debug("Event:" + xmlDoc.SelectSingleNode("/xml/Event").InnerText);
                 return xmlDoc.SelectSingleNode("/xml/Event").InnerText;
+            }
+            else if (!String.IsNullOrWhiteSpace(msgType) && msgType == "text")
+            {
+                return xmlDoc.SelectSingleNode("/xml/MsgType").InnerText;
             }
 
             return "";
         }
 
-        public Hashtable LoadXml()
+        public Hashtable LoadXml(bool defaultevent = true)
         {
             xmlDoc.LoadXml(this._xml);
             this.Parameters.Add("ToUserName", xmlDoc.SelectSingleNode("/xml/ToUserName").InnerText);
             this.Parameters.Add("FromUserName", xmlDoc.SelectSingleNode("/xml/FromUserName").InnerText);
             this.Parameters.Add("CreateTime", xmlDoc.SelectSingleNode("/xml/CreateTime").InnerText);
             this.Parameters.Add("MsgType", xmlDoc.SelectSingleNode("/xml/MsgType").InnerText);
-            this.Parameters.Add("Event", xmlDoc.SelectSingleNode("/xml/Event").InnerText);
-            this.Parameters.Add("EventKey", xmlDoc.SelectSingleNode("/xml/EventKey").InnerText);
+            if (defaultevent)
+            {
+                this.Parameters.Add("Event", xmlDoc.SelectSingleNode("/xml/Event").InnerText);
+                this.Parameters.Add("EventKey", xmlDoc.SelectSingleNode("/xml/EventKey").InnerText);
+            }
+            else {
+                this.Parameters.Add("Content", xmlDoc.SelectSingleNode("/xml/Content").InnerText);
+                this.Parameters.Add("MsgId", xmlDoc.SelectSingleNode("/xml/MsgId").InnerText);
+            }
             return Parameters;
         }
 

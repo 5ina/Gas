@@ -79,16 +79,24 @@ namespace GasSolution.Web.Controllers
                     Byte[] postBytes = new Byte[stream.Length];
                     stream.Read(postBytes, 0, (Int32)stream.Length);
                     var postString = Encoding.UTF8.GetString(postBytes);
-                    Logger.Debug("postString:" + postString);
-                    Handle(postString);
+                    Handle(postString); //执行手机微信操作命令
                     return Content("");
                 }
 
             }
             else//微信进行的Get测试(开发者认证)
             {
-                Logger.Debug("开发者认证");
-                return WxAuth(token);
+                //微信服务器对接口消息
+                using (Stream stream = HttpContext.Request.InputStream)
+                {
+                    Byte[] postBytes = new Byte[stream.Length];
+                    stream.Read(postBytes, 0, (Int32)stream.Length);
+                    var postString = Encoding.UTF8.GetString(postBytes);
+                    Logger.Debug("post:" + postString);
+                    Handle(postString); 
+                    Logger.Debug("开发者认证");
+                    return WxAuth(token);
+                }
             }
 
         }
@@ -232,8 +240,68 @@ namespace GasSolution.Web.Controllers
             }
             return Redirect(Request.QueryString["state"]);
         }
+
+        /// <summary>
+        /// 微信菜单点击按钮事件
+        /// </summary>
+        public void ClickWeChat(Hashtable parameters)
+        {
+            
+        }
         #endregion
 
+        #region New Customer
+        /// <summary>
+        /// 新用户
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        [NonAction]
+        private Customer NewCustomer(Hashtable parameters)
+        {
+            var openId = parameters["FromUserName"].ToString();
+            var customer = _customerService.GetCustomerByOpenId(openId);
+
+            #region 微信用户信息
+
+            var appId = _settingService.GetSettingByKey<string>(WeChatSettingNames.AppId);
+            var appSecret = _settingService.GetSettingByKey<string>(WeChatSettingNames.AppSecret);
+
+            var accessToken = _cacheManager.GetCache(WechatControllerNames.CACHE_ACCESS_TOKEN)
+                .Get(WechatControllerNames.CACHE_ACCESS_TOKEN, () => GetAccessToken(appId, appSecret));
+            var token = "";
+            if (accessToken != null && !string.IsNullOrEmpty(accessToken.access_token))
+            {
+                token = accessToken.access_token;
+            }
+
+            OAuthUserInfo userInfo = Framework.HttpUtility.Get<OAuthUserInfo>(string.Format("https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}&lang=zh_CN", token, openId), Logger);
+            #endregion
+            var code = CommonHelper.GenerateCode(6);
+            if (customer == null || customer.Id == 0) // 判定用户是否存在
+            {
+                var _encryptionService = Abp.Dependency.IocManager.Instance.Resolve<IEncryptionService>();
+                var password = _encryptionService.CreatePasswordHash("123456", code);                
+                customer = new Customer
+                {
+                    Mobile = "",
+                    Password = password,
+                    OpenId = openId,
+                    CustomerRoleId = (int)CustomerRole.Member,
+                    NickName = userInfo.nickname,
+                    PasswordSalt = code,
+                    IsSubscribe = true,
+                };
+                customer.Id = _customerService.CreateCustomer(customer);
+                
+                //发送消息
+                //SendMessageToUserFirstSub(customer);
+                
+            }
+            return customer;
+
+        }
+        #endregion
 
         #region 
         /// <summary>
@@ -244,21 +312,38 @@ namespace GasSolution.Web.Controllers
         {
             Framework.WeChat.WechatRequest wr = new Framework.WeChat.WechatRequest(postStr);
             var eventStr = wr.LoadEvent(Logger);
-            Hashtable parameters;
+
+            Hashtable parameters = new Hashtable();
             switch (eventStr)
             {
                 //case "scan"://关注
                 case "subscribe":
                     parameters = wr.LoadXml();
                     //新用户
+                    NewCustomer(parameters);
                     break;
                 case "unsubscribe":
                     parameters = wr.LoadXml();
                     //退订关注
                     break;
+                case "click": //点击事件
+                    parameters = wr.LoadXml(false);
+                    Logger.Debug("content:" + parameters["Content"]);
+                    ClickWeChat(parameters);
+                    break;
                 default:
                     break;
             }
+
+            //用户是否需要登录
+            if (!String.IsNullOrWhiteSpace(parameters["FromUserName"].ToString()))
+            {
+                var openId = parameters["FromUserName"].ToString();
+                var customer =_customerService.GetCustomerByOpenId(openId);
+                var dto = customer.MapTo<CustomerDto>();
+                var identity = _loginManager.CreateUserIdentity(dto);
+            }
+
         }
         #endregion
     }

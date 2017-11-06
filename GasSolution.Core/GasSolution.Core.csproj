@@ -145,8 +145,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheNames\AliyunSettingNames.cs" />
     <Compile Include="CacheNames\WechatControllerNames.cs" />
     <Compile Include="CacheNames\WeChatSettingNames.cs" />
+    <Compile Include="CommonExtensions.cs" />
     <Compile Include="CommonHelper.cs" />
     <Compile Include="ComponentModel\GenericDictionaryTypeConverter.cs" />
     <Compile Include="ComponentModel\GenericListTypeConverter.cs" />
@@ -159,10 +161,12 @@
     <Compile Include="Domain\Gas\GasStation.cs" />
     <Compile Include="Domain\Gas\Promotion.cs" />
     <Compile Include="Domain\ISetting.cs" />
+    <Compile Include="CacheNames\CommonSettingNames.cs" />
     <Compile Include="Domain\Settings\Setting.cs" />
     <Compile Include="Domain\Settings\WechatSetting.cs" />
     <Compile Include="GasSolutionConsts.cs" />
     <Compile Include="GasSolutionCoreModule.cs" />
+    <Compile Include="MimeTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -43,27 +43,16 @@
                     <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>Widgets</span>
-                    <span class="pull-right-container">
-                        <small class="label pull-right bg-green">new</small>
-                    </span>
-                </a>
-            </li>
-            <li class="treeview">
+            <li class="treeview"id="customer">
                 <a href="#">
                     <i class="fa fa-pie-chart"></i>
-                    <span>Charts</span>
+                    <span>用户管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-                    <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                    <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                    <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                    <li class="customer-list"><a href="@Url.Action("List","Customer")"><i class="fa fa-user"></i> 用户列表</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -105,8 +94,10 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="setting-list"><a href="@Url.Action("List","Setting")"><i class="fa fa-circle-o"></i> 高级配置</a></li>
-                    <li class="weichat-page"><a href="@Url.Action("WeChat","Setting")"><i class="fa fa-circle-o"></i> 微信配置</a></liclass="setting-list">
-                </ul>
+                    <li class="common-page"><a href="@Url.Action("Common","Setting")"><i class="fa fa-circle-o"></i> 公共配置</a></li>
+                    <li class="weichat-page"><a href="@Url.Action("WeChat","Setting")"><i class="fa fa-circle-o"></i> 微信配置</a></li>
+                    <li class="aliyun-page"><a href="@Url.Action("Aliyun","Setting")"><i class="fa fa-circle-o"></i> 阿里云配置</a></li>
+</ul>
             </li>
             <li>
                 <a href="pages/calendar.html">

@@ -1,4 +1,5 @@
 ﻿using GasSolution.Gas;
+using GasSolution.Gas.Sort;
 using GasSolution.Web.Framework.DataGrids;
 using GasSolution.Web.Models.Gas;
 using System;
@@ -26,7 +27,14 @@ namespace GasSolution.Web.Controllers
 
         #region Method
         // GET: Gas
-        public ActionResult Index()
+        public ActionResult Index(string lat = "38.04885", string lng = "114.518578")
+        {
+            ViewData["lat"] = lat;
+            ViewData["lng"] = lng;
+            return View();
+        }
+
+        public ActionResult GetLocation()
         {
             return View();
         }
@@ -51,7 +59,8 @@ namespace GasSolution.Web.Controllers
                         Address = gas.Address,
                         Dimension = gas.Dimension,
                         Longitude = gas.Longitude,
-                        Promotion = "#92现价：" + p.Gasoline_Price_Ninety_Two,
+                        Promotion = "#92现价：" + p.Gasoline_Ninety_Two,
+                        Notice = p.Notice
                     };
                     return item;
                 }),
@@ -62,14 +71,17 @@ namespace GasSolution.Web.Controllers
 
 
         [HttpPost]
-        public ActionResult GasPromotions(int pageIndex = 0,int pageSize = 20)
+        public ActionResult GasPromotions(PromotionListModel model)
         {
+            var enumValue = (PromotionSort)model.sort;
             var promotions = _promotionService.GetAllPromotions(
                                                             promotionTime: DateTime.Now,
-                                                            pageIndex: pageIndex,
-                                                            pageSize: pageSize);
+                                                            keywords: model.keywords,
+                                                            sort: enumValue,
+                                                            pageIndex: model.pageIndex,
+                                                            pageSize: model.pageSize);
 
-            var totalPage = (promotions.TotalCount / pageSize) + (promotions.TotalCount % pageSize > 0 ? 1 : 0);
+            var totalPage = (promotions.TotalCount / model.pageSize) + (promotions.TotalCount % model.pageSize > 0 ? 1 : 0);
 
 
 
@@ -85,7 +97,7 @@ namespace GasSolution.Web.Controllers
                         Address = gas.Address,
                         Start = p.StartTime.Value.ToString("yyyy/MM/dd"),
                         End = p.EndTime.Value.ToString("yyyy/MM/dd"),
-                        Promotion = "#92现价：" + p.Gasoline_Price_Ninety_Two,
+                        Promotion = "#92现价：" + p.Gasoline_Ninety_Two,
                         Notice = p.Notice
                     };
                     return item;
@@ -93,8 +105,8 @@ namespace GasSolution.Web.Controllers
                 Total = promotions.TotalCount,
 
             };
-            if (pageIndex + 1 >= pageIndex)
-                jsonData.NextPage = pageIndex;
+            if (model.pageIndex + 1 >= model.pageIndex)
+                jsonData.NextPage = model.pageIndex;
             else
                 jsonData.NextPage += 1;
             return AbpJson(jsonData);

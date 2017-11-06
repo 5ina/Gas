@@ -51,6 +51,153 @@
 .k-grid .btn{
     margin-right:5px;
 }
- .map {
+.map {
     width: 100%;
-    height:auto;
+    height: auto;
+}
+
+
+新建监控表达式... window Window Aliyun Modernizr Object {
+    flexbox =true, flexboxlegacy=true, canvas=true, 更多...
+}
+
+abp Object {
+    appPath ="/", pageLoadTime=Date, multiTenancy=
+
+{
+    ...
+}
+
+, 更多...
+}
+
+html5 Object {
+    elements ="abbr article aside audio...ary template time video", version="3.7.0", shivCSS=true, 更多...
+}
+
+kendo Object {
+    cultures =
+
+{
+    ...
+}
+
+, version="2014.1.318", ui= {
+    ...
+}
+
+, 更多...
+}
+
+msViewportStyle undefined $ function(selector, context) jQuery function(selector, context) OpenWindow OpenWindow(query, w, h, scroll) addAntiForgeryToken addAntiForgeryToken(data) bindBootstrapTabSelectEvent bindBootstrapTabSelectEvent(tabsId) checkAllOverriddenStoreValue checkAllOverriddenStoreValue(item) checkOverriddenStoreValue checkOverriddenStoreValue(obj, selector) display_kendoui_grid_error display_kendoui_grid_error(e) lingth_sidebar lingth_sidebar(pagename, catename) saveUserPreferences saveUserPreferences(url, name, value) setLocation setLocation(url) showThrobber showThrobber(message) InstallTrigger InstallTriggerImpl {
+    SKIN =1, LOCALE=2, CONTENT=4, 更多...
+}
+
+applicationCache 0 items in offline cache caches CacheStorage {
+    match =match(), has=has(), open=open(), 更多...
+}
+
+closed false console Object {
+    log =bound (), debug=bound (), info=bound (), 更多...
+}
+
+content Window Aliyun crypto Crypto {
+    subtle =SubtleCrypto, getRandomValues=getRandomValues()
+}
+
+devicePixelRatio 1 document Document Aliyun external External {
+    AddSearchProvider =AddSearchProvider(), IsSearchProviderInstalled=IsSearchProviderInstalled(), addSearchEngine=addSearchEngine()
+}
+
+frameElement null frames Window Aliyun fullScreen false history 12 条历史 indexedDB IDBFactory {
+    open =open(), deleteDatabase=deleteDatabase(), cmp=cmp()
+}
+
+innerHeight 573 innerWidth 1600 length 0 localStorage 存储中有 24 个项目 BMap_vectordrawlib_0bpbg4="function Gf(a){this.$H=o...}; z.VectorDrawLib=Nf; ", BMap_navictrl_ekcmmq="x.extend(ib.prototype,{x...tType=ib.prototype.fn; ", BMap_oppc_yxewaq="var Cg=256,Dg=32;functio...ew O("onmoveend"))}}); ", 更多... location Location {
+    href ="http://localhost:61754/Admin/Setting/Aliyun", origin="http://localhost:61754", protocol="http:", 更多...
+}
+
+locationbar BarProp {
+    visible =true
+}
+
+menubar BarProp {
+    visible =true
+}
+
+mozInnerScreenX 0 mozInnerScreenY 93 mozPaintCount 8 name "" navigator Navigator {
+    mozContacts =EventTarget, permissions=Permissions, mimeTypes=MimeTypeArray, 更多...
+}
+
+onabsolutedeviceorientation null onlanguagechange null onstorage null opener null outerHeight 876 outerWidth 1616 pageXOffset 0 pageYOffset 0 parent Window Aliyun performance Performance {
+    timing =PerformanceTiming, navigation=PerformanceNavigation, now=now(), 更多...
+}
+
+personalbar BarProp {
+    visible =true
+}
+
+screen Screen {
+    availWidth =1600, availHeight=860, width=1600, 更多...
+}
+
+screenX -8 screenY -8 scrollMaxX 0 scrollMaxY 0 scrollX 0 scrollY 0 scrollbars BarProp {
+    visible =true
+}
+
+self Window Aliyun sessionStorage 存储中有 0 个项目 sidebar External {
+    AddSearchProvider =AddSearchProvider(), IsSearchProviderInstalled=IsSearchProviderInstalled(), addSearchEngine=addSearchEngine()
+}
+
+status "" statusbar BarProp {
+    visible =true
+}
+
+toolbar BarProp {
+    visible =true
+}
+
+top Window Aliyun window Window Aliyun __proto__ Window {
+    addEventListener =addEventListener(), removeEventListener=removeEventListener(), dispatchEvent=dispatchEvent()
+}
+
+*::after, *::before {
+    box-sizing: border-box;
+}
+
+*::after, *::before {
+    box-sizing: border-box;
+}
+
+.btn-group .dropdown-menu {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    left: auto;
+    right: 0;
+}
+
+    .btn-group .dropdown-menu input, 
+    .btn-group .dropdown-menu a {
+        background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+        border: medium none;
+        color: #777;
+        display: block;
+        font-weight: 400;
+        line-height: 1.42857;
+        margin: 0;
+        padding: 3px 20px;
+        white-space: nowrap;
+    }
+
+.dropdown-menu button {
+    border: medium none;
+    padding: 3px 20px;
+    text-align: left;
+    background:none;
+}
+.dropdown-menu li:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+    .dropdown-menu li:hover button {
+        background-color: transparent !important;
+    }

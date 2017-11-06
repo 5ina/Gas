@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using GasSolution.Domain.Gas;
+using GasSolution.Gas.Sort;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,11 +64,13 @@ namespace GasSolution.Gas
         /// <param name="stationId"></param>
         /// <param name="keywords"></param>
         /// <param name="promotionTime"></param>
+        /// <param name="sort">排序方式</param>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
         IPagedResult<Promotion> GetAllPromotions(int stationId = 0, string keywords = "",
-            DateTime? promotionTime = null, int pageIndex = 0, int pageSize = int.MaxValue);
+            DateTime? promotionTime = null, PromotionSort? sort = null,
+            int pageIndex = 0, int pageSize = int.MaxValue);
             
     }
 }

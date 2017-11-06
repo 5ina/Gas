@@ -1,5 +1,7 @@
 ﻿using Abp.AutoMapper;
+using Abp.Web.Security.AntiForgery;
 using GasSolution.Domain.Gas;
+using GasSolution.ExportImport;
 using GasSolution.Gas;
 using GasSolution.Web.Areas.Admin.Models.Promotions;
 using GasSolution.Web.Framework.Controllers;
@@ -7,6 +9,7 @@ using GasSolution.Web.Framework.DataGrids;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,12 +21,15 @@ namespace GasSolution.Web.Areas.Admin.Controllers
         #region ctor && Fields
         private readonly IPromotionService _promotionService;
         private readonly IGasStationService _gasService;
+        private readonly IExportManager _exportManager;
 
         public PromotionController(IPromotionService promotionService, 
-            IGasStationService gasService)
+            IGasStationService gasService,
+            IExportManager exportManager)
         {
             this._promotionService = promotionService;
             this._gasService = gasService;
+            this._exportManager = exportManager;
         }
         #endregion
 
@@ -55,10 +61,10 @@ namespace GasSolution.Web.Areas.Admin.Controllers
                         Address = gas.Address,
                         StartTime = p.StartTime,
                         EndTime = p.EndTime,
-                        Gasoline_Price_Ninety_Eight = p.Gasoline_Price_Ninety_Eight,
-                        Gasoline_Price_Ninety_Fine = p.Gasoline_Price_Ninety_Fine,
-                        Gasoline_Price_Ninety_Two = p.Gasoline_Price_Ninety_Two,
-                        Natural_Price = p.Natural_Price,
+                        Gasoline_Ninety_Eight = p.Gasoline_Ninety_Eight,
+                        Gasoline_Ninety_Fine = p.Gasoline_Ninety_Fine,
+                        Gasolin_Ninety_Two = p.Gasoline_Ninety_Two,
+                        Natural = p.Natural,
                         Id = p.Id,
                     };
                 }),
@@ -100,7 +106,8 @@ namespace GasSolution.Web.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                var entity = model.MapTo<Promotion>();
+                var entity = _promotionService.GetPromotionById(model.Id);
+                entity = model.MapTo<PromotionModel, Promotion>(entity);
                 _promotionService.UpdatePromotion(entity);
                 return continueEditing ? RedirectToAction("Edit", new { id = model.Id }) : RedirectToAction("List");
             }
@@ -114,6 +121,49 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             return AbpJson("ok");
         }
 
-#endregion
+        #endregion
+
+        #region  Export
+        
+
+
+        [HttpPost]
+        public virtual ActionResult ExportExcelSelectedToday()
+        {
+
+            var promotions = _promotionService.GetAllPromotions(promotionTime: DateTime.Now);
+
+            try
+            {
+                var bytes = _exportManager.ExportPromotionsToXlsx(promotions.Items);
+
+                return File(bytes, MimeTypes.TextXlsx, "promotion.xlsx");
+            }
+            catch (Exception exc)
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+
+        [HttpPost]
+        public virtual ActionResult ExportExcelSelectedAll()
+        {
+
+            var promotions = _promotionService.GetAllPromotions();
+
+            try
+            {
+                var bytes = _exportManager.ExportPromotionsToXlsx(promotions.Items);
+
+                return File(bytes, MimeTypes.TextXlsx, "promotion.xlsx");
+            }
+            catch (Exception exc)
+            {
+                return RedirectToAction("List");
+            }
+        }
+        #endregion
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Abp.Web.Mvc.Controllers;
 using Abp.Web.Mvc.Controllers.Results;
 using GasSolution.Web.Framework.Controllers;
+using System;
 using System.Text;
 using System.Web.Mvc;
 
@@ -14,7 +15,16 @@ namespace GasSolution.Web.Controllers
         {
             LocalizationSourceName = GasSolutionConsts.LocalizationSourceName;
         }
-        
+
+        public int CustomerId
+        {
+            get
+            {
+                //return Convert.ToInt32(AbpSession.UserId);
+                return 1;
+            }
+        }
+
         protected override AbpJsonResult AbpJson(object data, string contentType = null,
             Encoding contentEncoding = null, JsonRequestBehavior behavior = JsonRequestBehavior.DenyGet,
             bool wrapResult = true, bool camelCase = false, bool indented = false)

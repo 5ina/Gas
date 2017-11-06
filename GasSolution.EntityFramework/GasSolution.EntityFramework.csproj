@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201711020108552_Update_Gas_Area_Scripts.Designer.cs">
       <DependentUpon>201711020108552_Update_Gas_Area_Scripts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711060232082_Update_Promotion_Price_Scripts.cs" />
+    <Compile Include="Migrations\201711060232082_Update_Promotion_Price_Scripts.Designer.cs">
+      <DependentUpon>201711060232082_Update_Promotion_Price_Scripts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="GasSolutionDataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -244,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711020108552_Update_Gas_Area_Scripts.resx">
       <DependentUpon>201711020108552_Update_Gas_Area_Scripts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060232082_Update_Promotion_Price_Scripts.resx">
+      <DependentUpon>201711060232082_Update_Promotion_Price_Scripts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

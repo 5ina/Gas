@@ -1,38 +1,263 @@
 body {
 }
-.text-red{
-    color:#ff0000;
+
+.text-red {
+    color: #ff0000;
 }
+
 .navbar.navbar-fixed-top {
     margin: 0;
     padding: 0
 }
+
 .promotion-page .promotion-title {
     text-align: center;
     border-bottom: 1px #ffd800 solid;
+    color: #f34107;
 }
-.promotion-page .promotion-title h1{
-    padding:0;
-    margin:0;
-}
-.promotion-page .promotion-content {
-    
-}
-.promotion-page .promotion-content .promotions,
-.promotion-page .promotion-content .promotions li {
+
+    .promotion-page .promotion-title img.icon {
+        width: 28px;
+    }
+
+    .promotion-page .promotion-title h1 {
+        padding: 0;
+        margin: 0;
+    }
+
+.promotion-page .filter .promotion-filter,
+.promotion-page .filter .promotion-filter li {
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style:none;
 }
+
+    .promotion-page .filter .promotion-filter li {
+        float: left;
+        line-height: 38px;
+        height: 38px;
+        width: 50%;
+        text-align: center;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+    }
+
+        .promotion-page .filter .promotion-filter li:first-child {
+            border-left: 1px solid #ccc;
+        }
+
+        .promotion-page .filter .promotion-filter li > a {
+            color: #1a61d3;
+        }
+
+            .promotion-page .filter .promotion-filter li > a:hover {
+                text-decoration: none;
+            }
+
+            .promotion-page .filter .promotion-filter li > a.active {
+                color: #ff0000;
+            }
+
+.promotion-page .promotion-content {
+}
+
+    .promotion-page .promotion-content .promotions,
     .promotion-page .promotion-content .promotions li {
-        margin-bottom:12px;
-        padding:5px 12px;
-        border-bottom :1px solid #ccc;
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
-    .promotion-page .promotion-content .promotions li:first-child{
-        margin-top:5px;
+
+        .promotion-page .promotion-content .promotions li {
+            margin-bottom: 12px;
+            padding: 5px 12px;
+            border-bottom: 1px solid #ccc;
+        }
+
+            .promotion-page .promotion-content .promotions li:first-child {
+                margin-top: 5px;
+            }
+
+            .promotion-page .promotion-content .promotions li h5 {
+                font-weight: 700;
+            }
+
+
+/* Error Page*/
+.error-page, .error-page .error-title {
+    padding: 0;
+    margin: 0;
+}
+
+.error-page {
+    padding: 15px 5px;
+    margin: 20px auto;
+    width: 72%;
+    background: #f7f7f7 none repeat scroll 0 0;
+    min-height: 400px;
+}
+
+    .error-page .error-title {
+        position: relative;
     }
-    
-    .promotion-page .promotion-content .promotions li h5 {
-        font-weight: 700;
+
+        .error-page .error-title h2 {
+            padding: 0;
+            margin: 0;
+            line-height: 45px;
+            text-align: center;
+        }
+
+        .error-page .error-title .error-logo {
+            display: block;
+            top: 0px;
+            left: 5px;
+            height: 45px;
+            line-height: 45px;
+            color: #000;
+            font-family: "Microsoft YaHei";
+            font-size: 35px;
+            font-weight: normal;
+        }
+
+            .error-page .error-title .error-logo img {
+                width: 40px;
+            }
+
+    .error-page .error-content {
+        padding: 35px;
+        font-size: 24px;
+        font-family: "Microsoft YaHei";
     }
+
+        .error-page .error-content li {
+            margin-top: 15px;
+        }
+/* 用户信息 */
+.customer-info {
+    background: #f7f7f7 none repeat scroll 0 0;
+}
+
+    .customer-info .box {
+        padding-right: 8px;
+    }
+
+    .customer-info .customer-title {
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ccc;
+        background: #fff;
+    }
+
+        .customer-info .customer-title h4 {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 28px;
+        }
+
+    .customer-info .customer-content {
+        background: #fff;
+        padding-top: 8px;
+    }
+
+        .customer-info .customer-content .box .form-group::after,
+        .customer-info .customer-content .box .form-group::before {
+            clear: both;
+            content: " ";
+            display: table;
+        }
+
+        .customer-info .customer-content .box .form-group .control-label {
+            text-align: right;
+            line-height: 43px;
+            font-weight: normal;
+        }
+
+        .customer-info .customer-content .box .form-group .form-control {
+            background: #f7f7f7 none repeat scroll 0 0
+        }
+
+
+        .customer-info .customer-content .captcha {
+            border-right: none;
+            border-top-right-radius: unset;
+            border-bottom-right-radius: unset;
+        }
+
+        .customer-info .customer-content .captcha-button {
+            border-left: none;
+            border-top-left-radius: unset;
+            border-bottom-left-radius: unset;
+            background: #18ba9b;
+            border-color: #18ba9b;
+            color: #fff;
+        }
+
+            .customer-info .customer-content .captcha-button:hover {
+                background: #0b856d;
+                border-color: #0b856d;
+            }
+/* 右侧二维码 */
+.scan-qrcode {
+    position: fixed;
+    top: 40px;
+    right: 50px;
+    width: 180px;
+    padding: 10px;
+    border: 1px solid #c3c3c3;
+    border-radius: 10px;
+    text-align: center;
+    background: #fff;
+    z-index: 999;
+}
+
+    .scan-qrcode .tit {
+        margin: 0 auto;
+        padding-bottom: 10px;
+        width: 150px;
+        font-size: 16px;
+        color: #00ad2e;
+        border-bottom: 1px dashed #c3c3c3;
+    }
+
+    .scan-qrcode .sub {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #555555;
+    }
+
+    .scan-qrcode .qrcode img {
+        width: 160px;
+        height: 160px;
+    }
+
+/* Bottom Save Sumbit*/
+.button-sumbit {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #00ad2e;
+}
+
+    .button-sumbit button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-family: "Microsoft YaHei";
+        font-size: 22px;
+        font-weight: normal;
+        display: block;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        padding: 3px 18px;
+        letter-spacing: 18px;
+    }
+
+        .button-sumbit button:hover {
+            background: #0beb4d
+        }

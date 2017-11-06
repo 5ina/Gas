@@ -686,8 +686,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="images\gas.png" />
+    <Content Include="images\logo.png" />
     <Content Include="images\gas_no.png" />
+    <Content Include="images\qrcode.jpg" />
     <Content Include="images\user.png" />
+    <Content Include="images\wechat2.png" />
     <Content Include="js\main.js" />
     <Content Include="Localization\GasSolution\GasSolution-zh-CN.xml" />
     <Content Include="Localization\GasSolution\GasSolution.xml">
@@ -751,6 +754,9 @@
     <Content Include="Areas\Admin\Views\Gas\Map.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\WeChat.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\Common.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\Aliyun.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\admin.common.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -878,6 +884,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CommonController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\GasController.cs" />
     <Compile Include="Areas\Admin\Controllers\GasControllerAdminBase.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionController.cs" />
@@ -886,10 +893,15 @@
     <Compile Include="Areas\Admin\Models\Gas\GasStationModel.cs" />
     <Compile Include="Areas\Admin\Models\Promotions\PromotionListModel.cs" />
     <Compile Include="Areas\Admin\Models\Promotions\PromotionModel.cs" />
+    <Compile Include="Areas\Admin\Models\Setting\AliyunSettingModel.cs" />
+    <Compile Include="Areas\Admin\Models\Setting\CommonSettingModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\WeChatSettingModel.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\GasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WechatController.cs" />
+    <Compile Include="Framework\Controllers\FormValueRequiredAttribute.cs" />
     <Compile Include="Framework\Controllers\ParameterBasedOnFormNameAttribute.cs" />
     <Compile Include="Framework\Controllers\WeChatAntiForgeryAttribute.cs" />
     <Compile Include="Framework\DataGrids\DataSourceRequest.cs" />
@@ -901,7 +913,11 @@
     <Compile Include="Framework\HttpUtility.cs" />
     <Compile Include="Framework\Security\RequireHttpsAttribute.cs" />
     <Compile Include="Framework\WeChat\WechatRequest.cs" />
+    <Compile Include="Framework\WeChat\WeChatResult.cs" />
+    <Compile Include="Areas\Admin\Models\Customers\CustomerListModel.cs" />
+    <Compile Include="Models\Customers\CustomerModel.cs" />
     <Compile Include="Models\Gas\GasStationModel.cs" />
+    <Compile Include="Models\Gas\PromotionListModel.cs" />
     <Compile Include="Models\Layout\LanguageSelectionViewModel.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\GasSolutionControllerBase.cs" />
@@ -991,6 +1007,9 @@
     <Content Include="Scripts\kendo\2014.1.318\kendo.binder.min.js.map" />
     <Content Include="Scripts\kendo\2014.1.318\kendo.autocomplete.min.js.map" />
     <Content Include="Scripts\kendo\2014.1.318\jquery.min.map" />
+    <Content Include="Views\Gas\GetLocation.cshtml" />
+    <Content Include="Views\Customer\Info.cshtml" />
+    <Content Include="Views\Common\NotLogggen.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

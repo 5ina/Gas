@@ -5,12 +5,11 @@
     /// </summary>
     public static class CustomerAttributeNames
     {
-
         #region 收货地址
         /// <summary>
         /// 收货人姓名
         /// </summary>
-        public static string UserName { get { return "userName"; } }
+        public static string Consignee { get { return "consignee"; } }
 
         /// <summary>
         /// 收货人电话

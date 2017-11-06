@@ -3,6 +3,13 @@
 @using Abp.Timing
 @{
     SetAntiForgeryCookie();
+
+    var User_Agent = Request.UserAgent;
+    var showqrcode = true;
+    if (User_Agent.ToLower().Contains("micromessenger"))
+    {
+        showqrcode = false;
+    }
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -57,5 +64,20 @@
 
     <!-- View specific scripts -->
     @RenderSection("scripts", required: false)
+
+    @if (showqrcode)
+    {
+        <!-- 右侧二维码 -->
+        <div class="scan-qrcode">
+            <div class="tit">
+                <img src="/images/wechat2.png">
+                <span>手机扫码早知道</span>
+            </div>
+            <div class="sub">微信“扫一扫”油价一目了然</div>
+            <div class="qrcode">
+                <img src="~/images/qrcode.jpg">
+            </div>
+        </div>
+    }
 </body>
 </html>

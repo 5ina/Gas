@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "正在获取您的定位信息...";
+}
+@Html.IncludeScript("http://api.map.baidu.com/api?v=2.0&ak=yccG7GWikwgRd7f3mZ26NQ4tsbeXmiga")
+
+<script>
+
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function (result) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            latitude = result.point.lat;//获取到的纬度
+            longitude = result.point.lng;//获取到的经度
+            window.point = new BMap.Point(longitude, latitude);
+            url = "/Gas/Index?lat=" + latitude + "&lng=" + longitude;           
+            window.location.href = url;
+        }
+    });
+    function initMap(point) {
+        //初始化地图
+        map = new BMap.Map("map");
+        map.addControl(new BMap.NavigationControl());
+        map.addControl(new BMap.ScaleControl());
+        map.addControl(new BMap.OverviewMapControl());
+        map.centerAndZoom(point, 15);
+        map.addOverlay(new BMap.Marker(point));
+    }
+
+</script>
+
+<div><p id="wz" style="text-align:center;width:100%;position:absolute;top:53%;">正在获取定位信息...</p></div>

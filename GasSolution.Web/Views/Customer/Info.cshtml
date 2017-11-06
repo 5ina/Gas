@@ -1,0 +1,161 @@
+﻿@model GasSolution.Web.Models.Customers.CustomerModel
+
+<div class="customer-info" id="customer-page">
+    @if ( !String.IsNullOrWhiteSpace(ViewBag.Result) && ViewBag.Result == "true")
+    {
+        <div class="alert alert-warning">
+            <a href="#" class="close" data-dismiss="alert">
+                &times;
+            </a>
+            <strong>保存成功！</strong>您的信息已保存。
+        </div>
+    }
+
+    <div class="customer-title">
+        <h4>用户信息</h4>
+    </div>
+    <div class="customer-content">
+        <div class="box">
+            @using (Html.BeginForm("SaveInfo","Customer",FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+
+                <fieldset>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NickName, new { @class = "control-label col-xs-3" })
+                        <div class="input-group col-xs-9">
+                            <div class="form-control">
+                                @Model.NickName
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Mobile, new { @class = "col-xs-3 control-label" })
+                        <div class="input-group col-xs-9">
+                            @Html.GasEditorFor(modle => modle.Mobile)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Captcha, new { @class = "control-label col-xs-3" })
+                        <div class="input-group col-xs-9">
+                            @Html.TextBoxFor(modle => modle.Captcha, new { @class = "form-control captcha" })
+
+                            <div class="input-group-btn">
+                                <input type="button" class="btn btn-default captcha-button" onclick="sendCode(this);" value="获取验证码" />
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Captcha)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">地址</label>
+                        <div class="input-group col-xs-9">
+                            <div class="form-group">
+                                <div class="input-group-btn">
+                                    <div class="form-control">
+                                        @(Model.Consignee == "" || Model.Consignee == null ? "收货人姓名" : Model.Consignee)
+                                    </div>
+                                </div>
+                                <div class="input-group-btn">
+                                    <div class="form-control">
+                                        @(Model.TelNumber == "" || Model.TelNumber == null ? "联系电话" : Model.TelNumber)
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <div class="input-group-btn">
+                                    <div class="form-control">
+                                        @(Model.ProvinceName == "" || Model.ProvinceName == null ? "省份" : Model.ProvinceName)
+                                    </div>
+                                </div>
+                                <div class="input-group-btn">
+                                    <div class="form-control">
+                                        @(Model.CityName == "" || Model.CityName == null ? "城市" : Model.CityName)
+                                    </div>
+                                </div>
+                                <div class="input-group-btn">
+                                    <div class="form-control">
+                                        @(Model.CountryName == "" || Model.CountryName == null ? "区县" : Model.CountryName)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+
+                                <div class="form-control">
+                                    @(Model.DetailInfo == "" || Model.DetailInfo == null ? "详细地址（右侧按钮获取地址）" : Model.DetailInfo)
+                                </div>
+                                <div class="input-group-addon">
+                                    <a> <i class="fa fa-location-arrow"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="button-sumbit">
+                    <button>保存</button>
+                </div>
+            }
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        var clock = '';
+        var nums = 30;
+        var btn;
+        function sendCode(thisBtn) {
+            var result = formatInputValue($("#Mobile").val());
+
+            if (result) {
+                alert("请输入正确的手机号");
+                return;
+            }
+            getCaptcha($("#Mobile").val());
+            btn = thisBtn;
+            btn.disabled = true; //将按钮置为不可点击
+            btn.value = '(' + nums + ')';
+            clock = setInterval(doLoop, 1000); //一秒执行一次
+        }
+        function doLoop() {
+            nums--;
+            if (nums > 0) {
+                btn.value = '(' + nums + ')';
+            } else {
+                clearInterval(clock); //清除js定时器
+                btn.disabled = false;
+                btn.value = '获取验证码';
+                nums = 30; //重置时间
+            }
+        }
+
+        function getCaptcha(obj) {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action( "Captcha", "Common")",
+                data: { Mobile: obj },
+                success: function (result) {
+                        alert(result);
+                    }
+                });
+        }
+
+
+        function formatInputValue(mobile) {
+            var regBox = {
+                regMobile: /^1[3578]\d{9}$/,
+                regTel: /^0[\d]{2,3}-[\d]{7,8}$/
+            };
+            var mflag = regBox.regMobile.test(mobile);
+            return !mflag;
+        }
+    </script>
+
+</div>

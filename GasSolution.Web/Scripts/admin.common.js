@@ -90,6 +90,7 @@ function display_kendoui_grid_error(e) {
 
 // CSRF (XSRF) security
 function addAntiForgeryToken(data) {
+    
     //if the object is undefined, create a new one.
     if (!data) {
         data = {};

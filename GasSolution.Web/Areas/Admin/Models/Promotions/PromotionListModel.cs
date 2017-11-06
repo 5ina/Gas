@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace GasSolution.Web.Areas.Admin.Models.Promotions
 {
@@ -14,6 +15,6 @@ namespace GasSolution.Web.Areas.Admin.Models.Promotions
         [UIHint("DateNullable")]
         public DateTime? Time { get; set; }
 
-        
+
     }
 }

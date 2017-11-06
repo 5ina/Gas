@@ -9,7 +9,7 @@
 </section>
 <section class="content">
     <div class="portlet-body">
-        @using (Html.BeginForm("WeChat", "Setting", FormMethod.Post, new { id = "system-form" }))
+        @using (Html.BeginForm("WeChat", "Setting", FormMethod.Post, new { id = "wechat-form" }))
         {
             @Html.AntiForgeryToken()
             <div class="section-header">

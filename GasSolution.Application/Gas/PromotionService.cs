@@ -5,6 +5,7 @@ using Abp.Application.Services.Dto;
 using GasSolution.Domain.Gas;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Caching;
+using GasSolution.Gas.Sort;
 
 namespace GasSolution.Gas
 {
@@ -67,12 +68,13 @@ namespace GasSolution.Gas
                 var da_st_key = string.Format(CACHE_PROMOTION_DATE_STATION, entity.StartTime.Value.ToString("yyyy-MM-dd"), entity.GasStationId);
                 _cacheManager.GetCache(date_key).Remove(da_st_key);
             }
-            
+
             _promotionRepository.Delete(promotionId);
         }
 
         public IPagedResult<Promotion> GetAllPromotions(int stationId = 0,
             string keywords = "", DateTime? promotionTime = null,
+            PromotionSort? sort = null,
             int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = _promotionRepository.GetAll();
@@ -86,7 +88,22 @@ namespace GasSolution.Gas
             if (promotionTime.HasValue)
                 query = query.Where(p => p.StartTime < promotionTime.Value && p.EndTime > promotionTime.Value);
 
-            query = query.OrderByDescending(p => p.CreationTime);
+            if (sort.HasValue)
+            {
+                switch (sort.Value)
+                {
+                    case PromotionSort.Long:
+                        query = query.OrderByDescending(p => p.EndTime);
+                        break;
+                    case PromotionSort.Time:
+                    default:
+                        query = query.OrderByDescending(p => p.CreationTime);
+                        break;
+
+                }
+            }
+            else
+                query = query.OrderByDescending(p => p.CreationTime);
             return new PagedResult<Promotion>(query, pageIndex, pageSize);
 
         }
@@ -94,7 +111,8 @@ namespace GasSolution.Gas
         public Promotion GetLastPromotionByStationId(int stationId)
         {
             var key = string.Format(CACHE_PROMOTION_STATION, stationId);
-            return _cacheManager.GetCache(key).Get(key, () => {
+            return _cacheManager.GetCache(key).Get(key, () =>
+            {
                 var query = _promotionRepository.GetAll();
                 query = query.Where(p => p.GasStationId == stationId);
                 query = query.OrderByDescending(p => p.CreationTime);
@@ -106,8 +124,9 @@ namespace GasSolution.Gas
         {
 
             var key = string.Format(CACHE_PROMOTION_DATE_STATION, DateTime.Now.ToString("yyyy-MM-dd"), stationId);
-            
-            return _cacheManager.GetCache(key).Get(key, () => {
+
+            return _cacheManager.GetCache(key).Get(key, () =>
+            {
                 var query = _promotionRepository.GetAll();
                 query = query.Where(p => p.GasStationId == stationId);
 
@@ -152,8 +171,8 @@ namespace GasSolution.Gas
 
                 }
             }
-        
+
         }
-#endregion
+        #endregion
     }
 }

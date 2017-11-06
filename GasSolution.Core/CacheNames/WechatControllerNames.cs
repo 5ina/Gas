@@ -15,5 +15,15 @@ namespace GasSolution.CacheNames
         /// 微信 Access Token
         /// </summary>
         public static string CACHE_ACCESS_TOKEN { get { return "gas.controller.wechat.access.token"; } }
+
+        /// <summary>
+        /// 阿里云配置
+        /// </summary>
+        public static string CACHE_SETTINGS_ALIYUN { get { return "gas.controller.setting.aliyun"; } }
+
+        /// <summary>
+        /// 公共配置
+        /// </summary>
+        public static string CACHE_SETTINGS_COMMON { get { return "gas.controller.setting.common"; } }
     }
 }

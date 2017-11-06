@@ -68,7 +68,11 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             if (String.IsNullOrWhiteSpace(model.Key))
                 model.Key = "";
             _settingService.SaveSetting(WeChatSettingNames.Key, model.Key);
-            
+
+            if (String.IsNullOrWhiteSpace(model.Notify_Url))
+                model.Notify_Url = "";
+            _settingService.SaveSetting(WeChatSettingNames.NotifyUrl, model.Notify_Url);
+
             return View(model);
         }
 
@@ -89,6 +93,81 @@ namespace GasSolution.Web.Areas.Admin.Controllers
                 Total = list.Count
             };
             return AbpJson(jsonData);
+        }
+
+
+        public ActionResult Common()
+        {
+            var model = _cacheManager.GetCache(WechatControllerNames.CACHE_SETTINGS_ALIYUN).Get(WechatControllerNames.CACHE_SETTINGS_COMMON,
+                () =>
+                {
+                    return new CommonSettingModel
+                    {
+                        Title = _settingService.GetSettingByKey<string>(CommonSettingNames.Title),
+                        Keywords = _settingService.GetSettingByKey<string>(CommonSettingNames.Keywords),
+                        Description = _settingService.GetSettingByKey<string>(CommonSettingNames.Description),
+                        No_Ninety_Eight = _settingService.GetSettingByKey<decimal>(CommonSettingNames.No_Ninety_Eight),
+                        No_Ninety_Fine = _settingService.GetSettingByKey<decimal>(CommonSettingNames.No_Ninety_Fine),
+                        No_Ninety_Two = _settingService.GetSettingByKey<decimal>(CommonSettingNames.No_Ninety_Two),
+                    };
+                });
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [UnitOfWork]
+        public ActionResult Common(CommonSettingModel model)
+        {
+            if (String.IsNullOrWhiteSpace(model.Title))
+                model.Title = "";
+            _settingService.SaveSetting(CommonSettingNames.Title, model.Title);
+
+            if (String.IsNullOrWhiteSpace(model.Keywords))
+                model.Keywords = "";
+            _settingService.SaveSetting(CommonSettingNames.Keywords, model.Keywords);
+
+            if (String.IsNullOrWhiteSpace(model.Description))
+                model.Description = "";
+            _settingService.SaveSetting(CommonSettingNames.Description, model.Description);
+            
+            _settingService.SaveSetting(CommonSettingNames.No_Ninety_Two, model.No_Ninety_Two);
+            _settingService.SaveSetting(CommonSettingNames.No_Ninety_Eight, model.No_Ninety_Eight);
+            _settingService.SaveSetting(CommonSettingNames.No_Ninety_Fine, model.No_Ninety_Fine);
+
+            _cacheManager.GetCache(WechatControllerNames.CACHE_SETTINGS_COMMON).Remove(WechatControllerNames.CACHE_SETTINGS_COMMON);
+            return View(model);
+        }
+
+
+
+        public ActionResult Aliyun()
+        {
+            var model = _cacheManager.GetCache(WechatControllerNames.CACHE_SETTINGS_ALIYUN).Get(WechatControllerNames.CACHE_SETTINGS_ALIYUN,
+                 () =>
+                 {
+                     return new AliyunSettingModel
+                     {
+                         AccessKeyId = _settingService.GetSettingByKey<string>(AliyunSettingNames.AccessKeyId),
+                         AccessKeySecret = _settingService.GetSettingByKey<string>(AliyunSettingNames.AccessKeySecret),
+                         Endpoint = _settingService.GetSettingByKey<string>(AliyunSettingNames.Endpoint)
+                     };
+                 });
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [UnitOfWork]
+        public ActionResult Aliyun(AliyunSettingModel model)
+        {
+            _settingService.SaveSetting(AliyunSettingNames.AccessKeyId, model.AccessKeyId);
+            _settingService.SaveSetting(AliyunSettingNames.AccessKeySecret, model.AccessKeySecret);
+            _settingService.SaveSetting(AliyunSettingNames.Endpoint, model.Endpoint);
+            
+            _cacheManager.GetCache(WechatControllerNames.CACHE_SETTINGS_ALIYUN).Remove(WechatControllerNames.CACHE_SETTINGS_ALIYUN);
+            return View(model);
         }
 
         #endregion

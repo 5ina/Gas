@@ -23,6 +23,7 @@ namespace GasSolution.Web
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "GasSolution.Web.Controllers" }
             );
+            
         }
     }
 }
