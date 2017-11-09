@@ -1,0 +1,55 @@
+﻿@model GasSolution.Web.Framework.DataGrids.DataSourceResult
+@{
+    ViewBag.Title = "我的车辆";
+}
+
+<div class="car-page">
+
+    <div class="cars-list">
+        <ul>
+            @if (Model.Total > 0)
+            {
+                <li class="car-title">
+                    <div class="car-number">车牌号</div>
+                    <div class="car-color">车辆颜色</div>
+                    <div class="car-frame">车架号</div>
+                    <div class="car-engine">发动机号</div>
+                </li>
+            }
+            @foreach (var item in Model.Data)
+            {
+                var car = (GasSolution.Web.Models.Vehicles.VehicleModel)item;
+                <li class="car-item">
+                    <div class="car-number">@(car.CarPhead) @(car.CartNumber)</div>
+                    <div class="car-color">@(car.ColorString)</div>
+                    <div class="car-frame">@(car.FrameNo)</div>
+                    <div class="car-engine">@(car.EngineNo)</div>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <nav aria-label="Page navigation" class="navigation">
+        <ul class="pagination">
+            <li @if (Model.PageIndex <= 1)
+            { <text> class="disabled" </text> }>
+
+            <a href="@Url.Action("List", "Vehicle", new { pageIndex = Model.PageIndex, pageSize = Model.PageSize })" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+            </li>
+            @for (var pageIndex = 1; pageIndex <= Model.TotalPage; pageIndex++)
+            {
+                <li @if (pageIndex == Model.PageIndex) { <text>class="disabled"</text>} ><a href="@Url.Action("List", "Vehicle", new { pageIndex = Model.PageIndex, pageSize = Model.PageSize })">@(pageIndex)</a></li>
+            }
+            <li @if (Model.TotalPage <= Model.PageIndex)
+            { <text> class="disabled" </text>  }>
+
+            <a href="@Url.Action("List", "Vehicle", new { pageIndex = Model.PageIndex, pageSize = Model.PageSize })" aria-label="Previous">
+
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+            </li>
+        </ul>
+    </nav>
+</div>

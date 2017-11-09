@@ -13,5 +13,11 @@ namespace GasSolution.Web.Framework.DataGrids
         public int Total { get; set; }
 
         public int NextPage { get; set; }
+
+        public int PageIndex { get; set; }
+
+        public int PageSize { get; set; }
+
+        public int TotalPage { get; set; }
     }
 }

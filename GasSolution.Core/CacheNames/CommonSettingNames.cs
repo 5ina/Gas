@@ -35,5 +35,10 @@
         /// 98号价格
         /// </summary>
         public static string No_Ninety_Eight { get { return "gas.setting.common.no.98"; } }
+        
+        /// <summary>
+        /// 联系我们
+        /// </summary>
+        public static string CONTACT_US { get { return "gas.setting.common.contact_us"; } }
     }
 }

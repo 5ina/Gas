@@ -1,9 +1,7 @@
-﻿using GasSolution.Customers;
+﻿using Abp.Runtime.Caching;
+using GasSolution.Common;
+using GasSolution.Customers;
 using GasSolution.Messages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace GasSolution.Web.Controllers
@@ -13,13 +11,24 @@ namespace GasSolution.Web.Controllers
         #region ctor && Fields
         private readonly ICustomerService _customerService;
         private readonly ISMSMessageService _messageService;
+
+
+        private readonly ISettingService _settingService;
+        private readonly ICacheManager _cacheManager;
         public CommonController(ICustomerService customerService,
-                                ISMSMessageService messageService)
+                                ISMSMessageService messageService, 
+                                ISettingService settingService,
+            ICacheManager cacheManager)
         {
             this._customerService = customerService;
             this._messageService = messageService;
+
+            this._settingService = settingService;
+            this._cacheManager = cacheManager;
         }
         #endregion
+
+        
         #region Method
 
         /// <summary>
@@ -30,7 +39,7 @@ namespace GasSolution.Web.Controllers
         {
             return View();
         }
-
+        
 
 
         [HttpGet]

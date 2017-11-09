@@ -51,7 +51,8 @@ namespace GasSolution.Web.Framework.WeChat
                 this.Parameters.Add("Event", xmlDoc.SelectSingleNode("/xml/Event").InnerText);
                 this.Parameters.Add("EventKey", xmlDoc.SelectSingleNode("/xml/EventKey").InnerText);
             }
-            else {
+            else
+            {
                 this.Parameters.Add("Content", xmlDoc.SelectSingleNode("/xml/Content").InnerText);
                 this.Parameters.Add("MsgId", xmlDoc.SelectSingleNode("/xml/MsgId").InnerText);
             }

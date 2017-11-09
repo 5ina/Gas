@@ -757,6 +757,7 @@
     <Content Include="Areas\Admin\Views\Customer\List.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\Common.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\Aliyun.cshtml" />
+    <Content Include="Areas\Admin\Views\Vehicle\List.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\admin.common.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -889,6 +890,7 @@
     <Compile Include="Areas\Admin\Controllers\GasControllerAdminBase.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VehicleController.cs" />
     <Compile Include="Areas\Admin\Models\Gas\GasStationListModel.cs" />
     <Compile Include="Areas\Admin\Models\Gas\GasStationModel.cs" />
     <Compile Include="Areas\Admin\Models\Promotions\PromotionListModel.cs" />
@@ -896,10 +898,12 @@
     <Compile Include="Areas\Admin\Models\Setting\AliyunSettingModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\CommonSettingModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\WeChatSettingModel.cs" />
+    <Compile Include="Areas\Admin\Models\Vehicles\VehicleModel.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\GasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Controllers\WechatController.cs" />
     <Compile Include="Framework\Controllers\FormValueRequiredAttribute.cs" />
     <Compile Include="Framework\Controllers\ParameterBasedOnFormNameAttribute.cs" />
@@ -912,6 +916,7 @@
     <Compile Include="Framework\Extensions\VerifyExtensions.cs" />
     <Compile Include="Framework\HttpUtility.cs" />
     <Compile Include="Framework\Security\RequireHttpsAttribute.cs" />
+    <Compile Include="Framework\WeChat\TextMessage.cs" />
     <Compile Include="Framework\WeChat\WechatRequest.cs" />
     <Compile Include="Framework\WeChat\WeChatResult.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerListModel.cs" />
@@ -925,6 +930,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Layout\TopMenuViewModel.cs" />
+    <Compile Include="Models\Vehicles\VehicleModel.cs" />
     <Compile Include="Models\Wechat\AccessToken.cs" />
     <Compile Include="Models\Wechat\OAuthToken.cs" />
     <Compile Include="Models\Wechat\OAuthUserInfo.cs" />
@@ -1010,6 +1016,7 @@
     <Content Include="Views\Gas\GetLocation.cshtml" />
     <Content Include="Views\Customer\Info.cshtml" />
     <Content Include="Views\Common\NotLogggen.cshtml" />
+    <Content Include="Views\Vehicle\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

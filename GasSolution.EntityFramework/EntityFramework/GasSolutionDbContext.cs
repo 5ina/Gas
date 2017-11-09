@@ -5,6 +5,7 @@ using GasSolution.Domain.Settings;
 using System.Data.Entity;
 using GasSolution.Domain.Gas;
 using GasSolution.Domain.Common;
+using GasSolution.Domain.Vehicles;
 
 namespace GasSolution.EntityFramework
 {
@@ -33,6 +34,8 @@ namespace GasSolution.EntityFramework
         /// </summary>
         public virtual IDbSet<Area> Area { get; set; }
 
+        //Vehicle
+        public virtual IDbSet<Vehicle> Vehicle { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

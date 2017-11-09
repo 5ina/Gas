@@ -124,14 +124,14 @@
 
                     });
                     var dist = map.getDistance(new BMap.Point(val.Longitude, val.Dimension), new BMap.Point(lng, lat)).toFixed(2);
-                    var label = new BMap.Label("距离您" + dist+"米", { offset: new BMap.Size(15, -25) });
+                    var label = new BMap.Label("距离您" + dist+"米", { offset: new BMap.Size(0, -25) });
                     label.setStyle({
                         fontSize: "12px",
                         border: "1px dashed #FC6",
                         padding: "3px 5px",
                         textAlign: "center",
                         lineHeight: "20px",
-                        //    background:"url(/gohome.png)",
+                        background:"url(/gohome.png)",
                         cursor: "pointer"
 
                     });

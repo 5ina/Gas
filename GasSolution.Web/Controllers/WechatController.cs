@@ -7,6 +7,7 @@ using GasSolution.Common;
 using GasSolution.Customers;
 using GasSolution.Domain.Customers;
 using GasSolution.Security;
+using GasSolution.Web.Framework.WeChat;
 using GasSolution.Web.Models.Wechat;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -17,6 +18,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace GasSolution.Web.Controllers
 {
@@ -246,7 +249,17 @@ namespace GasSolution.Web.Controllers
         /// </summary>
         public void ClickWeChat(Hashtable parameters)
         {
-            
+            var keywords = parameters["EventKey"];
+
+            if (!String.IsNullOrWhiteSpace(Convert.ToString(keywords)))
+            {
+                switch (keywords.ToString())
+                {
+                    case "CONTACT_US":
+                        SendTextMessage(parameters["FromUserName"].ToString());
+                        break;
+                }
+            }
         }
         #endregion
 
@@ -303,6 +316,25 @@ namespace GasSolution.Web.Controllers
         }
         #endregion
 
+        #region 关键字回复数据
+
+        private void KeywordReply(Hashtable parameters)
+        {
+            var keywords = parameters["EventKey"];
+
+            if (!String.IsNullOrWhiteSpace(Convert.ToString(keywords)))
+            {
+                switch (keywords.ToString())
+                {
+                    case "CONTACT_US":
+                        SendTextMessage(parameters["FromUserName"].ToString());
+                        break;
+                }
+            }
+        }
+
+        #endregion
+
         #region 
         /// <summary>
         /// 处理信息并应答
@@ -314,7 +346,8 @@ namespace GasSolution.Web.Controllers
             var eventStr = wr.LoadEvent(Logger);
 
             Hashtable parameters = new Hashtable();
-            switch (eventStr)
+            Logger.Debug(eventStr.ToLower());
+            switch (eventStr.ToLower())
             {
                 //case "scan"://关注
                 case "subscribe":
@@ -327,9 +360,16 @@ namespace GasSolution.Web.Controllers
                     //退订关注
                     break;
                 case "click": //点击事件
-                    parameters = wr.LoadXml(false);
-                    Logger.Debug("content:" + parameters["Content"]);
+                    parameters = wr.LoadXml();
+                    Logger.Debug("content:" + parameters["EventKey"]);
                     ClickWeChat(parameters);
+                    break;
+                case "view":
+                    parameters = wr.LoadXml();
+                    break;
+                case "text":
+                    parameters = wr.LoadXml(false);
+                    KeywordReply(parameters);
                     break;
                 default:
                     break;
@@ -346,5 +386,28 @@ namespace GasSolution.Web.Controllers
 
         }
         #endregion
+
+        #region Messages
+
+        private void SendTextMessage(string openId)
+        {
+            string msgUrl = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}";
+            var appId = _settingService.GetSettingByKey<string>(WeChatSettingNames.AppId);
+            var secret = _settingService.GetSettingByKey<string>(WeChatSettingNames.AppSecret);
+
+            var content_us = _settingService.GetSettingByKey<string>(CommonSettingNames.CONTACT_US);
+            var token = GetAccessToken(appId, secret);
+            var message = new TextMessage();
+            message.touser = openId;
+
+            message.text = new TextMessage.Content { content = content_us };
+            var data = Newtonsoft.Json.JsonConvert.SerializeObject(message);
+            var result = Framework.HttpUtility.Post(string.Format(msgUrl, token.access_token), data);
+            
+            Logger.Debug("发送数据返回的信息：" + result);
+        }
+        
+        #endregion
+
     }
 }

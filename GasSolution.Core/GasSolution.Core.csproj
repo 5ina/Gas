@@ -164,6 +164,7 @@
     <Compile Include="CacheNames\CommonSettingNames.cs" />
     <Compile Include="Domain\Settings\Setting.cs" />
     <Compile Include="Domain\Settings\WechatSetting.cs" />
+    <Compile Include="Domain\Vehicles\Vehicle.cs" />
     <Compile Include="GasSolutionConsts.cs" />
     <Compile Include="GasSolutionCoreModule.cs" />
     <Compile Include="MimeTypes.cs" />

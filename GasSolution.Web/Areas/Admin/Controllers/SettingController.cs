@@ -109,6 +109,8 @@ namespace GasSolution.Web.Areas.Admin.Controllers
                         No_Ninety_Eight = _settingService.GetSettingByKey<decimal>(CommonSettingNames.No_Ninety_Eight),
                         No_Ninety_Fine = _settingService.GetSettingByKey<decimal>(CommonSettingNames.No_Ninety_Fine),
                         No_Ninety_Two = _settingService.GetSettingByKey<decimal>(CommonSettingNames.No_Ninety_Two),
+                        CONTACT_US = _settingService.GetSettingByKey<string>(CommonSettingNames.CONTACT_US),
+
                     };
                 });
 
@@ -136,7 +138,12 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             _settingService.SaveSetting(CommonSettingNames.No_Ninety_Eight, model.No_Ninety_Eight);
             _settingService.SaveSetting(CommonSettingNames.No_Ninety_Fine, model.No_Ninety_Fine);
 
+            if (String.IsNullOrWhiteSpace(model.CONTACT_US))
+                model.CONTACT_US = "";
+            _settingService.SaveSetting(CommonSettingNames.CONTACT_US, model.CONTACT_US);
+
             _cacheManager.GetCache(WechatControllerNames.CACHE_SETTINGS_COMMON).Remove(WechatControllerNames.CACHE_SETTINGS_COMMON);
+
             return View(model);
         }
 

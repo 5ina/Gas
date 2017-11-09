@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "车辆列表";
+}
+
+<section class="content-header">
+    <h1>车辆列表</h1>
+</section>
+<section class="content">
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="text" placeholder="关键字查询" class = "form-control" />                    
+                </div>
+            </div>          
+            
+            <div class="col-md-1">
+                <a href="#" class="reload btn btn-social-icon" id="search-vehicles"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+        <div id="vehicle-grid"></div>
+        @Html.AntiForgeryToken()
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $("#vehicle-grid").kendoGrid({
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("List", "Vehicle"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                error: function (e) {
+                    display_kendoui_grid_error(e);
+                    // Cancel the changes
+                    this.cancelChanges();
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: false,
+                serverSorting: false
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: [10, 20, 50]
+            },
+            scrollable: false,
+            columns: [
+                {
+                    field: "Id",
+                    title: "Id",
+                    width: 100,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "CarPhead",
+                    title: "车辆所属",
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                    width: 150,
+                }, {
+                    field: "CartNumber",
+                    title: "车牌号",
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                },{
+                    field: "CreationTime",
+                    title: "关注时间",
+                    width: 150,
+                    type: "date",
+                    format: "{0:G}"
+                }, {
+                    field: "Id",
+                    title: "操作",
+                    width: 200,
+                    template: '<a class="btn btn-success" href="Edit/#=Id#">查看详情</a>'
+                }
+            ]
+        });
+
+        //search button
+        $('#search-vehicles').click(function () {
+            var grid = $('#vehicle-grid').data('kendoGrid');
+            grid.dataSource.page(0);
+        });
+    });
+    function additionalData() {
+        var data = {
+            keywords: $('#Keywords').val(),
+        };
+        addAntiForgeryToken(data);
+        return data;
+    }
+    window.onload = function () {
+        lingth_sidebar("vehicle-list", "vehicle");
+    };
+</script>

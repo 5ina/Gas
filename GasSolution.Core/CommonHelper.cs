@@ -522,6 +522,65 @@ namespace GasSolution
                 return res;
             }
         }
+
+
+
+        #endregion
+
+        #region CarPhead
+        public static string[] GetPheads() {
+
+            return new string[] { "京",
+                "津",
+                "沪",
+                "渝",
+                "冀" ,
+                "豫",
+                "云",
+                "辽" ,
+                "黑" ,
+                "湘" ,
+                "皖" ,
+                "鲁" ,
+                "新" ,
+                "苏" ,
+                "浙" ,
+                "赣" ,
+                "鄂"  ,
+                "桂"  ,
+                "甘"  ,
+                "晋"  ,
+                "蒙"  ,
+                "陕"  ,
+                "吉"  ,
+                "闽"  ,
+                "贵"  ,
+                "粤"  ,
+                "青"  ,
+                "藏"  ,
+                "川"  ,
+                "宁"  ,
+                "琼"};
+        }
+
+        /// <summary>
+        /// 获取车辆颜色
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<int, string> GetCarColors()
+        {
+            Dictionary<int, string> carColors = new Dictionary<int, string>();
+
+            carColors.Add(1, "白色");
+            carColors.Add(2, "黑色");
+            carColors.Add(3, "红色");
+            carColors.Add(4, "银灰色");
+            carColors.Add(5, "黄色");
+            carColors.Add(6, "蓝色");
+            carColors.Add(7, "橙色");
+
+            return carColors;
+        }
         #endregion
     }
 }

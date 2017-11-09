@@ -97,6 +97,18 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.LabelFor(model => model.CONTACT_US):
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                        @Html.TextAreaFor(model => model.CONTACT_US, 5, 80, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.CONTACT_US)
+                                    </div>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                 </div>

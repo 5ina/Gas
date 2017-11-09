@@ -1398,3 +1398,883 @@ System.DivideByZeroException: 尝试除以零。
    在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
    在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
    在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+WARN  2017-11-06 17:02:18,644 [128  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-07 17:56:05,674 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-07 17:56:05,701 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-07 17:56:05,709 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,715 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,715 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:05,718 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-07 17:56:06,452 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-07 17:56:10,233 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-07 17:56:10,269 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-07 17:56:10,270 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-07 17:56:10,291 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-07 17:56:10,524 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-07 17:56:10,629 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 5 classes define auto mapping attributes
+DEBUG 2017-11-07 17:56:10,629 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-07 17:56:10,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-07 17:56:10,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-07 17:56:10,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-07 17:56:10,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-07 17:56:10,993 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-07 17:56:10,998 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-07 17:56:11,001 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-07 17:56:11,008 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-07 17:56:11,010 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-07 17:56:11,012 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-07 17:56:11,014 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-07 17:56:11,015 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-07 17:56:11,017 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+WARN  2017-11-07 17:56:11,863 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:11,930 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:11,940 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:11,941 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:56:17,997 [10   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 4904 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:56:18,068 [10   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 68 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:56:18,216 [10   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Web.Controllers.CommonController.NotLogggen is executed by user 1 in 30 ms from 192.168.2.178 IP address with succeed.
+WARN  2017-11-07 17:56:27,403 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:27,404 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:56:27,499 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 89 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:56:27,675 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 173 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:56:27,679 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Web.Controllers.CommonController.NotLogggen is executed by user 1 in 0 ms from 192.168.2.178 IP address with succeed.
+WARN  2017-11-07 17:56:34,170 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,171 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,275 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,276 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,293 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,294 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,321 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,321 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,325 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,325 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,557 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,558 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,578 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,578 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,610 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,611 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,697 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,697 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,718 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,719 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,880 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,881 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:34,969 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:34,969 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:35,009 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:35,010 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:35,182 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:35,183 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:35,196 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:35,196 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:35,503 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:35,503 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:35,747 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:35,747 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:35,751 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:35,752 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:35,908 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:35,909 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,029 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,030 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,042 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,043 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,059 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,060 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,258 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,258 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,264 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,265 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,284 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,284 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,311 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,312 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,313 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,313 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,319 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,319 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,383 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,384 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,390 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,390 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,431 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,431 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,522 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,522 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,663 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,664 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,701 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,701 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,711 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,712 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,720 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,720 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,791 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,792 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,799 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,800 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,823 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,837 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,853 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,853 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,880 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,881 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,964 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,967 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:36,972 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:36,972 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:37,049 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:37,050 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:37,098 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:37,100 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:37,109 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:37,109 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:37,110 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:37,111 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:37,188 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:37,189 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:37,203 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:37,209 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:37,224 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:37,224 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:37,243 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:37,257 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:37,283 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:37,284 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:39,543 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:39,543 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:56:39,625 [11   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 74 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:56:39,716 [11   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 89 ms from 192.168.2.178 IP address with succeed.
+WARN  2017-11-07 17:56:39,721 [11   ] rity.AntiForgery.AbpAntiForgeryMvcFilter - Empty or invalid anti forgery header token.
+WARN  2017-11-07 17:56:39,721 [11   ] rity.AntiForgery.AbpAntiForgeryMvcFilter - Requested URI: http://localhost:61754/Common/NotLogggen?Length=11
+WARN  2017-11-07 17:56:42,659 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:42,659 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:50,471 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:50,472 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:56:50,730 [14   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 231 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:56:50,838 [14   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 106 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:56:50,843 [14   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Web.Controllers.CommonController.NotLogggen is executed by user 1 in 0 ms from 192.168.2.178 IP address with succeed.
+WARN  2017-11-07 17:56:56,455 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:56,456 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:56,507 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:56,508 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:56,531 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:56,534 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:56,661 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:56,664 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:56,676 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:56,678 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:56,955 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:56,956 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:56,997 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:56,997 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,039 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,039 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,072 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,073 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,123 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,124 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,129 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,129 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,312 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,317 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,336 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,336 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,493 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,493 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,549 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,550 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,699 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,700 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,871 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,871 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,892 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,892 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,906 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,906 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:57,939 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:57,939 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,069 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,076 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,076 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,077 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,200 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,202 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,247 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,248 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,254 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,255 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,255 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,419 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,420 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,422 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,423 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,432 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,432 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,523 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,598 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,609 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,610 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,728 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,728 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,732 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,733 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,815 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,815 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,817 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,818 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:58,846 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:58,846 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:59,067 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:59,068 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:59,089 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:59,090 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:59,094 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:59,095 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:59,095 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:56:59,182 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 75 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:56:59,266 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 81 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:56:59,270 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Web.Controllers.CommonController.NotLogggen is executed by user 1 in 1 ms from 192.168.2.178 IP address with succeed.
+WARN  2017-11-07 17:56:59,728 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:59,728 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:59,942 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:56:59,944 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:56:59,999 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:01,660 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:57:01,743 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 76 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:01,835 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 90 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:01,849 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Web.Controllers.CommonController.NotLogggen is executed by user 1 in 0 ms from 192.168.2.178 IP address with succeed.
+WARN  2017-11-07 17:57:02,317 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:02,320 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:57:02,331 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:02,331 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:57:02,335 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:06,244 [16   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:57:06,320 [16   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 71 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:06,393 [16   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 71 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:06,397 [16   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Web.Controllers.CommonController.NotLogggen is executed by user 1 in 0 ms from 192.168.2.178 IP address with succeed.
+WARN  2017-11-07 17:57:06,720 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:06,721 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:57:06,743 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:06,744 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:57:06,757 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:14,528 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:57:33,302 [20   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:33,305 [20   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:57:33,384 [20   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 73 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:33,457 [20   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 70 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:33,462 [20   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Web.Controllers.CommonController.NotLogggen is executed by user 1 in 0 ms from 192.168.2.178 IP address with succeed.
+WARN  2017-11-07 17:57:35,359 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:35,362 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:57:38,020 [12   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 74 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:38,103 [12   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 80 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:38,107 [12   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Web.Controllers.CommonController.NotLogggen is executed by user 1 in 0 ms from 192.168.2.178 IP address with succeed.
+WARN  2017-11-07 17:57:38,832 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:38,832 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:57:38,836 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:38,837 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:57:38,837 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:40,023 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2017-11-07 17:57:40,655 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-07 17:57:40,655 [13   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2017-11-07 17:57:40,728 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 69 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:40,804 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 74 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:44,411 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 69 ms from 192.168.2.178 IP address with succeed.
+INFO  2017-11-07 17:57:45,337 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Common.SettingService.GetSettingByKey is executed by user 1 in 120 ms from 192.168.2.178 IP address with succeed.
+DEBUG 2017-11-07 18:08:40,465 [13   ] olution.Web.Controllers.CommonController - 输入日志：{"errcode":43101,"errmsg":"user refuse to accept the msg hint: [0743ge20]"}
+INFO  2017-11-07 18:08:40,482 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: GasSolution.Web.Controllers.CommonController.TempMessage is executed by user 1 in 659676 ms from 192.168.2.178 IP address with succeed.
+DEBUG 2017-11-09 09:31:19,001 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 09:31:19,022 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 09:31:19,033 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,036 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,036 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,036 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,036 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,037 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,037 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,038 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,038 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,038 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,038 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,039 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,039 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:19,045 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 09:31:19,704 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:31:22,388 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 09:31:22,424 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 09:31:22,426 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 09:31:22,447 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 09:31:22,625 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:31:22,717 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 6 classes define auto mapping attributes
+DEBUG 2017-11-09 09:31:22,718 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 09:31:22,723 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:31:22,723 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 09:31:22,723 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:31:22,723 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 09:31:22,723 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:31:23,079 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 09:31:23,081 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 09:31:23,082 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 09:31:23,083 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 09:31:23,084 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 09:31:23,086 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 09:31:23,087 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 09:31:23,088 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 09:31:23,089 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 09:31:23,091 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+DEBUG 2017-11-09 09:38:00,009 [33   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-11-09 09:38:00,010 [33   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:38:00,011 [33   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:38:00,011 [33   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-11-09 09:41:54,853 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 09:41:54,868 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 09:41:54,877 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,882 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,882 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,882 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,882 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,882 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:54,888 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 09:41:55,260 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:41:56,774 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 09:41:56,780 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 09:41:56,781 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 09:41:56,783 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 09:41:56,915 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:41:56,970 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 09:41:56,970 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 09:41:56,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:41:56,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:41:56,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 09:41:56,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:41:56,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 09:41:56,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:41:57,171 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 09:41:57,172 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 09:41:57,173 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 09:41:57,174 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 09:41:57,175 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 09:41:57,176 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 09:41:57,177 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 09:41:57,178 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 09:41:57,179 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 09:41:57,180 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+WARN  2017-11-09 09:42:04,326 [30   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 09:42:04,416 [30   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 09:42:49,843 [35   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-11-09 09:42:49,845 [35   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:42:49,846 [35   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:42:49,846 [35   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-11-09 09:46:52,282 [6    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 09:46:52,299 [6    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 09:46:52,305 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,307 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,307 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,308 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,308 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,308 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,309 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,309 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,310 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,310 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,310 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,310 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,310 [6    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:52,313 [6    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 09:46:52,674 [6    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:46:54,134 [6    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 09:46:54,139 [6    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 09:46:54,141 [6    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 09:46:54,142 [6    ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 09:46:54,267 [6    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:46:54,322 [6    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 09:46:54,322 [6    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 09:46:54,326 [6    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:46:54,326 [6    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:46:54,326 [6    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 09:46:54,326 [6    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:46:54,326 [6    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 09:46:54,326 [6    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:46:54,520 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 09:46:54,521 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 09:46:54,522 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 09:46:54,523 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 09:46:54,524 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 09:46:54,525 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 09:46:54,526 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 09:46:54,527 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 09:46:54,528 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 09:46:54,530 [6    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+ERROR 2017-11-09 09:46:57,498 [35   ] lution.Web.Controllers.VehicleController - c:\Users\kelvin\AppData\Local\Temp\Temporary ASP.NET Files\vs\5d6f3f33\3eb2b04\App_Web_list.cshtml.9545e31b.zccjlp6l.0.cs(33): error CS1003: 语法错误，应输入“>”
+System.Web.HttpCompileException (0x80004005): c:\Users\kelvin\AppData\Local\Temp\Temporary ASP.NET Files\vs\5d6f3f33\3eb2b04\App_Web_list.cshtml.9545e31b.zccjlp6l.0.cs(33): error CS1003: 语法错误，应输入“>”
+   在 System.Web.Compilation.AssemblyBuilder.Compile()
+   在 System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetCompiledType(String virtualPath)
+   在 System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.GetCompiledType(String virtualPath)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+WARN  2017-11-09 09:48:58,771 [19   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 09:48:58,866 [19   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 09:54:37,660 [36   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-11-09 09:54:37,662 [36   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:54:37,663 [36   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:54:37,663 [36   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-11-09 09:54:51,467 [13   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 09:54:51,488 [13   ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 09:54:51,497 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,500 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,500 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,500 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,501 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,501 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,501 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,501 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,502 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,502 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,502 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,502 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,502 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:51,506 [13   ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 09:54:51,930 [13   ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:54:53,461 [13   ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 09:54:53,467 [13   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 09:54:53,469 [13   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 09:54:53,470 [13   ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 09:54:53,597 [13   ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:54:53,650 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 09:54:53,650 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 09:54:53,656 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:54:53,656 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:54:53,657 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 09:54:53,658 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:54:53,658 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 09:54:53,658 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:54:53,889 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 09:54:53,890 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 09:54:53,891 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 09:54:53,892 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 09:54:53,893 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 09:54:53,895 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 09:54:53,896 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 09:54:53,897 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 09:54:53,898 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 09:54:53,900 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+WARN  2017-11-09 09:55:02,797 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 09:55:02,865 [11   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 09:55:28,385 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 09:55:28,917 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 09:55:28,923 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,926 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,926 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,926 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,926 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,927 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,927 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,927 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,928 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,928 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,928 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,928 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,928 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:28,934 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 09:55:30,476 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:55:30,873 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 09:55:30,909 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 09:55:30,912 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 09:55:30,915 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 09:55:31,409 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:55:31,626 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 09:55:31,626 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 09:55:31,632 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:55:31,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:55:31,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 09:55:31,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:55:31,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 09:55:31,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:55:31,945 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 09:55:31,947 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 09:55:31,949 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 09:55:31,952 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 09:55:31,954 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 09:55:31,956 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 09:55:31,958 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 09:55:31,960 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 09:55:31,962 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 09:55:31,963 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+DEBUG 2017-11-09 09:56:24,227 [6    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-11-09 09:56:24,229 [6    ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:56:24,230 [6    ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:56:24,230 [6    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-11-09 09:56:27,314 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 09:56:27,763 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 09:56:27,770 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,772 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,772 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,772 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,773 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,773 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,773 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,773 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,774 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,774 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,774 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,774 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,774 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:27,779 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 09:56:28,993 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:56:29,265 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 09:56:29,268 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 09:56:29,270 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 09:56:29,271 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 09:56:29,676 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:56:29,847 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 09:56:29,847 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 09:56:29,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:56:29,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:56:29,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 09:56:29,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:56:29,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 09:56:29,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:56:29,989 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 09:56:29,991 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 09:56:29,993 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 09:56:29,995 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 09:56:29,998 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 09:56:29,999 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 09:56:30,001 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 09:56:30,002 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 09:56:30,004 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 09:56:30,005 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+ERROR 2017-11-09 09:56:36,651 [5    ] nHandling.AbpApiExceptionFilterAttribute - 已取消一个任务。
+System.Threading.Tasks.TaskCanceledException: 已取消一个任务。
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 Abp.WebApi.Uow.AbpApiUowFilter.<ExecuteActionFilterAsync>d__6.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 Abp.WebApi.Validation.AbpApiValidationFilter.<ExecuteActionFilterAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 Abp.WebApi.Auditing.AbpApiAuditFilter.<ExecuteActionFilterAsync>d__4.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 Abp.WebApi.Security.AntiForgery.AbpAntiForgeryApiFilter.<ExecuteAuthorizationFilterAsync>d__10.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 Abp.WebApi.Authorization.AbpApiAuthorizeFilter.<ExecuteAuthorizationFilterAsync>d__7.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+WARN  2017-11-09 09:56:36,794 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 09:56:36,886 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 09:58:03,586 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 09:58:03,606 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 09:58:03,615 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,617 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,618 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,619 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,619 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,619 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,620 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,621 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,621 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,622 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,622 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,622 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,622 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:03,627 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 09:58:04,074 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 09:58:06,108 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 09:58:06,136 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 09:58:06,138 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 09:58:06,145 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 09:58:06,306 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 09:58:06,391 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 09:58:06,391 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 09:58:06,394 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:58:06,394 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:58:06,394 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 09:58:06,394 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 09:58:06,394 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 09:58:06,395 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 09:58:06,666 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 09:58:06,667 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 09:58:06,668 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 09:58:06,669 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 09:58:06,670 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 09:58:06,671 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 09:58:06,672 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 09:58:06,673 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 09:58:06,674 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 09:58:06,675 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+WARN  2017-11-09 09:58:17,244 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 09:58:17,284 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 10:02:02,606 [10   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-11-09 10:02:02,608 [10   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 10:02:02,610 [10   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 10:02:02,610 [10   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-11-09 10:02:25,602 [29   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 10:02:25,617 [29   ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 10:02:25,623 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,625 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,625 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,625 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,625 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,626 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,626 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,626 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,627 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,627 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,627 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,627 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,627 [29   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:25,632 [29   ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 10:02:25,961 [29   ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:02:27,331 [29   ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 10:02:27,338 [29   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 10:02:27,339 [29   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 10:02:27,340 [29   ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 10:02:27,470 [29   ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 10:02:27,525 [29   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 10:02:27,525 [29   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 10:02:27,528 [29   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 10:02:27,529 [29   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 10:02:27,529 [29   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 10:02:27,529 [29   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 10:02:27,529 [29   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 10:02:27,529 [29   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 10:02:27,732 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 10:02:27,733 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 10:02:27,734 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 10:02:27,735 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 10:02:27,736 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 10:02:27,738 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 10:02:27,739 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 10:02:27,740 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 10:02:27,741 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 10:02:27,742 [29   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+WARN  2017-11-09 10:02:37,964 [24   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 10:02:38,028 [24   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 10:06:18,954 [23   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-11-09 10:06:18,955 [23   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 10:06:18,956 [23   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 10:06:18,956 [23   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-11-09 10:08:07,257 [19   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 10:08:07,271 [19   ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 10:08:07,278 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,280 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,281 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,281 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,281 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,281 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,281 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,282 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,282 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,282 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,282 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,282 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,282 [19   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:07,285 [19   ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 10:08:07,588 [19   ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:08,884 [19   ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 10:08:08,893 [19   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 10:08:08,895 [19   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 10:08:08,898 [19   ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 10:08:09,044 [19   ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 10:08:09,101 [19   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 10:08:09,101 [19   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 10:08:09,105 [19   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 10:08:09,105 [19   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 10:08:09,105 [19   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 10:08:09,105 [19   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 10:08:09,105 [19   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 10:08:09,105 [19   ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 10:08:09,369 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 10:08:09,370 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 10:08:09,371 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 10:08:09,373 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 10:08:09,374 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 10:08:09,375 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 10:08:09,376 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 10:08:09,378 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 10:08:09,379 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 10:08:09,380 [19   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+WARN  2017-11-09 10:08:18,793 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 10:08:18,875 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 10:08:34,215 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 10:08:34,650 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 10:08:34,657 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,659 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,659 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,659 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,659 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,659 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,660 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,660 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,660 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,660 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,661 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,661 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,661 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:34,664 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 10:08:35,924 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:08:36,317 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 10:08:36,348 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 10:08:36,350 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 10:08:36,353 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 10:08:36,811 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 10:08:37,027 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 10:08:37,027 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 10:08:37,032 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 10:08:37,032 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 10:08:37,032 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 10:08:37,032 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 10:08:37,032 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 10:08:37,032 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 10:08:37,343 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 10:08:37,344 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 10:08:37,345 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 10:08:37,346 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 10:08:37,348 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 10:08:37,349 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 10:08:37,351 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 10:08:37,352 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 10:08:37,353 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 10:08:37,354 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+WARN  2017-11-09 10:08:49,792 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 10:08:49,901 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 10:35:31,821 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 10:35:31,837 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 10:35:31,843 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,847 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,847 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,847 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:31,851 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 10:35:32,212 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 10:35:34,393 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 10:35:34,418 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 10:35:34,420 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 10:35:34,423 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 10:35:34,563 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 10:35:34,634 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 10:35:34,635 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 10:35:34,639 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 10:35:34,639 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 10:35:34,639 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 10:35:34,639 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 10:35:34,639 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 10:35:34,639 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 10:35:34,955 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 10:35:34,956 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 10:35:34,957 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 10:35:34,958 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 10:35:34,959 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 10:35:34,960 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 10:35:34,961 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 10:35:34,963 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 10:35:34,965 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 10:35:34,967 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+WARN  2017-11-09 10:35:47,546 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 10:35:47,625 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 12:09:56,132 [113  ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-11-09 12:09:56,143 [113  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 12:09:56,144 [113  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 12:09:56,145 [113  ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-11-09 15:11:50,888 [169  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-11-09 15:11:50,905 [169  ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-11-09 15:11:50,915 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.Web.GasSolutionWebModule, GasSolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,917 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,917 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,917 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,918 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,918 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionDataModule, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,918 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,918 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,919 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionCoreModule, GasSolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,919 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionApplicationModule, GasSolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,919 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,919 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: GasSolution.GasSolutionWebApiModule, GasSolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,920 [169  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:50,923 [169  ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-11-09 15:11:51,268 [169  ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: GasSolution.EntityFramework.GasSolutionDbContext, GasSolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-11-09 15:11:52,820 [169  ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-11-09 15:11:52,830 [169  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-11-09 15:11:52,836 [169  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-11-09 15:11:52,857 [169  ] Abp.Localization.LocalizationManager     - Initialized localization source: GasSolution
+DEBUG 2017-11-09 15:11:53,024 [169  ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 15:11:53,097 [169  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-11-09 15:11:53,097 [169  ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Authentication.Dto.CustomerDto
+DEBUG 2017-11-09 15:11:53,100 [169  ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 15:11:53,101 [169  ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Gas.GasStationModel
+DEBUG 2017-11-09 15:11:53,101 [169  ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Models.Customers.CustomerModel
+DEBUG 2017-11-09 15:11:53,101 [169  ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Vehicles.VehicleModel
+DEBUG 2017-11-09 15:11:53,101 [169  ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Promotions.PromotionModel
+DEBUG 2017-11-09 15:11:53,101 [169  ] Abp.AutoMapper.AbpAutoMapperModule       - GasSolution.Web.Areas.Admin.Models.Gas.GasStationModel
+DEBUG 2017-11-09 15:11:53,339 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Vehicles.IVehicleService' with service name 'app/vehicleService'.
+DEBUG 2017-11-09 15:11:53,341 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2017-11-09 15:11:53,342 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2017-11-09 15:11:53,343 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IGasStationService' with service name 'app/gasStationService'.
+DEBUG 2017-11-09 15:11:53,345 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Gas.IPromotionService' with service name 'app/promotionService'.
+DEBUG 2017-11-09 15:11:53,346 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.ExportImport.IExportManager' with service name 'app/exportManager'.
+DEBUG 2017-11-09 15:11:53,348 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2017-11-09 15:11:53,350 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2017-11-09 15:11:53,352 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.IAreaService' with service name 'app/areaService'.
+DEBUG 2017-11-09 15:11:53,354 [169  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'GasSolution.Common.ISettingService' with service name 'app/settingService'.
+WARN  2017-11-09 15:12:01,405 [164  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-11-09 15:12:01,484 [164  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-11-09 15:15:48,129 [168  ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-11-09 15:15:48,130 [168  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 15:15:48,132 [168  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-11-09 15:15:48,132 [168  ] Abp.Modules.AbpModuleManager             - Shutting down completed.
