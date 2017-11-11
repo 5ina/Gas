@@ -20,8 +20,8 @@ namespace GasSolution.Web.Controllers
         {
             get
             {
-                //return Convert.ToInt32(AbpSession.UserId);
-                return 1;
+                return Convert.ToInt32(AbpSession.UserId);
+                //return 1;
             }
         }
 

@@ -758,6 +758,11 @@
     <Content Include="Areas\Admin\Views\Setting\Common.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\Aliyun.cshtml" />
     <Content Include="Areas\Admin\Views\Vehicle\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\NewCustomer.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\CustomerStatisticalOverview.cshtml" />
+    <Content Include="Areas\Admin\Views\Gas\GasStatisticalOverview.cshtml" />
+    <Content Include="Areas\Admin\Views\Vehicle\VehicleStatisticalOverview.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\admin.common.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -766,6 +771,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -888,17 +895,21 @@
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\GasController.cs" />
     <Compile Include="Areas\Admin\Controllers\GasControllerAdminBase.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleController.cs" />
+    <Compile Include="Areas\Admin\Models\Customers\CustomerStatisticalOverviewModel.cs" />
     <Compile Include="Areas\Admin\Models\Gas\GasStationListModel.cs" />
     <Compile Include="Areas\Admin\Models\Gas\GasStationModel.cs" />
+    <Compile Include="Areas\Admin\Models\Gas\GasStatisticalOverviewModel.cs" />
     <Compile Include="Areas\Admin\Models\Promotions\PromotionListModel.cs" />
     <Compile Include="Areas\Admin\Models\Promotions\PromotionModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\AliyunSettingModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\CommonSettingModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\WeChatSettingModel.cs" />
     <Compile Include="Areas\Admin\Models\Vehicles\VehicleModel.cs" />
+    <Compile Include="Areas\Admin\Models\Vehicles\VehicleStatisticalOverviewModel.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\GasController.cs" />
@@ -1017,6 +1028,7 @@
     <Content Include="Views\Customer\Info.cshtml" />
     <Content Include="Views\Common\NotLogggen.cshtml" />
     <Content Include="Views\Vehicle\List.cshtml" />
+    <Content Include="Views\Gas\AllGas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

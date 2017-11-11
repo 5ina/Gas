@@ -83,7 +83,7 @@ namespace GasSolution.Web.Controllers
                     stream.Read(postBytes, 0, (Int32)stream.Length);
                     var postString = Encoding.UTF8.GetString(postBytes);
                     Handle(postString); //执行手机微信操作命令
-                    return Content("");
+                    return Content("handled-end");
                 }
 
             }
@@ -404,7 +404,6 @@ namespace GasSolution.Web.Controllers
             var data = Newtonsoft.Json.JsonConvert.SerializeObject(message);
             var result = Framework.HttpUtility.Post(string.Format(msgUrl, token.access_token), data);
             
-            Logger.Debug("发送数据返回的信息：" + result);
         }
         
         #endregion

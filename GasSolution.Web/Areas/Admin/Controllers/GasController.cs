@@ -1,10 +1,12 @@
 ﻿using Abp.AutoMapper;
+using Abp.Runtime.Caching;
 using GasSolution.Common;
 using GasSolution.Domain.Gas;
 using GasSolution.Gas;
 using GasSolution.Web.Areas.Admin.Models.Gas;
 using GasSolution.Web.Framework.Controllers;
 using GasSolution.Web.Framework.DataGrids;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,11 +20,20 @@ namespace GasSolution.Web.Areas.Admin.Controllers
         #region ctor && Fields
         private readonly IGasStationService _stationService;
         private readonly IAreaService _areaService;
+        private readonly ICacheManager _cacheManager;
+        private readonly IPromotionService _promotionService;
+
+        private const string CACHE_GAS_STATISTICAL_OVERVIEW = "gas.cache.gas.statistical.overview";
+
+
         public GasController(IGasStationService stationService,
-            IAreaService areaService)
+            IAreaService areaService, IPromotionService promotionService,
+            ICacheManager cacheManager)
         {
             this._stationService = stationService;
             this._areaService = areaService;
+            this._promotionService = promotionService;
+            this._cacheManager = cacheManager;
         }
         #endregion
 
@@ -182,6 +193,24 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             return AbpJson(jsonData);
         }
 
+        #endregion
+
+        #region Statistical Report
+        [ChildActionOnly]
+        public ActionResult GasStatisticalOverview()
+        {
+            var model = _cacheManager.GetCache(CACHE_GAS_STATISTICAL_OVERVIEW)
+                .Get(CACHE_GAS_STATISTICAL_OVERVIEW, () => {
+
+                    var gas = _stationService.GetAllStations();
+                    var promotions = _promotionService.GetAllPromotions(promotionTime: DateTime.Now);
+                    var view = new GasStatisticalOverviewModel();
+                    view.GasTotalCount = gas.TotalCount;
+                    view.PromotionCount = promotions.TotalCount;
+                    return view;
+                });
+            return PartialView(model);
+        }
         #endregion
     }
 }

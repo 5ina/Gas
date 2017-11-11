@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "石门油价-管理控制台";
+}
+@section scripts_top
+    {
+    @Html.IncludeScript("~/Scripts/Chart.min.js")
+
+}
+<div class="dashboard">
+    <section class="content-header"></section>
+    <section class="content">
+@Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                @Html.Action("CustomerStatisticalOverview", "Customer")
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+
+                @Html.Action("GasStatisticalOverview", "Gas")
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+
+                @Html.Action("VehicleStatisticalOverview", "Vehicle")
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">New Members</span>
+                        <span class="info-box-number">2,000</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <div class="row">
+
+            <div class="col-md-7">
+            </div>
+
+            <div class="col-md-5">
+                @Html.Action("NewCustomer", "Customer")
+            </div>
+        </div>
+
+    </section>
+</div>

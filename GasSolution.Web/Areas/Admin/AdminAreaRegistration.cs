@@ -17,7 +17,7 @@ namespace GasSolution.Web.Areas.Admin
             context.MapRoute(
                 name: "Admin_default",
                 url: "Admin/{controller}/{action}/{id}",
-                defaults: new { action = "Index", id = UrlParameter.Optional },
+                defaults: new { action = "Index", Controller = "Home", Area = "Admin", id = UrlParameter.Optional },
                 namespaces: new string[] { "GasSolution.Web.Areas.Admin.Controllers" }
             );
         }

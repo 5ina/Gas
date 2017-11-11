@@ -1,4 +1,5 @@
-﻿using GasSolution.Gas;
+﻿using Abp.Runtime.Caching;
+using GasSolution.Gas;
 using GasSolution.Gas.Sort;
 using GasSolution.Web.Framework.DataGrids;
 using GasSolution.Web.Models.Gas;
@@ -17,11 +18,15 @@ namespace GasSolution.Web.Controllers
         #region ctor && Fields
         private readonly IGasStationService _stationService;
         private readonly IPromotionService _promotionService;
+        private readonly ICacheManager _cacheManager;
 
-        public GasController(IGasStationService stationService, IPromotionService promotionService)
+        public GasController(IGasStationService stationService,
+            IPromotionService promotionService,
+            ICacheManager cacheManager)
         {
             this._stationService = stationService;
             this._promotionService = promotionService;
+            this._cacheManager = cacheManager;
         }
         #endregion
 
@@ -34,8 +39,9 @@ namespace GasSolution.Web.Controllers
             return View();
         }
 
-        public ActionResult GetLocation()
+        public ActionResult GetLocation(string actionName = "")
         {
+            ViewData["action"] = actionName;
             return View();
         }
 
@@ -66,6 +72,35 @@ namespace GasSolution.Web.Controllers
                 }),
                 Total = promotions.TotalCount
             };
+            return AbpJson(jsonData);
+        }
+        [HttpPost]
+        public ActionResult GetAllGasList()
+        {
+            string ALL_GAS = "gas.cache.station.all";
+
+            var jsonData = _cacheManager.GetCache(ALL_GAS).Get(ALL_GAS, () =>
+            {
+                var gas = _stationService.GetAllStations();
+                var json = new DataSourceResult
+                {
+                    Data = gas.Items.Select(p =>
+                    {
+                        var item = new
+                        {
+                            Id = p.Id,
+                            GasName = p.GasName,
+                            Address = p.Address,
+                            Dimension = p.Dimension,
+                            Longitude = p.Longitude,
+                            Notice = p.Notice
+                        };
+                        return item;
+                    }),
+                    Total = gas.TotalCount
+                };
+                return json;
+            });
             return AbpJson(jsonData);
         }
 
@@ -110,6 +145,13 @@ namespace GasSolution.Web.Controllers
             else
                 jsonData.NextPage += 1;
             return AbpJson(jsonData);
+        }
+
+        public ActionResult AllGas(string lat = "38.04885", string lng = "114.518578")
+        {
+            ViewData["lat"] = lat;
+            ViewData["lng"] = lng;
+            return View();
         }
         #endregion
     }

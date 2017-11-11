@@ -201,3 +201,19 @@ top Window Aliyun window Window Aliyun __proto__ Window {
     .dropdown-menu li:hover button {
         background-color: transparent !important;
     }
+
+/* Home */
+.dashboard .info-box .info-box-text{
+    font-weight:600;
+    font-size:1.3em;
+}
+.dashboard .info-box .info-box-number {
+    color:#ff6a00
+}
+
+    .dashboard .info-box .info-box-number .tip {
+        font-weight: normal;
+        font-size: 0.7em;
+        color: #ccc;
+        margin-left: 15px;
+    }

@@ -57,14 +57,15 @@ namespace GasSolution.Web.Controllers
             var colors = CommonHelper.GetCarColors();
             var jsonData = new DataSourceResult
             {
-                Data = cars.Items.Select(i=> new VehicleModel{
+                Data = cars.Items.Select(i => new VehicleModel
+                {
                     Id = i.Id,
                     EngineNo = i.EngineNo,
                     CustomerId = i.CustomerId,
                     CartNumber = i.CartNumber,
                     FrameNo = i.FrameNo,
-                    CarPhead =i.CarPhead,
-                    ColorString = colors.First(c=>c.Key == i.Color).Value
+                    CarPhead = i.CarPhead,
+                    ColorString = colors.First(c => c.Key == i.Color).Value
                 }),
                 Total = cars.TotalCount,
                 PageIndex = pageIndex,
@@ -74,7 +75,7 @@ namespace GasSolution.Web.Controllers
             return View(jsonData);
         }
 
-        
+
         public ActionResult Create()
         {
             var model = new VehicleModel();
@@ -100,5 +101,9 @@ namespace GasSolution.Web.Controllers
             return AbpJson("");
         }
         #endregion
+
+
+        #region 违章查询
+#endregion
     }
 }

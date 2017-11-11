@@ -1,17 +1,20 @@
 ﻿
 @{
-    ViewBag.Title = "加油站地图列表";
-    ViewBag.ActiveMenu = "Gas"; //The menu item will be active for this page.
+    ViewBag.Title = "身边加油站";
 }
+
 @Html.IncludeScript("/Scripts/admin.common.js")
 @Html.IncludeScript("http://api.map.baidu.com/api?v=2.0&ak=yccG7GWikwgRd7f3mZ26NQ4tsbeXmiga")
 @Html.AntiForgeryToken()
 
 <div class="gas-page">
     <div id="allmap"></div>
-</div> 
+</div>
 <style>
-    #allmap{width:100%;height:100%;}
+    #allmap {
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
 
@@ -40,6 +43,7 @@
         map.centerAndZoom(new BMap.Point(lng, lat), 15);
         var myIcon = new BMap.Icon("/images/user.png", new BMap.Size(32, 32));
         var gpsPoint = new BMap.Point(lng, lat);
+        map.setCurrentCity("石家庄");  
         map.addControl(new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_LARGE }));
         map.addControl(new BMap.ScaleControl());
         map.addControl(new BMap.OverviewMapControl());
@@ -56,13 +60,11 @@
         });
 
         geolocationControl.addEventListener("locationSuccess", function (e) {
+            lat = e.point.lat;
+            lng = e.point.lng;
+            map.clearOverlays();    
             // 定位成功事件
-            var address = '';
-            address += e.addressComponent.province;
-            address += e.addressComponent.city;
-            address += e.addressComponent.district;
-            address += e.addressComponent.street;
-            address += e.addressComponent.streetNumber;
+            addMapOverlay();
 
         });
 
@@ -109,7 +111,7 @@
 
     function addMapOverlay() {
         $.ajax({
-            url: "@Url.Action("GasList", "Gas")",
+            url: "@Url.Action("GetAllGasList", "Gas")",
             type: "POST",
             dataType: 'json',
             data: addAntiForgeryToken,
@@ -124,19 +126,21 @@
 
                     });
                     var dist = map.getDistance(new BMap.Point(val.Longitude, val.Dimension), new BMap.Point(lng, lat)).toFixed(2);
-                    var label = new BMap.Label("距离您" + dist + "米", { position:pt, offset: new BMap.Size(0, -25) });
+
+                    var labStr = "距离您" + dist + "米";
+                    var label = new BMap.Label(labStr, { position: pt,offset: new BMap.Size(0, -25) });
                     label.setStyle({
                         fontSize: "12px",
                         border: "1px dashed #FC6",
                         padding: "3px 5px",
                         textAlign: "center",
                         lineHeight: "20px",
-                        cursor: "pointer",
-                        fontFamily: "微软雅黑"
+                        background:"rgb(255, 255, 255)",
+                        cursor: "pointer"
 
                     });
-                    map.addOverlay(label);
 
+                    map.addOverlay(label);
 
                     var opts = {
                         width: 200,
@@ -144,9 +148,8 @@
                         enableMessage: false
                     };
 
-                    var infoWindow = new BMap.InfoWindow("<div class='info-txt2'><i class='am-icon-map-marker'></i> 距离您 " + dist + "米</div><div class='info-txt2'><i class='am-icon-home'></i> " + val.Address + "</div><div>" + val.Promotion + "</div><div class='notice'>" + val.Notice + "</div><div class='info-btn'><a href='http://api.map.baidu.com/marker?location=" + val.Dimension + "," + val.Longitude + "&title=" + val.GasName + "&content=" + val.Address + "&output=html'><div class='info-btn-r btn btn-success'><i class='am-icon-map-marker'></i> 一键导航</div></a></div>", opts);
+                    var infoWindow = new BMap.InfoWindow("<div class='info-txt2'><i class='am-icon-map-marker'></i> 距离您 " + dist + "米</div><div class='info-txt2'><i class='am-icon-home'></i> " + val.Address + "</div><div class='info-btn'><a href='http://api.map.baidu.com/marker?location=" + val.Dimension + "," + val.Longitude + "&title=" + val.GasName + "&content=" + val.Address + "&output=html'><div class='info-btn-r btn btn-success'><i class='am-icon-map-marker'></i> 一键导航</div></a></div>", opts);
                     
-
                     addClickHandler(marker, infoWindow);
 
                     map.addOverlay(marker);

@@ -1,4 +1,5 @@
 ﻿using Abp.AutoMapper;
+using Abp.Runtime.Caching;
 using Abp.UI;
 using GasSolution.Vehicles;
 using GasSolution.Web.Areas.Admin.Models.Vehicles;
@@ -16,9 +17,15 @@ namespace GasSolution.Web.Areas.Admin.Controllers
 
         #region ctor && Fields
         private readonly IVehicleService _vehicleService;
-        public VehicleController(IVehicleService vehicleService)
+        private readonly ICacheManager _cacheManager;
+
+        private const string CACHE_VEHICLE_STATISTICAL_OVERVIEW = "gas.cache.vehicle.statistical.overview";
+
+        public VehicleController(IVehicleService vehicleService,
+            ICacheManager cacheManager)
         {
             this._vehicleService = vehicleService;
+            this._cacheManager = cacheManager;
         }
         #endregion
 
@@ -93,6 +100,24 @@ namespace GasSolution.Web.Areas.Admin.Controllers
         {
             _vehicleService.DeleteVehicle(id);
             return AbpJson("");
+        }
+        #endregion
+
+
+        #region Statistical Report
+
+        [ChildActionOnly]
+        public ActionResult VehicleStatisticalOverview()
+        {
+            var model = _cacheManager.GetCache(CACHE_VEHICLE_STATISTICAL_OVERVIEW)
+                .Get(CACHE_VEHICLE_STATISTICAL_OVERVIEW, () => {
+
+                    var vehicle = _vehicleService.GetAllVehicles();
+                    var view = new VehicleStatisticalOverviewModel();
+                    view.VehicleTotalCount = vehicle.TotalCount;
+                    return view;
+                });
+            return PartialView(model);
         }
         #endregion
     }

@@ -4,6 +4,7 @@
 }
 @Html.IncludeScript("http://api.map.baidu.com/api?v=2.0&ak=yccG7GWikwgRd7f3mZ26NQ4tsbeXmiga")
 
+
 <script>
 
     var geolocation = new BMap.Geolocation();
@@ -12,7 +13,7 @@
             latitude = result.point.lat;//获取到的纬度
             longitude = result.point.lng;//获取到的经度
             window.point = new BMap.Point(longitude, latitude);
-            url = "/Gas/Index?lat=" + latitude + "&lng=" + longitude;           
+            url = "/Gas/@(ViewData["action"])?lat=" + latitude + "&lng=" + longitude;
             window.location.href = url;
         }
     });

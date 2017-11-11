@@ -337,3 +337,13 @@ body {
         line-height: 1.5em;
         padding:5px 8px;
     }
+
+.BMapLabel {
+    max-width:none;
+}
+
+.info-btn .info-btn-r.btn a{
+
+    color :#fff;
+    
+}

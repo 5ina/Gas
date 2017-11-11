@@ -1,0 +1,12 @@
+﻿@model GasSolution.Web.Areas.Admin.Models.Gas.GasStatisticalOverviewModel
+<div class="info-box">
+    <span class="info-box-icon bg-red">
+        <i class="fa fa-glass"></i>
+    </span>
+    <div class="info-box-content">
+        <span class="info-box-text">加油站数量</span>
+        <span class="info-box-number">@(Model.GasTotalCount)<span class="tip">加油站总数量</span></span>
+        <span class="info-box-number">@(Model.PromotionCount)<span class="tip">促销加油站数量</span></span>
+    </div>
+    <!-- /.info-box-content -->
+</div>
