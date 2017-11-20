@@ -67,17 +67,17 @@
                     <li class="vehicle-list"><a href="@Url.Action("List","Vehicle")"><i class="fa fa-circle-o"></i> 车辆列表</a></li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview" id="keyfont">
                 <a href="#">
-                    <i class="fa fa-edit"></i> <span>Forms</span>
+                    <i class="fa fa-edit"></i> <span>关键字库</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                    <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                    <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+                    <li><a href="@Url.Action("List","KeyFont")" class="keyfont-list"><i class="fa fa-circle-o"></i> 关键字列表</a></li>
+                    
+                    
                 </ul>
             </li>
             <li class="treeview"id="setting">

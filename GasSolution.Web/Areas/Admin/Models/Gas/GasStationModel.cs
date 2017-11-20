@@ -4,6 +4,7 @@ using GasSolution.Domain.Gas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace GasSolution.Web.Areas.Admin.Models.Gas
@@ -106,6 +107,67 @@ namespace GasSolution.Web.Areas.Admin.Models.Gas
         /// </summary>
         [DisplayName("区县位置")]
         public int AreaId { get; set; }
+
+        #region Promotion
+
+        /// <summary>
+        /// 是否固定活动日期
+        /// </summary>
+        [DisplayName("是否固定活动")]
+        public bool FixedPromotion { get; set; }
+
+
+
+        /// <summary>
+        /// 活动开始时间
+        /// </summary>
+        [UIHint("DateNullable")]
+        [DisplayName("活动开始时间")]
+        public DateTime? StartTime { get; set; }
+
+        /// <summary>
+        /// 活动结束时间
+        /// </summary>
+        [UIHint("DateNullable")]
+        [DisplayName("活动结束时间")]
+        public DateTime? EndTime { get; set; }
+
+        /// <summary>
+        /// 降价公告
+        /// </summary>
+        [DisplayName("降价公告")]
+        public string PromotionNotice { get; set; }
+
+        /// <summary>
+        /// #89现价
+        /// </summary>
+        [DisplayName("89号")]
+        public decimal Gasoline_Eighty_Nine { get; set; }
+
+        /// <summary>
+        /// #92现价
+        /// </summary>
+        [DisplayName("92号")]
+        public decimal Gasoline_Ninety_Two { get; set; }
+
+        /// <summary>
+        /// #95现价
+        /// </summary>
+        [DisplayName("95号")]
+        public decimal Gasoline_Ninety_Fine { get; set; }
+
+        /// <summary>
+        /// #98现价
+        /// </summary>
+        [DisplayName("98号")]
+        public decimal Gasoline_Ninety_Eight { get; set; }
+        /// <summary>
+        /// 天然气现价
+        /// </summary>
+        [DisplayName("天然气")]
+        public decimal Natural { get; set; }
+        #endregion
+
         public IList<SelectListItem> Areas { get; set; }
     }
 }

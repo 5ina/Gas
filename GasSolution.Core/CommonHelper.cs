@@ -582,5 +582,14 @@ namespace GasSolution
             return carColors;
         }
         #endregion
+
+        #region Convert To
+        public static string ConvertToTime(DateTime? time)
+        {
+            if (time.HasValue)
+                return time.Value.ToString();
+            return "";
+        }
+        #endregion
     }
 }

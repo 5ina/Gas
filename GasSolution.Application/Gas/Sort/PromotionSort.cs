@@ -3,7 +3,7 @@
     /// <summary>
     /// 促销排序
     /// </summary>
-    public enum PromotionSort : int
+    public enum GasSort : int
     {
         /// <summary>
         /// 按照最新排序

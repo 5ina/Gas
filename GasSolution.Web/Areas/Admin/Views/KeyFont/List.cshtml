@@ -1,0 +1,165 @@
+﻿
+@{
+    //page title
+    ViewBag.Title = "关键字字库列表";
+}
+
+@Html.AntiForgeryToken()
+<div class="content-header clearfix">
+    <h1 class="pull-left">
+        关键字字库
+    </h1>
+    <div class="pull-right">
+        <a href="@Url.Action("Create")" class="btn bg-blue"><i class="fa fa-fw fa-plus-square"></i>新增字库</a>
+    </div>
+</div>
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default panel-search">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @Html.TextBox("keywords", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary btn-search" id="search-fonts" type="button">
+                                        <i class="fa fa-search"></i>
+                                        搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="fonts-grid"></div>
+                    @Html.AntiForgeryToken()
+
+                    <script type="text/javascript">
+
+        $(document).ready(function () {
+                            $("#fonts-grid").kendoGrid({
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("List", "KeyFont"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: additionalData
+                    },
+
+                        update: {
+                            url: "@Html.Raw(Url.Action("Edit", "KeyFont"))",
+                            dataType: "jsonp",
+                            data:addAntiForgeryToken
+                        },
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                        errors: "Errors",
+                        model: {
+                            id: "Id",
+                            fields: {
+                                Id: { editable: false, nullable: true },
+                                Keyword: { validation: { required: true } },
+                                Type: { validation: { required: true }}
+                            }
+                        }
+                },
+                error: function (e) {
+                    display_kendoui_grid_error(e);
+                    // Cancel the changes
+                    this.cancelChanges();
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: false,
+                serverSorting: false
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: [10, 20, 50]
+            },
+            scrollable: false,
+            columns: [
+                {
+                    field: "Id",
+                    title: "Id",
+                    width: 60,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "Keyword",
+                    title: "关键字",
+                    width: 300,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                        }, {
+                    field: "Type",
+                            title: "回复类型",
+                            width: 100,
+                            headerAttributes: { style: "text-align:center" },
+                            attributes: { style: "text-align:center" },
+                        },
+                        {
+                            field: "Id",
+                            title: "操作",
+                            width: 200,
+                            template: '<a class="btn btn-success" href="Edit/#=Id#">编辑</a><a class="btn btn-danger">删除</a>'
+                        }]
+                            });
+                        });
+
+
+                        function storeDropDownEditor(container, options) {
+                            $('<input required data-text-field="Name" data-value-field="Id" data-bind="value:StoreId"/>')
+                                .appendTo(container)
+                                .kendoDropDownList({
+                                    autoBind: false,
+                                    dataSource: allStores
+                                });
+                        }
+                    </script>
+
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#search-fonts').click(function () {
+                                var grid = $('#fonts-grid').data('kendoGrid');
+                                grid.dataSource.page(1);
+                                return false;
+                            });
+                        });
+
+                        function additionalData() {
+                            var data = {
+                                keywords: $('#keywords').val(),
+                            };
+                            addAntiForgeryToken(data);
+                            return data;
+                        }
+
+                        $("#keywords").keydown(function (event) {
+                            if (event.keyCode === 13) {
+                                $("#search-settings").click();
+                                return false;
+                            }
+                        });
+
+                        window.onload = function () {
+                            lingth_sidebar("keyfont-list", "keyfont");
+                        };
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

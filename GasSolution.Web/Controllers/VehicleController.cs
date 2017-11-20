@@ -1,5 +1,6 @@
 ﻿using Abp.AutoMapper;
 using Abp.UI;
+using GasSolution.Domain.Vehicles;
 using GasSolution.Vehicles;
 using GasSolution.Web.Framework.DataGrids;
 using GasSolution.Web.Models.Vehicles;
@@ -34,7 +35,7 @@ namespace GasSolution.Web.Controllers
                 Value = p
             }).ToList();
 
-            model.AvailableCarPheads = CommonHelper.GetCarColors().Select(p => new SelectListItem
+            model.AvailableColors = CommonHelper.GetCarColors().Select(p => new SelectListItem
             {
                 Text = p.Value,
                 Selected = model.Color == p.Key,
@@ -79,8 +80,21 @@ namespace GasSolution.Web.Controllers
         public ActionResult Create()
         {
             var model = new VehicleModel();
-            Logger.Debug("车辆管理里面的用户ID：" + this.CustomerId);
             model.CustomerId = this.CustomerId;
+            PrepareVehicleModel(model);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(VehicleModel model)
+        {
+            model.CustomerId = this.CustomerId;
+            if (ModelState.IsValid)
+            {
+                var entity = model.MapTo<Vehicle>();
+                _vehicleService.CreateVehicle(entity);
+                return RedirectToAction("List");
+            }
             PrepareVehicleModel(model);
             return View(model);
         }

@@ -26,5 +26,11 @@ namespace GasSolution.Web.Areas.Admin.Models.Setting
 
         [DisplayName("联系们回复")]
         public string CONTACT_US { get; set; }
+
+        [DisplayName("首次关注回复")]
+        public string First_Subscribe { get; set; }
+
+        [DisplayName("关键字未匹配回复")]
+        public string Keywords_NoMatch { get; set; }
     }
 }

@@ -13,8 +13,6 @@ namespace GasSolution.Web.Controllers
 {
     public class GasController : GasSolutionControllerBase
     {
-
-
         #region ctor && Fields
         private readonly IGasStationService _stationService;
         private readonly IPromotionService _promotionService;
@@ -46,31 +44,28 @@ namespace GasSolution.Web.Controllers
         }
 
 
-
+        //获取当日促销加油站JSON
         [HttpPost]
         public ActionResult GasList()
         {
-            var promotions = _promotionService.GetAllPromotions(promotionTime: DateTime.Now);
-
+            var gasList = _stationService.GetAllStations(promotionTime: DateTime.Now);
             var jsonData = new DataSourceResult
             {
-                Data = promotions.Items.Select(p =>
+                Data = gasList.Items.Select(g =>
                 {
-
-                    var gas = _stationService.GetStationById(p.GasStationId);
                     var item = new
                     {
-                        Id = gas.Id,
-                        GasName = gas.GasName,
-                        Address = gas.Address,
-                        Dimension = gas.Dimension,
-                        Longitude = gas.Longitude,
-                        Promotion = "#92现价：" + p.Gasoline_Ninety_Two,
-                        Notice = p.Notice
+                        Id = g.Id,
+                        GasName = g.GasName,
+                        Address = g.Address,
+                        Dimension = g.Dimension,
+                        Longitude = g.Longitude,
+                        Promotion = "#92现价：" + g.Gasoline_Ninety_Two,
+                        Notice = g.PromotionNotice
                     };
                     return item;
                 }),
-                Total = promotions.TotalCount
+                Total = gasList.TotalCount
             };
             return AbpJson(jsonData);
         }
@@ -108,37 +103,38 @@ namespace GasSolution.Web.Controllers
         [HttpPost]
         public ActionResult GasPromotions(PromotionListModel model)
         {
-            var enumValue = (PromotionSort)model.sort;
-            var promotions = _promotionService.GetAllPromotions(
+            var enumValue = (GasSort)model.sort;
+            var gasList = _stationService.GetAllStations(
                                                             promotionTime: DateTime.Now,
                                                             keywords: model.keywords,
                                                             sort: enumValue,
                                                             pageIndex: model.pageIndex,
                                                             pageSize: model.pageSize);
 
-            var totalPage = (promotions.TotalCount / model.pageSize) + (promotions.TotalCount % model.pageSize > 0 ? 1 : 0);
-
+            var totalPage = (gasList.TotalCount / model.pageSize) + (gasList.TotalCount % model.pageSize > 0 ? 1 : 0);
 
 
             var jsonData = new DataSourceResult
             {
-                Data = promotions.Items.Select(p =>
+                Data = gasList.Items.Select(g =>
                 {
-                    var gas = _stationService.GetStationById(p.GasStationId);
+                    var times = "";
+                    if (g.FixedPromotion)
+                        times = "长期活动";
+                    else
+                        times = "开始时间：" + CommonHelper.ConvertToTime(g.StartTime) + " 结束时间：" + CommonHelper.ConvertToTime(g.EndTime);
                     var item = new
                     {
-                        Id = gas.Id,
-                        GasName = gas.GasName,
-                        Address = gas.Address,
-                        Start = p.StartTime.Value.ToString("yyyy/MM/dd"),
-                        End = p.EndTime.Value.ToString("yyyy/MM/dd"),
-                        Promotion = "#92现价：" + p.Gasoline_Ninety_Two,
-                        Notice = p.Notice
+                        Id = g.Id,
+                        GasName = g.GasName,
+                        Address = g.Address,
+                        Times = times,
+                        Promotion = "#92现价：" + g.Gasoline_Ninety_Two,
+                        Notice = g.PromotionNotice
                     };
                     return item;
                 }),
-                Total = promotions.TotalCount,
-
+                Total = gasList.TotalCount,
             };
             if (model.pageIndex + 1 >= model.pageIndex)
                 jsonData.NextPage = model.pageIndex;

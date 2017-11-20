@@ -5,6 +5,7 @@ using GasSolution.Authentication.Dto;
 using GasSolution.CacheNames;
 using GasSolution.Common;
 using GasSolution.Customers;
+using GasSolution.Domain.Common;
 using GasSolution.Domain.Customers;
 using GasSolution.Security;
 using GasSolution.Web.Framework.WeChat;
@@ -14,6 +15,7 @@ using Microsoft.Owin.Security;
 using System;
 using System.Collections;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -30,15 +32,26 @@ namespace GasSolution.Web.Controllers
         private readonly ICustomerService _customerService;
         private readonly LoginManager _loginManager;
         private readonly ICacheManager _cacheManager;
+        private readonly IKeyFontService _keyService;
+        /// <summary>
+        /// 天气的key
+        /// </summary>
+        private const string weatherkey = "672ded22be42ff699fff410510852bf9";
+        /// <summary>
+        /// 石家庄代码
+        /// </summary>
+        private const string siteCode = "101090101";
 
         public WechatController(ISettingService settingService,
             ICustomerService customerService,
             LoginManager loginManager,
-            ICacheManager cacheManager)
+            ICacheManager cacheManager,
+            IKeyFontService keyService)
         {
             this._settingService = settingService;
             this._customerService = customerService;
             this._loginManager = loginManager;
+            this._keyService = keyService;
             this._cacheManager = cacheManager;
         }
         #endregion
@@ -83,7 +96,6 @@ namespace GasSolution.Web.Controllers
                     stream.Read(postBytes, 0, (Int32)stream.Length);
                     var postString = Encoding.UTF8.GetString(postBytes);
                     Handle(postString); //执行手机微信操作命令
-                    return Content("handled-end");
                 }
 
             }
@@ -101,6 +113,8 @@ namespace GasSolution.Web.Controllers
                     return WxAuth(token);
                 }
             }
+
+            return Content("");
 
         }
         public ActionResult WxAuth(string token)
@@ -256,7 +270,8 @@ namespace GasSolution.Web.Controllers
                 switch (keywords.ToString())
                 {
                     case "CONTACT_US":
-                        SendTextMessage(parameters["FromUserName"].ToString());
+                        var content_us = _settingService.GetSettingByKey<string>(CommonSettingNames.CONTACT_US);
+                        SendTextMessage(parameters["FromUserName"].ToString(), content_us);
                         break;
                 }
             }
@@ -314,21 +329,42 @@ namespace GasSolution.Web.Controllers
             return customer;
 
         }
+
+        [NonAction]
+        private void UnSubscribe(Hashtable parameters)
+        {
+            var openId = parameters["FromUserName"].ToString();
+            var customer = _customerService.GetCustomerByOpenId(openId);
+            if (customer != null || customer.Id > 0)
+            {
+                customer.IsSubscribe = false;
+                _customerService.UpdateCustomer(customer);
+            }
+        }
         #endregion
 
         #region 关键字回复数据
-
+        /// <summary>
+        /// 关键字回复
+        /// </summary>
+        /// <param name="parameters"></param>
         private void KeywordReply(Hashtable parameters)
         {
-            var keywords = parameters["EventKey"];
-
-            if (!String.IsNullOrWhiteSpace(Convert.ToString(keywords)))
+            var keywords = Convert.ToString(parameters["Content"]);
+            if (!String.IsNullOrWhiteSpace(keywords))
             {
-                switch (keywords.ToString())
+                Logger.Debug("关键字回复的是：" + keywords);
+                var result = _keyService.GetAllKeyFonts(keywords);
+                if (result.TotalCount > 0)
                 {
-                    case "CONTACT_US":
-                        SendTextMessage(parameters["FromUserName"].ToString());
-                        break;
+                    var keyFont = result.Items.ToList().FirstOrDefault();
+
+                    switch ((KeyFontType)keyFont.KeyFontType)
+                    {
+                        case KeyFontType.Text:
+                            SendTextMessage(parameters["FromUserName"].ToString(), keyFont.Relpys);
+                            break;
+                    }
                 }
             }
         }
@@ -342,7 +378,7 @@ namespace GasSolution.Web.Controllers
         [NonAction]
         private void Handle(string postStr)
         {
-            Framework.WeChat.WechatRequest wr = new Framework.WeChat.WechatRequest(postStr);
+            WechatRequest wr = new WechatRequest(postStr);
             var eventStr = wr.LoadEvent(Logger);
 
             Hashtable parameters = new Hashtable();
@@ -352,11 +388,14 @@ namespace GasSolution.Web.Controllers
                 //case "scan"://关注
                 case "subscribe":
                     parameters = wr.LoadXml();
+                    
                     //新用户
                     NewCustomer(parameters);
+                    SendTextMessage(parameters["FromUserName"].ToString(), "欢迎关注石门油价订阅号，可以通过下方菜单获取相关信息");
                     break;
                 case "unsubscribe":
                     parameters = wr.LoadXml();
+                    UnSubscribe(parameters);
                     //退订关注
                     break;
                 case "click": //点击事件
@@ -367,7 +406,7 @@ namespace GasSolution.Web.Controllers
                 case "view":
                     parameters = wr.LoadXml();
                     break;
-                case "text":
+                case "text": //关键字
                     parameters = wr.LoadXml(false);
                     KeywordReply(parameters);
                     break;
@@ -389,24 +428,25 @@ namespace GasSolution.Web.Controllers
 
         #region Messages
 
-        private void SendTextMessage(string openId)
+        private void SendTextMessage(string openId,string content)
         {
             string msgUrl = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}";
             var appId = _settingService.GetSettingByKey<string>(WeChatSettingNames.AppId);
             var secret = _settingService.GetSettingByKey<string>(WeChatSettingNames.AppSecret);
-
-            var content_us = _settingService.GetSettingByKey<string>(CommonSettingNames.CONTACT_US);
+                        
             var token = GetAccessToken(appId, secret);
             var message = new TextMessage();
             message.touser = openId;
 
-            message.text = new TextMessage.Content { content = content_us };
+            message.text = new TextMessage.Content { content = content };
             var data = Newtonsoft.Json.JsonConvert.SerializeObject(message);
             var result = Framework.HttpUtility.Post(string.Format(msgUrl, token.access_token), data);
             
         }
         
         #endregion
+
+        
 
     }
 }

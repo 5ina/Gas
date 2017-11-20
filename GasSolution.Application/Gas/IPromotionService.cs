@@ -69,7 +69,7 @@ namespace GasSolution.Gas
         /// <param name="pageSize"></param>
         /// <returns></returns>
         IPagedResult<Promotion> GetAllPromotions(int stationId = 0, string keywords = "",
-            DateTime? promotionTime = null, PromotionSort? sort = null,
+            DateTime? promotionTime = null, GasSort? sort = null,
             int pageIndex = 0, int pageSize = int.MaxValue);
             
     }

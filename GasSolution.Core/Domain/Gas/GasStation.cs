@@ -93,6 +93,56 @@ namespace GasSolution.Domain.Gas
         /// </summary>
         public int AreaId { get; set; }
 
+        #region Promotion
+
+        /// <summary>
+        /// 是否固定活动日期
+        /// </summary>
+        public bool FixedPromotion { get; set; }
+
+
+
+        /// <summary>
+        /// 活动开始时间
+        /// </summary>
+        public DateTime? StartTime { get; set; }
+
+        /// <summary>
+        /// 活动结束时间
+        /// </summary>
+        public DateTime? EndTime { get; set; }
+
+        /// <summary>
+        /// 降价公告
+        /// </summary>
+        [MaxLength(1000)]
+        public string PromotionNotice { get; set; }
+
+        /// <summary>
+        /// #89现价
+        /// </summary>
+        public decimal Gasoline_Eighty_Nine { get; set; }
+
+        /// <summary>
+        /// #92现价
+        /// </summary>
+        public decimal Gasoline_Ninety_Two { get; set; }
+
+        /// <summary>
+        /// #95现价
+        /// </summary>
+        public decimal Gasoline_Ninety_Fine { get; set; }
+
+        /// <summary>
+        /// #98现价
+        /// </summary>
+        public decimal Gasoline_Ninety_Eight { get; set; }
+        /// <summary>
+        /// 天然气现价
+        /// </summary>
+        public decimal Natural { get; set; }
+        #endregion
+
         /// <summary>
         /// 最后修改时间（不需要处理）
         /// </summary>

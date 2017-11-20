@@ -763,6 +763,11 @@
     <Content Include="Areas\Admin\Views\Customer\CustomerStatisticalOverview.cshtml" />
     <Content Include="Areas\Admin\Views\Gas\GasStatisticalOverview.cshtml" />
     <Content Include="Areas\Admin\Views\Vehicle\VehicleStatisticalOverview.cshtml" />
+    <Content Include="Areas\Admin\Views\KeyFont\List.cshtml" />
+    <Content Include="Areas\Admin\Views\KeyFont\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\KeyFont\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\KeyFont\_CreateOrUpdate.cshtml" />
+    <Content Include="Areas\Admin\Views\Vehicle\NewVehicles.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\admin.common.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -783,6 +788,8 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -896,6 +903,7 @@
     <Compile Include="Areas\Admin\Controllers\GasController.cs" />
     <Compile Include="Areas\Admin\Controllers\GasControllerAdminBase.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KeyFontController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleController.cs" />
@@ -903,6 +911,7 @@
     <Compile Include="Areas\Admin\Models\Gas\GasStationListModel.cs" />
     <Compile Include="Areas\Admin\Models\Gas\GasStationModel.cs" />
     <Compile Include="Areas\Admin\Models\Gas\GasStatisticalOverviewModel.cs" />
+    <Compile Include="Areas\Admin\Models\KeyFonts\KeyFontModel.cs" />
     <Compile Include="Areas\Admin\Models\Promotions\PromotionListModel.cs" />
     <Compile Include="Areas\Admin\Models\Promotions\PromotionModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\AliyunSettingModel.cs" />
@@ -1029,6 +1038,10 @@
     <Content Include="Views\Common\NotLogggen.cshtml" />
     <Content Include="Views\Vehicle\List.cshtml" />
     <Content Include="Views\Gas\AllGas.cshtml" />
+    <Content Include="Views\Common\Weather.cshtml" />
+    <Content Include="Views\Common\Illegal.cshtml" />
+    <Content Include="Views\Vehicle\Create.cshtml" />
+    <Content Include="Views\Vehicle\_CreateOrUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -264,9 +264,29 @@ body {
 
 
         /* Cars */
-.car-page .navigation{
-    margin:15px auto;
-    text-align:center;
+.car-page .section-header {
+   position:relative;
+   line-height:40px;
+}
+    .car-page .section-header h5 {
+        font-size: 16px;
+        line-height: 40px;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    .car-page .section-header .section-header-btn {
+        color: #000;
+        position: absolute;
+        top: 0px;
+        right: 15px;
+    }
+    .car-page .section-header .section-header-btn i{
+        line-height: 40px;
+    }
+.car-page .navigation {
+    margin: 15px auto;
+    text-align: center;
 }
 
     .car-page .navigation .pagination {
@@ -338,12 +358,44 @@ body {
         padding:5px 8px;
     }
 
+    /* ÐÂÔö³µÁ¾ */
+
+.newcar-page .section-header {
+    position: relative;
+    line-height: 40px;
+}
+
+.newcar-page .section-header h5 {
+    font-size: 16px;
+    line-height: 40px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.newcar-page .section-header .section-header-btn {
+    color: #000;
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    font-weight:normal;
+}
+
+.newcar-page .section-header .section-header-btn i {
+    line-height: 40px;
+}
+
+.newcar-page .content .form-group {
+    line-height:42px;
+}
 .BMapLabel {
-    max-width:none;
+    max-width: none;
 }
 
 .info-btn .info-btn-r.btn a{
+    color :#fff;    
+}
 
-    color :#fff;
-    
+.form-group .control-label{
+    text-align:right;
 }

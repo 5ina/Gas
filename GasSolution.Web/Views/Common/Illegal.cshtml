@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "查查违章";
+}
+@Html.IncludeScript("/Scripts/admin.common.js")
+
+<div class="illegal-page">
+    <h2 class="page-header">查查违章</h2>
+
+    <ul class="nav nav-tabs" role="tablist">
+
+        <li role="presentation" class="active"><a href="#query" aria-controls="query" role="tab" data-toggle="tab">违章查询</a></li>
+        <li role="presentation" class=""><a href="#result" aria-controls="result" role="tab" data-toggle="tab">查询结果</a></li>
+    </ul>
+    <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane active" id="query">
+            @using (Ajax.BeginForm("Illegal", "Common", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "success",
+        OnBegin = "beforeSend"
+    }, new { id = "illegal", @class = "form-horizontal", role = "form" }))
+    {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label class="col-xs-3 control-label" for="car">车辆</label>
+                    <div class="col-xs-6">
+                                <select class="form-control" id="car"></select>
+                    </div>
+                    <div class="col-xs-3">
+
+                        <a class="btn btn-info form-control-static" href="@Url.Action("Create","Vehicle")">新增车辆</a>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label" for="number">车牌号</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" name="number" id="number" placeholder="车牌号">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label" for="engine">发动机号</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" name="engine" id="engine" placeholder="发动机编号后六位">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label" for="frame">车架号</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" name="frame" id="frame" placeholder="车架号后六位">
+                    </div>
+
+                </div>
+
+                <nav class="navbar navbar-fixed-bottom">
+                    <button class="btn btn-danger btn-block navbar-brand">查询</button>
+                </nav>
+    }
+        </div>
+
+        <div id="result" class="tab-pane">
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    var carList = null;
+
+    $("#car").change(function () {
+        var selectedId = $(this).val();
+        if (selectedId > 0) {
+            $.each(carList, function (idx, item) {
+                if (item.Id == selectedId) {
+                    $("#number").val(item.CarPhead + item.CartNumber);
+                    $("#engine").val(item.EngineNo);
+                    $("#frame").val(item.FrameNo);
+                }
+            });
+        }
+        else {
+            $("#number").val('');
+            $("#engine").val('');
+            $("#frame").val(''); }
+    });
+
+    function setCarListController() {
+        $("#car").empty();
+        if (carList.length > 0) {
+            $("#car").append("<option value='0'>请选择车辆信息</option>");
+            $.each(carList, function (idx, item) {
+                $("#car").append("<option value='" + item.Id + "'>" + item.CarPhead + item.CartNumber + "</option>");
+            });
+        }
+        else{
+            $("#car").append("<option value='0'>请输入车辆信息</option>");
+        }
+    }
+
+        function success(result) {
+            $('#result').html(result);
+            alert("查询完成");
+            $('a#result').tab('show');
+    }
+    function beforeSend(xhr) { xhr.setRequestHeader('x-xsrf-token', abp.security.antiForgery.getToken());}
+
+    window.onload = function () {
+        $.ajax({
+            type:"Post",
+            url: "@Url.Action("CustomerCarList", "Common")",
+            data: addAntiForgeryToken,
+            dataType: "json",
+            success: function (list) {
+                carList = list;
+                setCarListController();
+            }
+        })
+    };
+    </script>
+</div>

@@ -33,7 +33,8 @@ namespace GasSolution.EntityFramework
         /// 行政规划表
         /// </summary>
         public virtual IDbSet<Area> Area { get; set; }
-
+        public virtual IDbSet<KeyFont> KeyFont { get; set; }
+        
         //Vehicle
         public virtual IDbSet<Vehicle> Vehicle { get; set; }
 

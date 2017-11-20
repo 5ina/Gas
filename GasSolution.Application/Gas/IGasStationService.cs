@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using GasSolution.Domain.Gas;
+using GasSolution.Gas.Sort;
 using System;
 
 namespace GasSolution.Gas
@@ -47,7 +48,8 @@ namespace GasSolution.Gas
         /// <param name="pageSize"></param>
         /// <returns></returns>
         IPagedResult<GasStation> GetAllStations(string keywords = "", bool? isGasoLine = null,
-            Boolean? isDieselOil = null, bool? isNatural = null,int? areaId = null,
-            int pageIndex = 0, int pageSize = int.MaxValue);
+            Boolean? isDieselOil = null, bool? isNatural = null,
+            DateTime? promotionTime = null, GasSort? sort = null,
+            int? areaId = null, int pageIndex = 0, int pageSize = int.MaxValue);
     }
 }

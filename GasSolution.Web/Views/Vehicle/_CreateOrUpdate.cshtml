@@ -1,0 +1,38 @@
+﻿@model GasSolution.Web.Models.Vehicles.VehicleModel
+@Html.HiddenFor(model => model.Id)
+@Html.AntiForgeryToken()
+
+<div class="form-group clearfix">
+    @Html.LabelFor(model => model.CartNumber, new { @class = "control-label col-xs-3" })
+
+    <div class="col-xs-3">
+        @Html.GasDropDownListFor(model => model.CarPhead, Model.AvailableCarPheads, new { @class = "form-control" })
+    </div>
+    <div class="col-xs-6">
+        @Html.GasEditorFor(model => model.CartNumber)
+    </div>
+</div>
+<div class="form-group clearfix">
+    @Html.LabelFor(model => model.FrameNo, new { @class = "col-xs-3 control-label" })
+    <div class="col-xs-9">
+        @Html.GasEditorFor(model => model.FrameNo)
+    </div>
+</div>
+<div class="form-group clearfix">
+    @Html.LabelFor(model => model.EngineNo, new { @class = "col-xs-3 control-label no-padding-right" })
+    <div class="col-xs-9">
+        @Html.GasEditorFor(model => model.EngineNo)
+    </div>
+</div>
+<div class="form-group clearfix">
+    @Html.LabelFor(model => model.Color, new { @class = "col-xs-3 control-label" })
+    <div class="col-xs-9">
+        @Html.GasDropDownListFor(model => model.Color, Model.AvailableColors, new { @class = "form-control" })
+
+
+    </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom">
+    <button class="btn btn-danger btn-block navbar-brand">保存</button>
+</nav>

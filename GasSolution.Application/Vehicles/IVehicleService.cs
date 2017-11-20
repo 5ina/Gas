@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using GasSolution.Domain.Vehicles;
+using System;
 
 namespace GasSolution.Vehicles
 {
@@ -40,10 +41,15 @@ namespace GasSolution.Vehicles
         /// 获取所有车辆信息
         /// </summary>
         /// <param name="keywords"></param>
+        /// <param name="createdFrom"></param>
+        /// <param name="createdTo"></param>
         /// <param name="customerId"></param>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        IPagedResult<Vehicle> GetAllVehicles(string keywords = "", int customerId = 0, int pageIndex = 0, int pageSize = int.MaxValue);
+        IPagedResult<Vehicle> GetAllVehicles(string keywords = "",
+            DateTime? createdFrom = null,
+            DateTime? createdTo = null, 
+            int customerId = 0, int pageIndex = 0, int pageSize = int.MaxValue);
     }
 }

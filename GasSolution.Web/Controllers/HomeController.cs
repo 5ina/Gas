@@ -11,7 +11,7 @@ namespace GasSolution.Web.Controllers
             var model = new PromotionListModel();
             model.pageIndex = 0;
             model.keywords = "";
-            model.sort = (int)PromotionSort.Time;
+            model.sort = (int)GasSort.Time;
             model.pageSize = 20;
             return View(model);
         }

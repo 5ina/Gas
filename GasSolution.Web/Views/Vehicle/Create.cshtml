@@ -1,0 +1,20 @@
+﻿@model GasSolution.Web.Models.Vehicles.VehicleModel
+@{
+    ViewBag.Title = "新增车辆";
+}
+
+<div class="newcar-page">
+    <section class="section-header">
+        <h5>新增车辆</h5>
+        <a class="section-header-btn" title="新增车辆" href="@Url.Action("List")">
+            <i class="fa fa-angle-left fa-2x"></i>
+        </a>
+    </section>
+    <section class="content">
+        @using (Html.BeginForm("Create", "Vehicle", FormMethod.Post, new { @id = "car-form", @class = "form-inline" }))
+        {
+          @Html.Partial("_CreateOrUpdate")
+
+        }
+    </section>
+</div>

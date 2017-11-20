@@ -242,7 +242,9 @@
     <Compile Include="Authentication\LoginManager.cs" />
     <Compile Include="Common\AreaService.cs" />
     <Compile Include="Common\IAreaService.cs" />
+    <Compile Include="Common\IKeyFontService.cs" />
     <Compile Include="Common\ISettingService.cs" />
+    <Compile Include="Common\KeyFontService.cs" />
     <Compile Include="Common\SettingExtension.cs" />
     <Compile Include="Common\SettingService.cs" />
     <Compile Include="Customers\CustomerAttributeExtensions.cs" />

@@ -1,19 +1,11 @@
-﻿.wrapper .content-wrapper .content-header{border-bottom:2px solid #808080;}
-
-.section-header::after,
-.section-header::before {
+﻿.content-header::after,
+.content-header::before {
     content: " ";
     display: table;
     clear: both;
 }
-
-.section-header ol,
-.section-header li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
+.content-header {
+margin-bottom:12px;}
 .adminContent {
     width: 100%;
     background: #fff;

@@ -4,6 +4,7 @@ using Abp.Application.Services.Dto;
 using GasSolution.Domain.Gas;
 using Abp.Runtime.Caching;
 using Abp.Domain.Repositories;
+using GasSolution.Gas.Sort;
 
 namespace GasSolution.Gas
 {
@@ -41,8 +42,9 @@ namespace GasSolution.Gas
         }
 
         public IPagedResult<GasStation> GetAllStations(string keywords = "", bool? isGasoLine = null,
-            bool? isDieselOil = null, bool? isNatural = null, int? areaId = null,
-            int pageIndex = 0, int pageSize = int.MaxValue)
+            Boolean? isDieselOil = null, bool? isNatural = null,
+            DateTime? promotionTime = null, GasSort? sort = null,
+            int? areaId = null, int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = _stationRepository.GetAll();
             if (!String.IsNullOrWhiteSpace(keywords))
@@ -63,7 +65,28 @@ namespace GasSolution.Gas
             if(areaId.HasValue)
                 query = query.Where(s => s.AreaId == areaId.Value);
 
-            query = query.OrderByDescending(s => s.DisplayOrder);
+
+            if (promotionTime.HasValue)
+                query = query.Where(p =>
+                                    (p.StartTime < promotionTime.Value && p.EndTime > promotionTime.Value) ||
+                                    p.FixedPromotion);
+
+            if (sort.HasValue)
+            {
+                switch (sort.Value)
+                {
+                    case GasSort.Long:
+                        query = query.OrderByDescending(p => p.EndTime);
+                        break;
+                    case GasSort.Time:
+                    default:
+                        query = query.OrderByDescending(p => p.CreationTime);
+                        break;
+
+                }
+            }
+            else
+                query = query.OrderByDescending(p => p.CreationTime);
 
             return new PagedResult<GasStation>(query, pageIndex, pageSize);
         }

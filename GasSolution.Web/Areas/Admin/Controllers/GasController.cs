@@ -78,13 +78,13 @@ namespace GasSolution.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult List(DataSourceRequest command, GasStationListModel model)
         {
-            var stations = _stationService.GetAllStations(model.Keywords,
-                                                        model.IsGasoLine,
-                                                        model.IsDieselOil,
-                                                        model.IsNatural,
-                                                        model.AreaId,
-                                                        command.Page - 1,
-                                                        command.PageSize);
+            var stations = _stationService.GetAllStations(keywords: model.Keywords,
+                                                        isGasoLine: model.IsGasoLine,
+                                                        isDieselOil: model.IsDieselOil,
+                                                        isNatural: model.IsNatural,
+                                                        areaId: model.AreaId,
+                                                        pageIndex: command.Page - 1,
+                                                        pageSize: command.PageSize);
 
             var jsonData = new DataSourceResult
             {

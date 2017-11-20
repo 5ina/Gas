@@ -119,6 +119,87 @@ namespace GasSolution.Web.Areas.Admin.Controllers
                 });
             return PartialView(model);
         }
+
+        [ChildActionOnly]
+        public ActionResult NewVehicles() {
+
+            return PartialView();
+        }
+
+
+        [HttpPost]
+        public ActionResult LoadVehiclesStatistics(string period)
+        {
+            var result = new List<object>();
+
+            var nowDt = DateTime.Now;
+
+            switch (period)
+            {
+                case "year":
+                    //year statistics
+                    var yearAgoDt = nowDt.AddYears(-1).AddMonths(1);
+                    var searchYearDateUser = new DateTime(yearAgoDt.Year, yearAgoDt.Month, 1);
+                    for (int i = 0; i <= 12; i++)
+                    {
+                        result.Add(new
+                        {
+                            date = searchYearDateUser.Date.ToString("Y"),
+                            value = _vehicleService.GetAllVehicles(
+                                createdFrom: searchYearDateUser,
+                                createdTo: searchYearDateUser.AddMonths(1),
+                                pageIndex: 0,
+                                pageSize: 1).TotalCount.ToString()
+                        });
+
+                        searchYearDateUser = searchYearDateUser.AddMonths(1);
+                    }
+                    break;
+
+                case "month":
+                    //month statistics
+                    var monthAgoDt = nowDt.AddDays(-30);
+                    var searchMonthDateUser = new DateTime(monthAgoDt.Year, monthAgoDt.Month, monthAgoDt.Day);
+                    for (int i = 0; i <= 30; i++)
+                    {
+                        result.Add(new
+                        {
+                            date = searchMonthDateUser.Date.ToString("M"),
+                            value = _vehicleService.GetAllVehicles(
+                                createdFrom: (searchMonthDateUser),
+                                createdTo: searchMonthDateUser.AddDays(1),
+                                pageIndex: 0,
+                                pageSize: 1).TotalCount.ToString()
+                        });
+
+                        searchMonthDateUser = searchMonthDateUser.AddDays(1);
+                    }
+                    break;
+
+                case "week":
+                default:
+                    //week statistics
+                    var weekAgoDt = nowDt.AddDays(-7);
+                    var searchWeekDateUser = new DateTime(weekAgoDt.Year, weekAgoDt.Month, weekAgoDt.Day);
+                    for (int i = 0; i <= 7; i++)
+                    {
+                        result.Add(new
+                        {
+                            date = searchWeekDateUser.Date.ToString("d dddd"),
+                            value = _vehicleService.GetAllVehicles(
+                                createdFrom: searchWeekDateUser,
+                                createdTo: searchWeekDateUser.AddDays(1),
+                                pageIndex: 0,
+                                pageSize: 1).TotalCount.ToString()
+                        });
+
+                        searchWeekDateUser = searchWeekDateUser.AddDays(1);
+                    }
+                    break;
+            }
+
+            return Json(result);
+        }
         #endregion
     }
 }

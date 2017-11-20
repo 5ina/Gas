@@ -1,0 +1,49 @@
+﻿@model GasSolution.Web.Areas.Admin.Models.KeyFonts.KeyFontModel
+@Html.HiddenFor(model => model.Id)
+@Html.AntiForgeryToken()
+
+<table class="adminContent">
+
+    <tr>
+        <td class="adminTitle">
+            @Html.GasLabelFor(model => model.Keyword)
+        </td>
+        <td class="adminData">
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-text-width"></i></span>
+                @Html.GasEditorFor(model => model.Keyword)
+                @Html.ValidationMessageFor(model => model.Keyword)
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td class="adminTitle">
+            @Html.GasLabelFor(model => model.KeyFontType)
+        </td>
+        <td class="adminData">
+
+            <div class="input-group">
+                @Html.GasDropDownListFor(model => model.KeyFontType, Model.AvailableType, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.KeyFontType)
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td class="adminTitle">
+            @Html.GasLabelFor(model => model.Relpys)
+        </td>
+        <td class="adminData">
+
+            <div class="input-group">
+                @Html.TextAreaFor(model => model.Relpys,15,200,new { @class= "form-control" })
+                @Html.ValidationMessageFor(model => model.Relpys)
+            </div>
+
+        </td>
+    </tr>
+</table>

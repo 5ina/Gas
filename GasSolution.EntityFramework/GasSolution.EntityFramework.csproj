@@ -224,6 +224,18 @@
     <Compile Include="Migrations\201711090206244_Update_Vehicle_Scripts.Designer.cs">
       <DependentUpon>201711090206244_Update_Vehicle_Scripts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711130323457_Create_KeyFont_Scripts.cs" />
+    <Compile Include="Migrations\201711130323457_Create_KeyFont_Scripts.Designer.cs">
+      <DependentUpon>201711130323457_Create_KeyFont_Scripts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711130518015_Update_KeyFont_Scripts.cs" />
+    <Compile Include="Migrations\201711130518015_Update_KeyFont_Scripts.Designer.cs">
+      <DependentUpon>201711130518015_Update_KeyFont_Scripts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711180215068_Update_Gas_Promotion_Scripts.cs" />
+    <Compile Include="Migrations\201711180215068_Update_Gas_Promotion_Scripts.Designer.cs">
+      <DependentUpon>201711180215068_Update_Gas_Promotion_Scripts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="GasSolutionDataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -265,6 +277,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711090206244_Update_Vehicle_Scripts.resx">
       <DependentUpon>201711090206244_Update_Vehicle_Scripts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711130323457_Create_KeyFont_Scripts.resx">
+      <DependentUpon>201711130323457_Create_KeyFont_Scripts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711130518015_Update_KeyFont_Scripts.resx">
+      <DependentUpon>201711130518015_Update_KeyFont_Scripts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711180215068_Update_Gas_Promotion_Scripts.resx">
+      <DependentUpon>201711180215068_Update_Gas_Promotion_Scripts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

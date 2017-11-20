@@ -40,5 +40,15 @@
         /// 联系我们
         /// </summary>
         public static string CONTACT_US { get { return "gas.setting.common.contact_us"; } }
+
+        /// <summary>
+        /// 首次关注回复
+        /// </summary>
+        public static string FIRST_SUBSCRIBE { get { return "gas.setting.common.first.subscribe"; } }
+
+        /// <summary>
+        /// 关键字未匹配
+        /// </summary>
+        public static string KEYWORDS_NOMATCH { get { return "gas.setting.common.keywords.nomatch"; } }
     }
 }

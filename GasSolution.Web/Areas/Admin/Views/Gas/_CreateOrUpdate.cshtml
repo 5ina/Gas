@@ -5,6 +5,7 @@
 
 @Html.IncludeScript("http://api.map.baidu.com/api?v=2.0&ak=yccG7GWikwgRd7f3mZ26NQ4tsbeXmiga")
 
+
 <style>
     #map {
         width: 100%;
@@ -23,9 +24,11 @@
         $("#@Html.FieldIdFor(model => model.IsNatural)").click(activateNatural);
         $("#@Html.FieldIdFor(model => model.IsGasoLine)").click(activateGasoLine);
         $("#@Html.FieldIdFor(model => model.IsDieselOil)").click(activateDieselOil);
+        $("#@Html.FieldIdFor(model => model.FixedPromotion)").click(activatePromotions);
         activateNatural();
         activateGasoLine();
         activateDieselOil();
+        activatePromotions();
     });
 
     function activateNatural() {
@@ -48,6 +51,12 @@
             $('.diesel-oil-panel').show();
         else
             $('.diesel-oil-panel').hide();
+    }
+    function activatePromotions() {
+        if ($('#@Html.FieldIdFor(model => model.FixedPromotion)').is(':checked'))
+            $('.promotion-panel').hide();
+        else
+        $('.promotion-panel').show();
     }
 
 </script>
@@ -162,6 +171,63 @@
                             </tr>
                         </table>
                     </div>
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">公告信息</h3>
+                        </div>
+                        <table class="adminContent">
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Notice)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextAreaFor(model => model.Notice, 5, 65, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Notice)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.IsClose)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.IsClose)
+                                        @Html.ValidationMessageFor(model => model.IsClose)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.DisplayOrder)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.DisplayOrder, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DisplayOrder)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-12">
 
                     <div class="box box-default">
                         <div class="box-header with-border">
@@ -177,7 +243,7 @@
                                 <td class="adminData">
 
                                     <div class="input-group">
-                                        @Html.HiddenFor(model=>model.Longitude)
+                                        @Html.HiddenFor(model => model.Longitude)
                                         @Html.HiddenFor(model => model.Dimension)
                                         @Html.EditorFor(model => model.Address, new { @class = "form-control" })
                                         <a class="btn btn-primary" data-target="#map-modal" data-toggle="modal">
@@ -190,7 +256,7 @@
 
                             <tr>
                                 <td class="adminTitle">
-                                    @Html.GasLabelFor(model=>model.Contacts)
+                                    @Html.GasLabelFor(model => model.Contacts)
                                 </td>
                                 <td class="adminData">
 
@@ -230,62 +296,125 @@
                             </tr>
                         </table>
                     </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-5">
-            <div class="row">
-                <div class="col-md-12">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <i class="fa fa-bullhorn"></i>
-                            <h3 class="box-title">公告信息</h3>
+                            <i class="fa fa-location-arrow"></i>
+                            <h3 class="box-title">促销信息</h3>
                         </div>
                         <table class="adminContent">
 
                             <tr>
                                 <td class="adminTitle">
-                                    @Html.GasLabelFor(model => model.Notice)
+                                    @Html.GasLabelFor(model => model.FixedPromotion)
                                 </td>
                                 <td class="adminData">
-
                                     <div class="input-group">
-                                        @Html.TextAreaFor(model => model.Notice,5,65, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Notice)
+                                        @Html.EditorFor(model => model.FixedPromotion, new { @class = "form-control" })                                     
                                     </div>
 
                                 </td>
                             </tr>
+                            <tr class="promotion-panel">
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.StartTime)
+                                </td>
+                                <td class="adminData">
+
+                                    <div class="input-group">
+                                        @Html.GasEditorFor(model => model.StartTime)
+                                        @Html.ValidationMessageFor(model => model.StartTime)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+
+                            <tr class="promotion-panel">
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.EndTime)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        @Html.GasEditorFor(model => model.EndTime)
+                                        @Html.ValidationMessageFor(model => model.EndTime)
+                                    </div>
+
+                                </td>
+                            </tr>
+
+
                             <tr>
                                 <td class="adminTitle">
-                                    @Html.GasLabelFor(model => model.IsClose)
+                                    @Html.GasLabelFor(model => model.Gasoline_Ninety_Eight)
                                 </td>
                                 <td class="adminData">
-
                                     <div class="input-group">
-                                        @Html.EditorFor(model => model.IsClose)
-                                        @Html.ValidationMessageFor(model => model.IsClose)
-                                    </div>
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Gasoline_Ninety_Eight, new { @class = "form-control" })
 
+                                        @Html.ValidationMessageFor(model => model.Gasoline_Ninety_Eight)
+                                    </div>
                                 </td>
                             </tr>
+
                             <tr>
                                 <td class="adminTitle">
-                                    @Html.GasLabelFor(model => model.DisplayOrder)
+                                    @Html.GasLabelFor(model => model.Gasoline_Ninety_Fine)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Gasoline_Ninety_Fine, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Gasoline_Ninety_Fine)
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Gasoline_Ninety_Two)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Gasoline_Ninety_Two, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Gasoline_Ninety_Two)
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.Natural)
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                        @Html.TextBoxFor(model => model.Natural, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Natural)
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.GasLabelFor(model => model.PromotionNotice)
                                 </td>
                                 <td class="adminData">
 
                                     <div class="input-group">
-                                        @Html.TextBoxFor(model => model.DisplayOrder, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.DisplayOrder)
+                                        @Html.TextAreaFor(model => model.PromotionNotice, 5, 65, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.PromotionNotice)
                                     </div>
 
                                 </td>
                             </tr>
-
                         </table>
                     </div>
+                    
                 </div>
             </div>
         </div>

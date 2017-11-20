@@ -154,6 +154,8 @@
     <Compile Include="ComponentModel\GenericListTypeConverter.cs" />
     <Compile Include="ComponentModel\WriteLockDisposable.cs" />
     <Compile Include="Domain\Common\Area.cs" />
+    <Compile Include="Domain\Common\KeyFont.cs" />
+    <Compile Include="Domain\Common\KeyFontType.cs" />
     <Compile Include="Domain\Customers\Customer.cs" />
     <Compile Include="Domain\Customers\CustomerAttribute.cs" />
     <Compile Include="Domain\Customers\CustomerAttributeNames.cs" />

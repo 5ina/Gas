@@ -1,0 +1,27 @@
+﻿@model GasSolution.Web.Areas.Admin.Models.KeyFonts.KeyFontModel
+@{
+    ViewBag.Title = "编辑关键字库";
+}
+
+@using (Html.BeginForm("Edit", "KeyFont", FormMethod.Post, new { id = "font-form" }))
+{
+
+    <section class="content-header">
+        <h1 class="pull-left">编辑关键字库</h1>
+        <div class="pull-right">
+            <input type="submit" name="save" class="btn btn-primary" value="保存" />
+            <input type="submit" name="save-continue" class="btn btn-primary btn-success" value="保存并编辑" />
+            <a href="@Url.Action("List")" class="btn btn-danger"><i class="fa fa-fw fa-plus-square"></i>返回列表</a>
+        </div>
+
+    </section>
+    <div id="font-edit" class="nav-tabs-custom">
+        <div class="content">
+            <div class="panel-group">
+
+                @Html.Partial("_CreateOrUpdate", Model)
+            </div>
+        </div>
+    </div>
+}
+

@@ -96,5 +96,20 @@ namespace GasSolution.Web.Framework.Extensions
             }
             return attribute == null ? null : attribute.Description;
         }
+
+        public static List<SelectListItem> ToSelectListItem<TEnum>(this TEnum enumObj) where TEnum : struct
+        {
+            var enumType = typeof(TEnum);
+            List<SelectListItem> selectList = new List<SelectListItem>();
+            foreach (var enumValue in Enum.GetValues(enumType))
+            {
+                selectList.Add(new SelectListItem
+                {
+                    Text = Enum.GetName(enumType, enumValue),  //GetDescription((enumType)enumValue),
+                    Value = enumValue.ToString()
+                });
+            }
+            return selectList;
+        }
     }
 }

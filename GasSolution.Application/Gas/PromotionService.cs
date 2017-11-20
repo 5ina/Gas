@@ -74,7 +74,7 @@ namespace GasSolution.Gas
 
         public IPagedResult<Promotion> GetAllPromotions(int stationId = 0,
             string keywords = "", DateTime? promotionTime = null,
-            PromotionSort? sort = null,
+            GasSort? sort = null,
             int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = _promotionRepository.GetAll();
@@ -92,10 +92,10 @@ namespace GasSolution.Gas
             {
                 switch (sort.Value)
                 {
-                    case PromotionSort.Long:
+                    case GasSort.Long:
                         query = query.OrderByDescending(p => p.EndTime);
                         break;
-                    case PromotionSort.Time:
+                    case GasSort.Time:
                     default:
                         query = query.OrderByDescending(p => p.CreationTime);
                         break;

@@ -51,6 +51,8 @@ namespace GasSolution.Vehicles
         }
 
         public IPagedResult<Vehicle> GetAllVehicles(string keywords = "",
+            DateTime? createdFrom = null,
+            DateTime? createdTo = null,
             int customerId = 0, int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = _vehicleRepository.GetAll();
@@ -58,6 +60,11 @@ namespace GasSolution.Vehicles
                 query = query.Where(v => v.EngineNo.Contains(keywords) ||
                                      v.FrameNo.Contains(keywords) ||
                                      v.CartNumber.Contains(keywords));
+
+            if (createdFrom.HasValue)
+                query = query.Where(c => createdFrom.Value <= c.CreationTime);
+            if (createdTo.HasValue)
+                query = query.Where(c => createdTo.Value >= c.CreationTime);
 
             if (customerId > 0)
                 query = query.Where(v => v.CustomerId == customerId);
