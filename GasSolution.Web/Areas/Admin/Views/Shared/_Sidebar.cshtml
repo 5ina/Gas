@@ -31,16 +31,27 @@
             <li class="treeview" id="promotion">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
-                    <span>促销管理</span>
+                    <span>促销爆料</span>
                     <span class="pull-right-container">
-                        <span class="label label-primary pull-right">4</span>
+                        <span class="label bg-red pull-right">@Html.Action("GetPromotionByAudit","Promotion",new { audit = GasSolution.Domain.Audit.None })</span>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li class="promotion-page"><a href="@Url.Action("List","Promotion")"><i class="fa fa-circle-o"></i> 促销管理</a></li>
-                    <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                    <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                    <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+                  
+                </ul>
+            </li>
+
+            <li class="treeview" id="promotion">
+                <a href="#">
+                    <i class="fa fa-files-o"></i>
+                    <span>加油站上报</span>
+                    <span class="pull-right-container">
+                        <span class="label bg-red pull-right">@Html.Action("GetGasCostomByAudit", "GasCustom", new { audit = GasSolution.Domain.Audit.None })</span>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="promotion-page"><a href="@Url.Action("List","GasCustom")"><i class="fa fa-circle-o"></i> 爆料加油站</a></li>                    
                 </ul>
             </li>
             <li class="treeview"id="customer">
@@ -65,6 +76,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="vehicle-list"><a href="@Url.Action("List","Vehicle")"><i class="fa fa-circle-o"></i> 车辆列表</a></li>
+                    <li class="car-brand-list"><a href="@Url.Action("List","CarBrand")"><i class="fa fa-circle-o"></i> 车辆品牌</a></li>
+
                 </ul>
             </li>
             <li class="treeview" id="keyfont">

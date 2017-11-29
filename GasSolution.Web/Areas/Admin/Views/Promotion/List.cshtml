@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    @Html.TextBoxFor(model => model.Keywords, new { @placeholder = "关键字查询", @class = "form-control" })
+                    @Html.GasDropDownListFor(model => model.AuditId,Model.AvailableAudits)
                 </div>
             </div>
             <div class="col-md-2">
@@ -26,35 +26,8 @@
             </div>
             <div class="col-md-1 text-center">
                 <a href="#" class="reload btn btn-social-icon" id="search-promotion"><i class="fa fa-search"></i></a>
-            </div>
-            <div class="col-md-2 col-md-offset-3">
-
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">&nbsp;</span>
-                            导出
-                        </button>
-
-                        <ul class="dropdown-menu" role="menu">
-
-                            <li>
-                                <button type="submit" id="exportexcel-all">
-                                    <i class="fa fa-file-excel-o"></i>
-                                    导出所有促销
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" id="exportexcel-today">
-                                    <i class="fa fa-file-excel-o"></i>
-                                    导出今日促销
-                                </button>
-                            </li>
-                        </ul>
-                    </div> 
-            </div>
+            </div>            
         </div>
-
         <div id="promotion-grid"></div>
     </div>
 </section>
@@ -99,18 +72,7 @@
                     width: 40,
                     headerAttributes: { style: "text-align:center" },
                     attributes: { style: "text-align:center" },
-                }, {
-                    field: "Gas",
-                    title: "加油站",
-                    width: 100,
-                    headerAttributes: { style: "text-align:center" },
-                    attributes: { style: "text-align:center" },
-                }, {
-                    field: "Address",
-                    title: "地址",
-                    headerAttributes: { style: "text-align:center" },
-                    attributes: { style: "text-align:center" },
-                }, {
+                },  {
                     field: "StartTime",
                     title: "开始时间",
                     width: 90,
@@ -159,8 +121,7 @@
     });
     function additionalData() {
         var data = {
-            Keywords: $('#@Html.FieldIdFor(model => model.Keywords)').val(),
-            Time: $('#@Html.FieldIdFor(model => model.Time)').val(),
+            AuditId: $('#@Html.FieldIdFor(model => model.AuditId)').val(),
         };
         addAntiForgeryToken(data);
 
@@ -172,27 +133,3 @@
     };
 
 </script>
-
-
-@using (Html.BeginForm("", "Product", FormMethod.Post, new { id = "export-excel" }))
-{
-    @Html.AntiForgeryToken()
-}
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#exportexcel-today').click(function (e) {
-            e.preventDefault();
-            $('#export-excel').attr("action", "/Admin/Promotion/ExportExcelSelectedToday");
-            $('#export-excel').submit();
-            return false;           
-        });
-        $('#exportexcel-all').click(function (e) {
-            e.preventDefault();
-            $('#export-excel').attr("action", "/Admin/Promotion/ExportExcelSelectedAll");
-            $('#export-excel').submit();
-            return false;
-        });
-    });
-</script>
-

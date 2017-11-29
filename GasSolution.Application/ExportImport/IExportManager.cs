@@ -13,7 +13,7 @@ namespace GasSolution.ExportImport
         /// 导出促销信息到Excel
         /// </summary>
         /// <param name="products">Products</param>
-        byte[] ExportPromotionsToXlsx(IEnumerable<Promotion> products);
+        byte[] ExportPromotionsToXlsx(IEnumerable<GasStation> products);
         
     }
 }

@@ -49,7 +49,7 @@ namespace GasSolution.Common
 
         }
 
-        public IList<Setting> GetAllSettings()
+        public List<Setting> GetAllSettings()
         {
             var query = from s in _settingRepository.GetAll()
                         orderby s.Name

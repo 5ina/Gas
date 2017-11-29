@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GasSolution.Domain.Gas
 {
-    public  class Promotion:Entity, IHasCreationTime
+    public  class Promotion:Entity
     {
         /// <summary>
         /// 所属加油站
@@ -51,10 +51,28 @@ namespace GasSolution.Domain.Gas
         /// 天然气现价
         /// </summary>
         public decimal Natural { get; set; }
+        
+        /// <summary>
+        /// 加油站名称 
+        /// </summary>
+        [MaxLength(100)]
+        public string GasName { get; set; }
 
+        [MaxLength(500)]
+        public string Address { get; set; }
+
+        /// <summary>
+        /// 审核状态
+        /// </summary>
+        public int Audit { get; set; }
+
+        [MaxLength(500)]
+        public string AuditReason { get; set; }
         /// <summary>
         /// 创建时间（不需要处理）
         /// </summary>
         public DateTime CreationTime { get; set; }
+
+        public int CustomerId { get; set; }
     }
 }

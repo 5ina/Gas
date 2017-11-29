@@ -23,6 +23,9 @@ namespace GasSolution.Web.Areas.Admin.Models.Setting
         [DisplayName("98#市场价")]
         public decimal No_Ninety_Eight { get; set; }
 
+        [DisplayName("0#市场价")]
+        public decimal No_Zero { get; set; }
+
 
         [DisplayName("联系们回复")]
         public string CONTACT_US { get; set; }

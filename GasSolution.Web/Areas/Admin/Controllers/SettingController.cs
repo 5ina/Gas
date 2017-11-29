@@ -1,13 +1,14 @@
 ﻿using Abp.Domain.Uow;
 using Abp.Runtime.Caching;
+using Abp.Web.Security.AntiForgery;
 using GasSolution.CacheNames;
 using GasSolution.Common;
 using GasSolution.Web.Areas.Admin.Models.Setting;
+using GasSolution.Web.Framework.Aliyun;
+using GasSolution.Web.Framework.Controllers;
 using GasSolution.Web.Framework.DataGrids;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace GasSolution.Web.Areas.Admin.Controllers
@@ -27,8 +28,28 @@ namespace GasSolution.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region Utilities
+        private void UpdateOil()
+        {
+            var url = "http://ali-todayoil.showapi.com/todayoil?prov=河北";
+            AliyunRequestData request = new AliyunRequestData(url, "GET", "d1b4fc144bd34b018f61e4e64a47390e");
+            var model = request.RequestApi<Framework.Aliyun.Models.OilModel>();
+            if (String.IsNullOrWhiteSpace(model.showapi_res_error))
+            {
+                var p92 = Convert.ToDecimal(model.showapi_res_body.list[0].p92);
+                var p95 = Convert.ToDecimal(model.showapi_res_body.list[0].p95);
+                var p0 = Convert.ToDecimal(model.showapi_res_body.list[0].p0);
+
+                _settingService.SaveSetting(CommonSettingNames.No_Ninety_Two, p92);
+                _settingService.SaveSetting(CommonSettingNames.No_Ninety_Fine, p95);
+                _settingService.SaveSetting(CommonSettingNames.No_Zero, p0);
+            }
+        }
+        #endregion
+        
         #region Method
 
+        #region Wechat
 
         public ActionResult WeChat()
         {
@@ -77,16 +98,24 @@ namespace GasSolution.Web.Areas.Admin.Controllers
         }
 
 
+        #endregion
 
+        #region List
         public ActionResult List()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult List(DataSourceRequest command, string Keyword = "")
+        [DisableAbpAntiForgeryTokenValidation]
+        public ActionResult List(DataSourceRequest command,AllSettingsListModel model)
         {
             var list = _settingService.GetAllSettings();
+
+            if (!string.IsNullOrEmpty(model.SearchSettingName))
+                list = list.Where(s => s.Name.ToLowerInvariant().Contains(model.SearchSettingName.ToLowerInvariant())).ToList();
+            if (!string.IsNullOrEmpty(model.SearchSettingValue))
+                list = list.Where(s => s.Value.ToLowerInvariant().Contains(model.SearchSettingValue.ToLowerInvariant())).ToList();
             var jsonData = new DataSourceResult
             {
                 Data = list,
@@ -95,7 +124,9 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             return AbpJson(jsonData);
         }
 
+        #endregion
 
+        #region Common
         public ActionResult Common()
         {
             var model = _cacheManager.GetCache(WechatControllerNames.CACHE_SETTINGS_ALIYUN).Get(WechatControllerNames.CACHE_SETTINGS_COMMON,
@@ -112,18 +143,25 @@ namespace GasSolution.Web.Areas.Admin.Controllers
                         CONTACT_US = _settingService.GetSettingByKey<string>(CommonSettingNames.CONTACT_US),
                         First_Subscribe = _settingService.GetSettingByKey<string>(CommonSettingNames.FIRST_SUBSCRIBE),
                         Keywords_NoMatch = _settingService.GetSettingByKey<string>(CommonSettingNames.KEYWORDS_NOMATCH),
-
+                        No_Zero= _settingService.GetSettingByKey<decimal>(CommonSettingNames.No_Zero),
                     };
                 });
 
             return View(model);
         }
 
-
-        [HttpPost]
+        
         [UnitOfWork]
-        public ActionResult Common(CommonSettingModel model)
+        [HttpPost,  ParameterBasedOnFormName("save-continue", "continueEditing")]
+        [FormValueRequired("save", "save-continue")]
+        public ActionResult Common(CommonSettingModel model,bool continueEditing)
         {
+            if (continueEditing)
+            {
+                UpdateOil();
+                SaveSelectedTabName();
+                return View();
+            }
             if (String.IsNullOrWhiteSpace(model.Title))
                 model.Title = "";
             _settingService.SaveSetting(CommonSettingNames.Title, model.Title);
@@ -139,6 +177,7 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             _settingService.SaveSetting(CommonSettingNames.No_Ninety_Two, model.No_Ninety_Two);
             _settingService.SaveSetting(CommonSettingNames.No_Ninety_Eight, model.No_Ninety_Eight);
             _settingService.SaveSetting(CommonSettingNames.No_Ninety_Fine, model.No_Ninety_Fine);
+            _settingService.SaveSetting(CommonSettingNames.No_Zero, model.No_Zero);
 
             if (String.IsNullOrWhiteSpace(model.CONTACT_US))
                 model.CONTACT_US = "";
@@ -156,9 +195,10 @@ namespace GasSolution.Web.Areas.Admin.Controllers
 
             return View(model);
         }
+        
+        #endregion
 
-
-
+        #region AiliYun
         public ActionResult Aliyun()
         {
             var model = _cacheManager.GetCache(WechatControllerNames.CACHE_SETTINGS_ALIYUN).Get(WechatControllerNames.CACHE_SETTINGS_ALIYUN,
@@ -187,6 +227,7 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+        #endregion
         #endregion
     }
 }

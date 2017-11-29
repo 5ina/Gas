@@ -1,0 +1,18 @@
+﻿@model DateTime?
+
+<input id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)" readonly="readonly" class="form-control" name="@ViewData.TemplateInfo.GetFullHtmlFieldName(string.Empty)" value="@(Model > DateTime.MinValue || Model.HasValue ? Model.Value.ToShortDateString() : null)" placeholder="请选择日期" />
+
+<script type="text/javascript">
+    $(function () {
+        var now = new Date(),
+            max = new Date(now.getFullYear() + 100, now.getMonth(), now.getDate());
+
+        $('#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)').mobiscroll().date({
+            lang: 'zh',
+            theme: 'ios',
+            display: 'bottom',
+            max: max
+        });
+
+    });</script>
+

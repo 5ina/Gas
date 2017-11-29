@@ -74,6 +74,7 @@ namespace GasSolution.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(KeyFontModel model)
         {
             if (ModelState.IsValid)
@@ -95,6 +96,21 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Edit(KeyFontModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = _keyService.GetKeyFontById(model.Id);
+                entity = model.MapTo<KeyFontModel, KeyFont>(entity);
+                _keyService.UpdateKeyFont(entity);
+                return RedirectToAction("List");
+            }
+            PrepareKeyFontModel(model);
+            return View(model);
+        }
         #endregion
 
     }

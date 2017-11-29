@@ -45,7 +45,7 @@ namespace GasSolution.Common
         /// 获取所有配置
         /// </summary>
         /// <returns></returns>
-        IList<Setting> GetAllSettings();
+        List<Setting> GetAllSettings();
 
         /// <summary>
         /// 读取配置

@@ -24,8 +24,9 @@ namespace GasSolution.Web.Framework.WeChat
         public string LoadEvent(ILogger logger)
         {
             xmlDoc.LoadXml(this._xml);
+            logger.Debug("xml:" + this._xml);
             var xmlJson = Newtonsoft.Json.JsonConvert.SerializeXmlNode(xmlDoc);
-            logger.Debug("xml格式：" + _xml);
+
             var msgType = xmlDoc.SelectSingleNode("/xml/MsgType").InnerText;
             if (!String.IsNullOrWhiteSpace(msgType) && msgType == "event")
             {
@@ -42,6 +43,7 @@ namespace GasSolution.Web.Framework.WeChat
         public Hashtable LoadXml(bool defaultevent = true)
         {
             xmlDoc.LoadXml(this._xml);
+            
             this.Parameters.Add("ToUserName", xmlDoc.SelectSingleNode("/xml/ToUserName").InnerText);
             this.Parameters.Add("FromUserName", xmlDoc.SelectSingleNode("/xml/FromUserName").InnerText);
             this.Parameters.Add("CreateTime", xmlDoc.SelectSingleNode("/xml/CreateTime").InnerText);

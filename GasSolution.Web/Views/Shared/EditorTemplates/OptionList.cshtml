@@ -1,0 +1,21 @@
+﻿@model int
+@Html.TextBoxFor(model => model)
+
+<script type="text/javascript">
+
+    $(function () {
+        /* Make sure to run it on a web server when tring this demo locally! */
+
+        $('#@Html.FieldIdFor(model=>model)').mobiscroll().select({
+            theme: 'ios',
+            lang: 'zh',
+            display: 'bottom',
+            placeholder: '全部',
+            data: {                    
+                url: '/Common/PreparePromotionListModel',
+                type: 'json'
+            }
+        });
+
+    });
+</script>

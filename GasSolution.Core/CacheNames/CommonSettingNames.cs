@@ -29,6 +29,7 @@
         /// 95号价格
         /// </summary>
         public static string No_Ninety_Fine { get { return "gas.setting.common.no.95"; } }
+        public static string No_Zero { get { return "gas.setting.common.no.0"; } }
 
 
         /// <summary>

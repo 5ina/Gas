@@ -2,6 +2,7 @@
 using Abp.Runtime.Caching;
 using GasSolution.Common;
 using GasSolution.Domain.Gas;
+using GasSolution.ExportImport;
 using GasSolution.Gas;
 using GasSolution.Web.Areas.Admin.Models.Gas;
 using GasSolution.Web.Framework.Controllers;
@@ -22,21 +23,26 @@ namespace GasSolution.Web.Areas.Admin.Controllers
         private readonly IAreaService _areaService;
         private readonly ICacheManager _cacheManager;
         private readonly IPromotionService _promotionService;
+        private readonly IExportManager _exportManager;
+        
+
 
         private const string CACHE_GAS_STATISTICAL_OVERVIEW = "gas.cache.gas.statistical.overview";
 
 
         public GasController(IGasStationService stationService,
-            IAreaService areaService, IPromotionService promotionService,
+            IAreaService areaService, 
+            IPromotionService promotionService,
+            IExportManager exportManager,
             ICacheManager cacheManager)
         {
             this._stationService = stationService;
             this._areaService = areaService;
             this._promotionService = promotionService;
             this._cacheManager = cacheManager;
+            this._exportManager = exportManager;
         }
         #endregion
-
 
         #region Utilities
 
@@ -203,7 +209,7 @@ namespace GasSolution.Web.Areas.Admin.Controllers
                 .Get(CACHE_GAS_STATISTICAL_OVERVIEW, () => {
 
                     var gas = _stationService.GetAllStations();
-                    var promotions = _promotionService.GetAllPromotions(promotionTime: DateTime.Now);
+                    var promotions = _promotionService.GetAllPromotions();
                     var view = new GasStatisticalOverviewModel();
                     view.GasTotalCount = gas.TotalCount;
                     view.PromotionCount = promotions.TotalCount;
@@ -212,5 +218,45 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             return PartialView(model);
         }
         #endregion
+
+
+        #region  Export
+
+
+
+        [HttpPost]
+        public virtual ActionResult ExportExcelSelectedToday()
+        {
+            var gas = _stationService.GetAllStations(promotionTime: DateTime.Now);
+            try
+            {
+                var bytes = _exportManager.ExportPromotionsToXlsx(gas.Items);
+
+                return File(bytes, MimeTypes.TextXlsx, "promotion.xlsx");
+            }
+            catch (Exception exc)
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+
+        [HttpPost]
+        public virtual ActionResult ExportExcelSelectedAll()
+        {
+            var gas = _stationService.GetAllStations();
+            try
+            {
+                var bytes = _exportManager.ExportPromotionsToXlsx(gas.Items);
+
+                return File(bytes, MimeTypes.TextXlsx, "promotion.xlsx");
+            }
+            catch (Exception exc)
+            {
+                return RedirectToAction("List");
+            }
+        }
+        #endregion
+
     }
 }

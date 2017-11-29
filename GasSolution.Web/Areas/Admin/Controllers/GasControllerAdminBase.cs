@@ -59,5 +59,34 @@ namespace GasSolution.Web.Areas.Admin.Controllers
                 Indented = indented,
             };
         }
+
+
+        /// <summary>
+        /// 保存选择的tabl
+        /// </summary>
+        /// <param name="tabName">Tab name to save; empty to automatically detect it</param>
+        /// <param name="persistForTheNextRequest">A value indicating whether a message should be persisted for the next request</param>
+        protected virtual void SaveSelectedTabName(string tabName = "", bool persistForTheNextRequest = true)
+        {
+            //keep this method synchronized with
+            //"GetSelectedTabName" method of \Nop.Web.Framework\HtmlExtensions.cs
+            if (string.IsNullOrEmpty(tabName))
+            {
+                tabName = this.Request.Form["selected-tab-name"];
+            }
+
+            if (!string.IsNullOrEmpty(tabName))
+            {
+                const string dataKey = "gas.selected-tab-name";
+                if (persistForTheNextRequest)
+                {
+                    TempData[dataKey] = tabName;
+                }
+                else
+                {
+                    ViewData[dataKey] = tabName;
+                }
+            }
+        }
     }
 }

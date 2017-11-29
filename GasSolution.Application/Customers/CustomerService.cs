@@ -20,6 +20,7 @@ namespace GasSolution.Customers
         /// </summary>
         private const string CUSTOMER_BY_ID = "gas.cache.customer.by-id.{0}";
         private const string CUSTOMER_BY_OPENID = "gas.cache.customer.by-openid.{0}";
+        private const string CUSTOMER_BY_GUID = "gas.cache.customer.by-guid.{0}";
 
 
         private readonly IRepository<Customer> _customerRepository;
@@ -212,6 +213,24 @@ namespace GasSolution.Customers
                         select c;
             int count = query.Count();
             return count;
+        }
+
+        public Customer GetCustomerByGuid(Guid customerGuid)
+        {
+            if (customerGuid == Guid.Empty)
+                return null;
+
+            var key = string.Format(CUSTOMER_BY_GUID, customerGuid.ToString());
+
+            return _cacheManager.GetCache(key).Get(key, () =>
+            {
+                var query = from c in _customerRepository.GetAll()
+                            where c.CustomerGuid == customerGuid
+                            orderby c.Id
+                            select c;
+                var customer = query.FirstOrDefault();
+                return customer;
+            });
         }
 
         #endregion

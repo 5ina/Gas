@@ -73,8 +73,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
@@ -86,15 +86,13 @@
       <HintPath>..\packages\Castle.Windsor.4.1.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.DynamicFilters, Version=2.10.0.0, Culture=neutral, PublicKeyToken=146423a1b8d60775, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.DynamicFilters.2.10.0\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
@@ -180,14 +178,17 @@
     <Reference Include="Nito.AsyncEx.Tasks, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nito.AsyncEx.Tasks.1.1.0\lib\net46\Nito.AsyncEx.Tasks.dll</HintPath>
     </Reference>
-    <Reference Include="Nito.Collections.Deque, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nito.Collections.Deque.1.0.0\lib\portable45-net45+win8+wp8+wpa81\Nito.Collections.Deque.dll</HintPath>
+    <Reference Include="Nito.Collections.Deque, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.Collections.Deque.1.0.4\lib\netstandard2.0\Nito.Collections.Deque.dll</HintPath>
     </Reference>
-    <Reference Include="Nito.Disposables, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nito.Disposables.1.0.0\lib\portable45-net45+win8+wp8+wpa81\Nito.Disposables.dll</HintPath>
+    <Reference Include="Nito.Disposables, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.Disposables.1.2.3\lib\netstandard2.0\Nito.Disposables.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCoder, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.2\lib\net40\QRCoder.dll</HintPath>
     </Reference>
     <Reference Include="System.AppContext">
       <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
@@ -237,11 +238,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Linq.Dynamic.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Linq.Dynamic.Core.1.0.7.9\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
+      <HintPath>..\packages\System.Linq.Dynamic.Core.1.0.7.12\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http">
-      <HintPath>..\packages\System.Net.Http.4.3.2\lib\net46\System.Net.Http.dll</HintPath>
+      <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -276,7 +277,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Security.Cryptography.Algorithms">
-      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Security.Cryptography.Encoding">
@@ -288,7 +289,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Security.Cryptography.X509Certificates">
-      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Transactions" />
@@ -356,9 +357,15 @@
     <Reference Include="System.Xml.XPath.XmlDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Xml.XPath.XmlDocument.4.3.0\lib\net46\System.Xml.XPath.XmlDocument.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.2\lib\net40\UnityEngine.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="ZKWeb.System.Drawing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZKWeb.System.Drawing.4.0.0\lib\net45\ZKWeb.System.Drawing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -461,6 +468,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\jquery.bootstrap-touchspin.css" />
     <Content Include="Content\kendo\2014.1.318\Black\editor.png" />
     <Content Include="Content\kendo\2014.1.318\Black\imagebrowser.png" />
     <Content Include="Content\kendo\2014.1.318\Black\indeterminate.gif" />
@@ -628,7 +636,30 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
+    <Content Include="Content\mobiscroll-2.13.2.full.min.css" />
+    <Content Include="Content\mobiscroll.animation-2.13.2.css" />
+    <Content Include="Content\mobiscroll.icons-2.13.2.css" />
+    <Content Include="Content\mobiscroll.scroller-2.13.2.css" />
+    <Content Include="Content\mobiscroll.scroller.android-2.13.2.css" />
+    <Content Include="Content\mobiscroll.scroller.android-holo-2.13.2.css" />
+    <Content Include="Content\mobiscroll.scroller.ios-2.13.2.css" />
+    <Content Include="Content\mobiscroll.scroller.ios7-2.13.2.css" />
+    <Content Include="Content\mobiscroll.scroller.jqm-2.13.2.css" />
+    <Content Include="Content\mobiscroll.scroller.sense-ui-2.13.2.css" />
+    <Content Include="Content\mobiscroll.scroller.wp-2.13.2.css" />
+    <Content Include="Content\mobiscroll.widget-2.13.2.css" />
+    <Content Include="Content\mobiscroll.widget.android-2.13.2.css" />
+    <Content Include="Content\mobiscroll.widget.android-holo-2.13.2.css" />
+    <Content Include="Content\mobiscroll.widget.ios-2.13.2.css" />
+    <Content Include="Content\mobiscroll.widget.ios7-2.13.2.css" />
+    <Content Include="Content\mobiscroll.widget.jqm-2.13.2.css" />
+    <Content Include="Content\mobiscroll.widget.sense-ui-2.13.2.css" />
+    <Content Include="Content\mobiscroll.widget.wp-2.13.2.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
+    <Content Include="Content\sweetalert\docs.css" />
+    <Content Include="Content\sweetalert\sweet-alert.css" />
+    <Content Include="Content\sweetalert\thumbs-up.jpg" />
     <Content Include="Content\tether\tether-theme-arrows-dark.css" />
     <Content Include="Content\tether\tether-theme-arrows-dark.min.css" />
     <Content Include="Content\tether\tether-theme-arrows.css" />
@@ -685,10 +716,14 @@
     <Content Include="Content\flags\famfamfam-flags.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="images\gas.jpg" />
     <Content Include="images\gas.png" />
+    <Content Include="images\limit.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\gas_no.png" />
+    <Content Include="images\oil.jpg" />
     <Content Include="images\qrcode.jpg" />
+    <Content Include="images\weather.jpg" />
     <Content Include="images\user.png" />
     <Content Include="images\wechat2.png" />
     <Content Include="js\main.js" />
@@ -768,6 +803,12 @@
     <Content Include="Areas\Admin\Views\KeyFont\Create.cshtml" />
     <Content Include="Areas\Admin\Views\KeyFont\_CreateOrUpdate.cshtml" />
     <Content Include="Areas\Admin\Views\Vehicle\NewVehicles.cshtml" />
+    <Content Include="Areas\Admin\Views\CarBrand\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Promotion\PromotionStatisticalOverview.cshtml" />
+    <Content Include="Content\sweetalert\sweet-alert.less" />
+    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
+    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
+    <Content Include="Areas\Admin\Views\GasCustom\List.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\admin.common.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -788,6 +829,7 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.bootstrap-touchspin.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -863,6 +905,22 @@
     <Content Include="Scripts\kendo\2014.1.318\kendo.view.min.js" />
     <Content Include="Scripts\kendo\2014.1.318\kendo.web.min.js" />
     <Content Include="Scripts\kendo\2014.1.318\kendo.window.min.js" />
+    <Content Include="Scripts\mobiscroll-2.13.2.full.min.js" />
+    <Content Include="Scripts\mobiscroll.core-2.13.2-zh.js" />
+    <Content Include="Scripts\mobiscroll.core-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.datetime-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.list-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.scroller-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.select-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.util.datetime-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.widget-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.widget.android-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.widget.android-holo-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.widget.ios-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.widget.ios7-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.widget.jqm-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.widget.sense-ui-2.13.2.js" />
+    <Content Include="Scripts\mobiscroll.widget.wp-2.13.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -898,33 +956,42 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CarBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommonController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\GasController.cs" />
     <Compile Include="Areas\Admin\Controllers\GasControllerAdminBase.cs" />
+    <Compile Include="Areas\Admin\Controllers\GasCustomController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KeyFontController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleController.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerStatisticalOverviewModel.cs" />
+    <Compile Include="Areas\Admin\Models\GasCustom\GasCustomListModel.cs" />
     <Compile Include="Areas\Admin\Models\Gas\GasStationListModel.cs" />
     <Compile Include="Areas\Admin\Models\Gas\GasStationModel.cs" />
     <Compile Include="Areas\Admin\Models\Gas\GasStatisticalOverviewModel.cs" />
     <Compile Include="Areas\Admin\Models\KeyFonts\KeyFontModel.cs" />
     <Compile Include="Areas\Admin\Models\Promotions\PromotionListModel.cs" />
     <Compile Include="Areas\Admin\Models\Promotions\PromotionModel.cs" />
+    <Compile Include="Areas\Admin\Models\Promotions\PromotionStatisticalOverviewModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\AliyunSettingModel.cs" />
+    <Compile Include="Areas\Admin\Models\Setting\AllSettingsListModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\CommonSettingModel.cs" />
     <Compile Include="Areas\Admin\Models\Setting\WeChatSettingModel.cs" />
+    <Compile Include="Areas\Admin\Models\Vehicles\CarBrandModel.cs" />
     <Compile Include="Areas\Admin\Models\Vehicles\VehicleModel.cs" />
     <Compile Include="Areas\Admin\Models\Vehicles\VehicleStatisticalOverviewModel.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\GasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Controllers\WechatController.cs" />
+    <Compile Include="Framework\Aliyun\AliyunRequestData.cs" />
+    <Compile Include="Framework\Aliyun\Models\OilModel.cs" />
     <Compile Include="Framework\Controllers\FormValueRequiredAttribute.cs" />
     <Compile Include="Framework\Controllers\ParameterBasedOnFormNameAttribute.cs" />
     <Compile Include="Framework\Controllers\WeChatAntiForgeryAttribute.cs" />
@@ -935,14 +1002,21 @@
     <Compile Include="Framework\Extensions\HtmlExtensions.cs" />
     <Compile Include="Framework\Extensions\VerifyExtensions.cs" />
     <Compile Include="Framework\HttpUtility.cs" />
+    <Compile Include="Framework\Mvc\NullJsonResult.cs" />
     <Compile Include="Framework\Security\RequireHttpsAttribute.cs" />
+    <Compile Include="Framework\WeChat\Plug\Weather.cs" />
     <Compile Include="Framework\WeChat\TextMessage.cs" />
     <Compile Include="Framework\WeChat\WechatRequest.cs" />
     <Compile Include="Framework\WeChat\WeChatResult.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerListModel.cs" />
+    <Compile Include="Models\Common\MapModel.cs" />
+    <Compile Include="Models\Common\SumbitResultModel.cs" />
+    <Compile Include="Models\Common\WeatherModel.cs" />
     <Compile Include="Models\Customers\CustomerModel.cs" />
+    <Compile Include="Models\Gas\GasStationCustomModel.cs" />
     <Compile Include="Models\Gas\GasStationModel.cs" />
     <Compile Include="Models\Gas\PromotionListModel.cs" />
+    <Compile Include="Models\Gas\PromotionModel.cs" />
     <Compile Include="Models\Layout\LanguageSelectionViewModel.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\GasSolutionControllerBase.cs" />
@@ -952,6 +1026,7 @@
     <Compile Include="Models\Layout\TopMenuViewModel.cs" />
     <Compile Include="Models\Vehicles\VehicleModel.cs" />
     <Compile Include="Models\Wechat\AccessToken.cs" />
+    <Compile Include="Models\Wechat\MessageModel\WeChatMessageModel.cs" />
     <Compile Include="Models\Wechat\OAuthToken.cs" />
     <Compile Include="Models\Wechat\OAuthUserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1042,6 +1117,17 @@
     <Content Include="Views\Common\Illegal.cshtml" />
     <Content Include="Views\Vehicle\Create.cshtml" />
     <Content Include="Views\Vehicle\_CreateOrUpdate.cshtml" />
+    <Content Include="Views\Gas\Promotion.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateNullable.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Views\Common\ScanCode.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\OptionList.cshtml" />
+    <Content Include="Views\Gas\NewGas.cshtml" />
+    <Content Include="Views\Common\Map.cshtml" />
+    <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Tel.cshtml" />
+    <Content Include="Views\Common\Result.cshtml" />
+    <Content Include="Views\Common\LimitLine.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1069,6 +1155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\weather\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -1111,7 +1198,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
   <Target Name="RemoveNetFxForceConflicts" AfterTargets="ResolveAssemblyReferences">
     <ItemGroup>
@@ -1119,7 +1206,7 @@
     </ItemGroup>
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

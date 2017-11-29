@@ -39,6 +39,13 @@ namespace GasSolution.Gas
         Promotion GetPromotionById(int promotionId);
 
         /// <summary>
+        /// 获取审核状态的数量
+        /// </summary>
+        /// <param name="audit"></param>
+        /// <returns></returns>
+        int GetPromotionByAudit(int audit);
+
+        /// <summary>
         /// 获取加油站最新的促销信息
         /// </summary>
         /// <param name="stationId"></param>
@@ -63,13 +70,11 @@ namespace GasSolution.Gas
         /// </summary>
         /// <param name="stationId"></param>
         /// <param name="keywords"></param>
-        /// <param name="promotionTime"></param>
-        /// <param name="sort">排序方式</param>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        IPagedResult<Promotion> GetAllPromotions(int stationId = 0, string keywords = "",
-            DateTime? promotionTime = null, GasSort? sort = null,
+        IPagedResult<Promotion> GetAllPromotions(int stationId = 0, 
+            int? audit = null,
             int pageIndex = 0, int pageSize = int.MaxValue);
             
     }

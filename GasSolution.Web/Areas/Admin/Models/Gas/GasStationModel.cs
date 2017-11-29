@@ -142,29 +142,34 @@ namespace GasSolution.Web.Areas.Admin.Models.Gas
         /// #89现价
         /// </summary>
         [DisplayName("89号")]
+        [UIHint("Number")]
         public decimal Gasoline_Eighty_Nine { get; set; }
 
         /// <summary>
         /// #92现价
         /// </summary>
         [DisplayName("92号")]
+        [UIHint("Number")]
         public decimal Gasoline_Ninety_Two { get; set; }
 
         /// <summary>
         /// #95现价
         /// </summary>
         [DisplayName("95号")]
+        [UIHint("Number")]
         public decimal Gasoline_Ninety_Fine { get; set; }
 
         /// <summary>
         /// #98现价
         /// </summary>
         [DisplayName("98号")]
+        [UIHint("Number")]
         public decimal Gasoline_Ninety_Eight { get; set; }
         /// <summary>
         /// 天然气现价
         /// </summary>
         [DisplayName("天然气")]
+        [UIHint("Number")]
         public decimal Natural { get; set; }
         #endregion
 

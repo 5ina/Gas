@@ -1,0 +1,105 @@
+﻿@model GasSolution.Web.Models.Common.MapModel
+@{
+    ViewBag.Title = "当前位置";
+    Layout = null;
+}
+@Html.IncludeScript("http://api.map.baidu.com/api?v=2.0&ak=yccG7GWikwgRd7f3mZ26NQ4tsbeXmiga")
+
+<div class="gas-page">
+    <div id="allmap"></div>
+</div>
+<style>
+    #allmap {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+
+
+<script type="text/javascript">
+
+    var lng = @(Model.lng)
+    var lat = @(Model.lat)
+
+    function initMap() {
+
+        createMap();//创建地图
+
+        setMapEvent();//设置地图事件
+
+        addMapControl();//向地图添加控件
+
+        addMapOverlay();//向地图添加覆盖物
+
+    }
+
+    function createMap() {
+        var stCtrl = new BMap.PanoramaControl(); //构造全景控件
+        stCtrl.setOffset(new BMap.Size(50, 10));
+        map = new BMap.Map("allmap");
+        map.centerAndZoom(new BMap.Point(lng, lat), 15);
+        var myIcon = new BMap.Icon("/images/user.png", new BMap.Size(32, 32));
+        var gpsPoint = new BMap.Point(lng, lat);
+        map.addControl(new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_LARGE }));
+        map.addControl(new BMap.ScaleControl());
+        map.addControl(new BMap.OverviewMapControl());
+        map.centerAndZoom(gpsPoint, 15);
+        var marker = new BMap.Marker(gpsPoint, { icon: myIcon });
+        map.addOverlay(marker);
+        map.addControl(stCtrl);//添加全景控件
+        // 添加定位控件
+        var geolocationControl = new BMap.GeolocationControl({
+            anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+            showAddressBar: false,
+            offset: new BMap.Size(5, 5)
+
+        });
+
+        geolocationControl.addEventListener("locationSuccess", function (e) {
+            // 定位成功事件
+            var address = '';
+            address += e.addressComponent.province;
+            address += e.addressComponent.city;
+            address += e.addressComponent.district;
+            address += e.addressComponent.street;
+            address += e.addressComponent.streetNumber;
+
+        });
+
+        geolocationControl.addEventListener("locationError", function (e) {
+
+            // 定位失败事件
+            alert(e.message);
+        });
+
+        map.addControl(geolocationControl);
+
+    }
+
+    function setMapEvent() {
+
+        map.enableScrollWheelZoom();
+
+        map.enableKeyboard();
+
+        map.enableDragging();
+
+        map.enableDoubleClickZoom()
+
+    }
+
+    function addClickHandler(target, window) {
+
+        target.addEventListener("click", function () {
+
+            target.openInfoWindow(window);
+
+        });
+
+    }
+       
+
+    var map;
+    initMap();
+</script>

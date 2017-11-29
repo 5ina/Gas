@@ -73,6 +73,72 @@ namespace GasSolution.Web.Framework.Extensions
             return htmlAttributes;
         }
 
+
+        /// <summary>
+        /// 获取保存的tab页面
+        /// </summary>
+        /// <returns>Name</returns>
+        public static string GetSelectedTabName(this HtmlHelper helper)
+        {
+            var tabName = string.Empty;
+            const string dataKey = "gas.selected-tab-name";
+
+            if (helper.ViewData.ContainsKey(dataKey))
+                tabName = helper.ViewData[dataKey].ToString();
+
+            //TODO test in asp.net core
+            if (helper.ViewContext.TempData.ContainsKey(dataKey))
+                tabName = helper.ViewContext.TempData[dataKey].ToString();
+
+            return tabName;
+        }
+
+        public static MvcHtmlString RenderBootstrapTabHeader(this HtmlHelper helper, string currentTabName,
+           string title, bool isDefaultTab = false, string tabNameToSelect = "", string customCssClass = "")
+        {
+            if (helper == null)
+                throw new ArgumentNullException("helper");
+
+            if (string.IsNullOrEmpty(tabNameToSelect))
+                tabNameToSelect = helper.GetSelectedTabName();
+
+            if (string.IsNullOrEmpty(tabNameToSelect) && isDefaultTab)
+                tabNameToSelect = currentTabName;
+
+            var a = new TagBuilder("a")
+            {
+                Attributes =
+                {
+                    new KeyValuePair<string, string>("data-tab-name", currentTabName),
+                    new KeyValuePair<string, string>("href", string.Format("#{0}", currentTabName)),
+                    new KeyValuePair<string, string>("data-toggle", "tab"),
+                }
+            };
+            a.InnerHtml = title;
+
+            var liClassValue = "";
+            if (tabNameToSelect == currentTabName)
+            {
+                liClassValue = "active";
+            }
+            if (!String.IsNullOrEmpty(customCssClass))
+            {
+                if (!String.IsNullOrEmpty(liClassValue))
+                    liClassValue += " ";
+                liClassValue += customCssClass;
+            }
+
+            var li = new TagBuilder("li")
+            {
+                Attributes =
+                {
+                    new KeyValuePair<string, string>("class", liClassValue),
+                },
+            };
+            li.InnerHtml = a.ToString();
+            return MvcHtmlString.Create(li.ToString());
+        }
+
         #endregion
 
     }

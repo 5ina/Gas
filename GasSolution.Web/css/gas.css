@@ -2,11 +2,11 @@
     width: 100%;
     height: 100%;
 }
-.container, .container-fluid {
+.container, .container-fluid, .wrapper {
     width: 100%;
     height: 100%;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
 }
 .gas-page {
     width: 100%;
@@ -17,3 +17,101 @@
     width: 100%;
     height: 100%;
 }
+
+
+.message-error .validation-summary-errors{
+    line-height:1.3em;
+    color:#ff0000;
+    text-align:center;
+}
+    .message-error .validation-summary-errors ul,
+    .message-error .validation-summary-errors li{
+        list-style:none;
+    }
+
+.weather .content .weather-list ,.weather .content .weather-list li {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+.weather .content {
+    padding:2%;
+}
+.weather .content .weather-list {
+    padding: 0 1%;
+}
+.weather .content .weather-list li {
+        float: left;
+    }
+    .weather .content .weather-list li.weather-real {
+        width: 60%;
+    }
+    .weather .content .weather-list li.weather-info {
+        width: 28%;
+        margin-left:2%;
+        text-align:center;
+    }
+
+        .weather .content .weather-list li.weather-info img {
+    
+
+        }
+
+        .weather .content .weather-list li.weather-info span {
+            text-align:center;
+            display:block;
+        }
+
+    .weather .content .weather-list .temperature{
+        color:#fe8c00
+    }
+
+
+    .weather .content .weather-list li.weather-real span{
+        display:block;
+    }
+
+.weather .content .index h4{
+    color:#ff6a00;
+}
+.font18{
+    font-size:18px;
+}
+.limit-page{
+    max-width:600px;
+    margin:0 auto;
+    padding:0 15px;
+    padding-bottom:30px;
+}
+    .limit-page .meta_content {
+        margin-bottom: 15px;
+        color: #8c8c8c;
+    }
+    .limit-page .ct{
+        font-size:16px;
+    } .limit-page .ct h5 {
+        font-weight: 600;
+        color: #fff;
+        background: #ff6a00;
+        text-align: center;
+        padding: 11px 0;
+        font-size: 15px;
+    }
+
+    .limit-page .ct .li{
+        border-bottom:3px solid #960000;
+        margin-bottom:12px;
+    }
+
+    .limit-page .ct section {
+        text-align: center;
+        padding: 7px;
+        line-height:2.5em;
+    }
+        .limit-page .ct section span {
+            background: #e17914;
+            color: #fff;
+            padding: 7px;
+            transform: rotate(360deg);
+            border:1px dashed #fff;
+        }

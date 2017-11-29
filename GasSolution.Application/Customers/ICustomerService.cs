@@ -42,6 +42,14 @@ namespace GasSolution.Customers
         /// <returns></returns>
         Customer GetCustomerId(int customerId);
 
+        /// <summary>
+        /// 根据guid获取用户
+        /// </summary>
+        /// <param name="customerGuid"></param>
+        /// <returns></returns>
+        Customer GetCustomerByGuid(Guid customerGuid);
+        
+
         Customer GetCustomerByOpenId(string openId);
 
         /// <summary>

@@ -28,15 +28,17 @@ namespace GasSolution.EntityFramework
         /// </summary>
         public virtual IDbSet<GasStation> GasStation { get; set; }
         public virtual IDbSet<Promotion> Promotion { get; set; }
+        public virtual IDbSet<GasStationCustom> GasStationCustom { get; set; }
 
         /// <summary>
         /// 行政规划表
         /// </summary>
         public virtual IDbSet<Area> Area { get; set; }
         public virtual IDbSet<KeyFont> KeyFont { get; set; }
-        
+
         //Vehicle
         public virtual IDbSet<Vehicle> Vehicle { get; set; }
+        public virtual IDbSet<CarBrand> CarBrand { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

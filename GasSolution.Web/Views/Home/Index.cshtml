@@ -4,6 +4,7 @@
     ViewBag.ActiveMenu = "Home"; //The menu item will be active for this page.
 }
 @Html.IncludeScript("/Scripts/admin.common.js")
+@Html.IncludeScript("/Scripts/mobiscroll-2.13.2.full.min.js")
 
 <div class="promotion-page">
     <div class="promotion-title">
@@ -13,24 +14,13 @@
         <div class="search">
             <div class="input-group">
                 @Html.TextBoxFor(model => model.keywords, new { placeholder = "请输入关键字" ,@class= "form-control" })
-                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <div class="input-group-addon btn btn-default"><i class="fa fa-search"></i></div>
             </div>
         </div>
         <div class="filter clearfix">
 
             @Html.HiddenFor(model => model.pageIndex)
-            @Html.HiddenFor(model => model.sort)
             @Html.HiddenFor(model => model.pageSize)
-            <ul class="promotion-filter">
-                <li>
-                    <a class="active" data-sort="1">最新</a>
-
-                </li>
-
-                <li>
-                    <a data-sort="2">最久</a>
-                </li>
-            </ul>
         </div>
         <ul class="promotions"></ul>
     </div>
@@ -38,12 +28,10 @@
 
 <script type="text/javascript">
 
-
     function additionalData() {
         var data = {
             pageIndex: $('#@Html.FieldIdFor(model => model.pageIndex)').val(),
             pageSize:  20,
-            sort: $('#@Html.FieldIdFor(model => model.sort)').val(),
             keywords: $('#@Html.FieldIdFor(model => model.keywords)').val()
         };
         addAntiForgeryToken(data);
@@ -74,6 +62,15 @@
     }
 
     $(function () {
+
+
+            $("#@Html.FieldIdFor(model => model.keywords)").keydown(function (event) {
+                if (event.keyCode === 13) {
+                    $(".search .input-group-addon").click();
+                    return false;
+                }
+            });
+
         $(".promotion-filter > li > a").click(function () {
             $(".promotion-filter > li >a").removeClass("active");
             $(this).addClass("active");
@@ -83,7 +80,7 @@
             content.html('');
             loadPromotion();
         });
-        $(".search").click(function () {
+        $(".search .input-group-addon").click(function () {
             var content = $(".promotions");
             content.html('');
             loadPromotion();

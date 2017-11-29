@@ -9,6 +9,7 @@ using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
 using Abp.Web.Mvc;
 using Abp.AutoMapper;
+using System;
 
 namespace GasSolution.Web
 {
@@ -36,6 +37,11 @@ namespace GasSolution.Web
                     )
                 );
 
+            //为特定的缓存配置有效期
+            Configuration.Caching.Configure(GasSolutionConsts.CACHE_WEATHER_DATE, cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(3);
+            });
             //Configure navigation/menu
             Configuration.Navigation.Providers.Add<GasSolutionNavigationProvider>();
         }

@@ -3,10 +3,12 @@ using GasSolution.Common;
 using GasSolution.Customers;
 using GasSolution.Messages;
 using GasSolution.Vehicles;
+using GasSolution.Web.Models.Common;
 using GasSolution.Web.Models.Vehicles;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -20,6 +22,7 @@ namespace GasSolution.Web.Controllers
         #region ctor && Fields
         private readonly ICustomerService _customerService;
         private readonly ISMSMessageService _messageService;
+        private readonly IAreaService _areaService;
 
 
         private readonly ISettingService _settingService;
@@ -28,30 +31,64 @@ namespace GasSolution.Web.Controllers
         private readonly IVehicleService _vehicleService;
 
         private readonly string CACHE_VEHICLE_CUSTOMER = "gas.cache.vehicles.customer.{0}";
-
-        /// <summary>
-        /// 天气的key
-        /// </summary>
-        private const string weatherkey = "672ded22be42ff699fff410510852bf9";
-        /// <summary>
-        /// 石家庄代码
-        /// </summary>
-        private const string siteCode = "101090101";
         public CommonController(ICustomerService customerService,
                                 ISMSMessageService messageService, 
                                 ISettingService settingService,
-                                IVehicleService vehicleService,
+                                IVehicleService vehicleService, 
+                                IAreaService areaService,
             ICacheManager cacheManager)
         {
             this._customerService = customerService;
             this._messageService = messageService;
             this._vehicleService = vehicleService;
             this._settingService = settingService;
+            this._areaService = areaService;
             this._cacheManager = cacheManager;
         }
         #endregion
 
-        
+        #region 
+
+        private WeatherModel GetTodyWeather()
+        {
+            var key = string.Format(GasSolutionConsts.CACHE_WEATHER_DATE,DateTime.Now.ToString("YYYY.mm.dd"));
+
+            return _cacheManager.GetCache(key).Get(key, () => {
+                string url = "http://jisutianqi.market.alicloudapi.com/weather/query";
+
+                string code = "d1b4fc144bd34b018f61e4e64a47390e";
+                var querys = string.Format("city={0}&citycode={1}&cityid={2}", "石家庄", "101090101", "137");
+                HttpWebRequest httpRequest = null;
+                HttpWebResponse httpResponse = null;
+
+                if (0 < querys.Length)
+                {
+                    url = url + "?" + querys;
+                }
+                httpRequest = (HttpWebRequest)WebRequest.Create(url);
+
+                httpRequest.Method = "GET";
+                httpRequest.Headers.Add("Authorization", "APPCODE " + code);
+                try
+                {
+                    httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                }
+                catch (WebException ex)
+                {
+                    httpResponse = (HttpWebResponse)ex.Response;
+                }
+
+                Stream st = httpResponse.GetResponseStream();
+                StreamReader reader = new StreamReader(st, Encoding.GetEncoding("utf-8"));
+                var result = reader.ReadToEnd();
+
+                var model = Newtonsoft.Json.JsonConvert.DeserializeObject<WeatherModel>(result);
+                return model;
+            });
+        }
+        #endregion
+
+
         #region Method
 
         /// <summary>
@@ -81,20 +118,8 @@ namespace GasSolution.Web.Controllers
 
         public ActionResult Weather()
         {
-            string url = "http://api.weatherdt.com/common/?area={0}&type=alarm&key={1}";
-            string postUrl = string.Format(url, siteCode, weatherkey);
-            Uri httpURL = new Uri(postUrl, true);
-            HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create(httpURL);
-            HttpWebResponse httpResp = (HttpWebResponse)httpReq.GetResponse();
-            Stream respStream = httpResp.GetResponseStream();
-            StreamReader respStreamReader = new StreamReader(respStream, Encoding.UTF8);
-            string jsonContent = respStreamReader.ReadToEnd();
-
-            var json = JsonConvert.DeserializeAnonymousType(jsonContent, new { c = new int[0], d = new Dictionary<string, string>() });
-
-            //var json = JsonConvert.SerializeObject(jsonContent);
-            //ViewData["json"] = jsonContent;
-            return View(json);
+            var model = GetTodyWeather();
+            return View(model);
         }
 
 
@@ -132,7 +157,70 @@ namespace GasSolution.Web.Controllers
             });
             return AbpJson(model);
         }
+
+        public ActionResult ScanCode(int promotionId)
+        {
+            return View();
+        }
+
+
+
         #endregion
 
+        #region 区县地址
+        [HttpPost]
+        public ActionResult PreparePromotionListModel()
+        {
+            var areas = _areaService.GetAreasByParentCode("130101");
+            return AbpJson(areas);
+
+        }
+        #endregion
+
+        #region Map
+        public ActionResult Map(string lat = "38.04885", string lng = "114.518578")
+        {
+            var model = new MapModel
+            {
+                lat = lat,
+                lng = lng,
+            };
+            return View(model);
+        }
+        #endregion
+
+        #region 爆料反馈
+
+        public ActionResult Result(SumbitResultModel model)
+        {
+            return View(model);
+        }
+        #endregion
+
+        #region 限行
+        public ActionResult LimitLine()
+        {
+            return View();
+            //var limit = Convert.ToBoolean(ConfigurationManager.AppSettings["limitroutine"]);
+            //if (limit)
+            //{
+            //    var week = DateTime.Now.DayOfWeek;//判断星期几
+            //    switch(week){
+            //        case DayOfWeek.Friday:
+
+
+            //    }
+            //}
+            //else {
+            //    var single = DateTime.Now.Day % 2 == 1; //判断是否单双号
+            //    if (single)
+            //    {
+
+            //    }
+            //}
+
+            //return View();
+        }
+        #endregion
     }
 }

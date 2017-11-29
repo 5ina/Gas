@@ -10,36 +10,30 @@
 <div class="dashboard">
     <section class="content-header"></section>
     <section class="content">
-@Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
+                <!-- 用户 -->
                 @Html.Action("CustomerStatisticalOverview", "Customer")
+                <!-- /.用户 -->
             </div>
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
-
+                <!-- 加油站 -->
                 @Html.Action("GasStatisticalOverview", "Gas")
-                <!-- /.info-box -->
+                <!-- /.加油站 -->
             </div>
             <!-- /.col -->
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
             <div class="col-md-3 col-sm-6 col-xs-12">
-
+                <!-- 车辆 -->
                 @Html.Action("VehicleStatisticalOverview", "Vehicle")
-                <!-- /.info-box -->
+                <!-- /.车辆 -->
             </div>
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">New Members</span>
-                        <span class="info-box-number">2,000</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
+                <!-- 油价爆料 -->
+                @Html.Action("PromotionStatisticalOverview", "Promotion")
+                <!-- /.油价爆料 -->
             </div>
             <!-- /.col -->
         </div>

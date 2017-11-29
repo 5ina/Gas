@@ -7,9 +7,11 @@ using GasSolution.Common;
 using GasSolution.Customers;
 using GasSolution.Domain.Common;
 using GasSolution.Domain.Customers;
+using GasSolution.Gas;
 using GasSolution.Security;
 using GasSolution.Web.Framework.WeChat;
 using GasSolution.Web.Models.Wechat;
+using GasSolution.Web.Models.Wechat.MessageModel;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
@@ -20,8 +22,6 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace GasSolution.Web.Controllers
 {
@@ -33,6 +33,7 @@ namespace GasSolution.Web.Controllers
         private readonly LoginManager _loginManager;
         private readonly ICacheManager _cacheManager;
         private readonly IKeyFontService _keyService;
+        private readonly IGasStationService _gasStationService;
         /// <summary>
         /// 天气的key
         /// </summary>
@@ -46,12 +47,14 @@ namespace GasSolution.Web.Controllers
             ICustomerService customerService,
             LoginManager loginManager,
             ICacheManager cacheManager,
+            IGasStationService gasStationService,
             IKeyFontService keyService)
         {
             this._settingService = settingService;
             this._customerService = customerService;
             this._loginManager = loginManager;
             this._keyService = keyService;
+            this._gasStationService = gasStationService;
             this._cacheManager = cacheManager;
         }
         #endregion
@@ -70,6 +73,32 @@ namespace GasSolution.Web.Controllers
             {
                 return HttpContext.GetOwinContext().Authentication;
             }
+        }
+
+        /// <summary>
+        /// 获取当天油价
+        /// </summary>
+        /// <returns></returns>
+        [NonAction]
+        private string GetTodayGas()
+        {
+            var promotions = "<a href='http://gas.jie-pang.com/gas/GetLocation?actionName=index'>地图看价</a>";
+
+            var gas = _gasStationService.GetAllStations(promotionTime: DateTime.Now, sort: Gas.Sort.GasSort.Time);
+            var result = gas.Items.Select(g =>
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("");
+                sb.AppendLine(string.Format("加油站名称:{0}", g.GasName));
+                sb.AppendLine(string.Format("加油站地址:{0}", g.Address));
+                sb.AppendLine(string.Format("油价: 92号：{0}元,95号：{1}元，98号：{2}元", g.Gasoline_Ninety_Two, g.Gasoline_Ninety_Fine, g.Gasoline_Ninety_Eight));
+                sb.AppendLine(string.Format("促销公告：{0}", g.PromotionNotice));
+                
+                return sb.ToString();
+            }).ToList();
+
+            promotions = promotions + String.Join("", result);
+            return promotions;
         }
         #endregion
 
@@ -107,13 +136,9 @@ namespace GasSolution.Web.Controllers
                     Byte[] postBytes = new Byte[stream.Length];
                     stream.Read(postBytes, 0, (Int32)stream.Length);
                     var postString = Encoding.UTF8.GetString(postBytes);
-                    Logger.Debug("post:" + postString);
-                    Handle(postString); 
-                    Logger.Debug("开发者认证");
                     return WxAuth(token);
                 }
             }
-
             return Content("");
 
         }
@@ -264,7 +289,9 @@ namespace GasSolution.Web.Controllers
         public void ClickWeChat(Hashtable parameters)
         {
             var keywords = parameters["EventKey"];
+            WeChatMessageModel.ArticlesItem articles = null;
 
+            var customer = NewCustomer(parameters);
             if (!String.IsNullOrWhiteSpace(Convert.ToString(keywords)))
             {
                 switch (keywords.ToString())
@@ -272,6 +299,30 @@ namespace GasSolution.Web.Controllers
                     case "CONTACT_US":
                         var content_us = _settingService.GetSettingByKey<string>(CommonSettingNames.CONTACT_US);
                         SendTextMessage(parameters["FromUserName"].ToString(), content_us);
+                        break;
+
+                    case "PROMOTION":
+                        articles = new WeChatMessageModel.ArticlesItem
+                        {
+                            description = "上传油价降价信息赚取油卡",
+                            picurl = "http://gas.jie-pang.com/images/oil.jpg",
+                            title = "油价爆料",
+                            url = string.Format("http://gas.jie-pang.com/gas/promotion?customer={0}", customer.Id)
+                        };
+
+                        SendTeletextMessage(customer.OpenId, articles);
+                        break;
+
+                    case "CUSTOM_GAS":                        
+                        articles = new WeChatMessageModel.ArticlesItem
+                        {
+                            description = "爆料加油站位置与信息，我们向您提供免费加油储值金",
+                            picurl = "http://gas.jie-pang.com/images/gas.jpg",
+                            title = "添加加油站",
+                            url = string.Format("http://gas.jie-pang.com/gas/NewGas?customer={0}", customer.Id)
+                        };
+
+                        SendTeletextMessage(customer.OpenId, articles);
                         break;
                 }
             }
@@ -309,7 +360,7 @@ namespace GasSolution.Web.Controllers
             if (customer == null || customer.Id == 0) // 判定用户是否存在
             {
                 var _encryptionService = Abp.Dependency.IocManager.Instance.Resolve<IEncryptionService>();
-                var password = _encryptionService.CreatePasswordHash("123456", code);                
+                var password = _encryptionService.CreatePasswordHash("123456", code);
                 customer = new Customer
                 {
                     Mobile = "",
@@ -321,10 +372,15 @@ namespace GasSolution.Web.Controllers
                     IsSubscribe = true,
                 };
                 customer.Id = _customerService.CreateCustomer(customer);
-                
+
                 //发送消息
                 //SendMessageToUserFirstSub(customer);
-                
+
+            }
+            else
+            {
+                customer.IsSubscribe = true;
+                _customerService.UpdateCustomer(customer);
             }
             return customer;
 
@@ -353,8 +409,36 @@ namespace GasSolution.Web.Controllers
             var keywords = Convert.ToString(parameters["Content"]);
             if (!String.IsNullOrWhiteSpace(keywords))
             {
-                Logger.Debug("关键字回复的是：" + keywords);
-                var result = _keyService.GetAllKeyFonts(keywords);
+                if (keywords.Contains("油价"))
+                {
+                    SendTextMessage(parameters["FromUserName"].ToString(), GetTodayGas());
+                    return;
+                }
+                else if (keywords.Contains("天气"))
+                {
+                    var articles = new WeChatMessageModel.ArticlesItem
+                    {
+                        title = string.Format("{0}天气情况", DateTime.Now.ToString("MM月dd日")),
+                        url = "http://gas.jie-pang.com/common/Weather",
+                        picurl = "http://gas.jie-pang.com/images/weather.jpg",
+                        description = string.Format("{0}天气情况，点击查看详细信息", DateTime.Now.ToString("MM月dd日"))
+                    };
+                    SendTeletextMessage(parameters["FromUserName"].ToString(), articles);
+                    return;
+                }
+                else if (keywords.Contains("限行"))
+                {
+                    var articles = new WeChatMessageModel.ArticlesItem
+                    {
+                        title = string.Format("{0}河北限行信息", DateTime.Now.ToString("MM月dd日")),
+                        url = "http://gas.jie-pang.com/common/LimitLine",
+                        picurl = "http://gas.jie-pang.com/images/limit.jpg",
+                        description = string.Format("{0}河北限行信息，点击查看详细信息", DateTime.Now.ToString("MM月dd日"))
+                    };
+                    SendTeletextMessage(parameters["FromUserName"].ToString(), articles);
+                    return;
+                }
+                    var result = _keyService.GetAllKeyFonts(keywords);
                 if (result.TotalCount > 0)
                 {
                     var keyFont = result.Items.ToList().FirstOrDefault();
@@ -363,10 +447,12 @@ namespace GasSolution.Web.Controllers
                     {
                         case KeyFontType.Text:
                             SendTextMessage(parameters["FromUserName"].ToString(), keyFont.Relpys);
-                            break;
+                            return;
                     }
                 }
             }
+            var nomatch = _settingService.GetSettingByKey<string>(CommonSettingNames.KEYWORDS_NOMATCH);
+            SendTextMessage(parameters["FromUserName"].ToString(), nomatch);
         }
 
         #endregion
@@ -380,15 +466,13 @@ namespace GasSolution.Web.Controllers
         {
             WechatRequest wr = new WechatRequest(postStr);
             var eventStr = wr.LoadEvent(Logger);
-
             Hashtable parameters = new Hashtable();
-            Logger.Debug(eventStr.ToLower());
             switch (eventStr.ToLower())
             {
                 //case "scan"://关注
                 case "subscribe":
                     parameters = wr.LoadXml();
-                    
+
                     //新用户
                     NewCustomer(parameters);
                     SendTextMessage(parameters["FromUserName"].ToString(), "欢迎关注石门油价订阅号，可以通过下方菜单获取相关信息");
@@ -400,7 +484,6 @@ namespace GasSolution.Web.Controllers
                     break;
                 case "click": //点击事件
                     parameters = wr.LoadXml();
-                    Logger.Debug("content:" + parameters["EventKey"]);
                     ClickWeChat(parameters);
                     break;
                 case "view":
@@ -413,16 +496,19 @@ namespace GasSolution.Web.Controllers
                 default:
                     break;
             }
+            Logger.Debug("用户是否需要登录");
 
             //用户是否需要登录
             if (!String.IsNullOrWhiteSpace(parameters["FromUserName"].ToString()))
             {
                 var openId = parameters["FromUserName"].ToString();
-                var customer =_customerService.GetCustomerByOpenId(openId);
+                var customer = _customerService.GetCustomerByOpenId(openId);
                 var dto = customer.MapTo<CustomerDto>();
                 var identity = _loginManager.CreateUserIdentity(dto);
-            }
 
+                AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, identity);
+                
+            }
         }
         #endregion
 
@@ -441,12 +527,32 @@ namespace GasSolution.Web.Controllers
             message.text = new TextMessage.Content { content = content };
             var data = Newtonsoft.Json.JsonConvert.SerializeObject(message);
             var result = Framework.HttpUtility.Post(string.Format(msgUrl, token.access_token), data);
-            
+            Logger.Debug("post result :" + result);
         }
         
+
+        private void SendTeletextMessage(string openId, params WeChatMessageModel.ArticlesItem[] list )
+        {
+            var model = new WeChatMessageModel();
+            model.msgtype = "news";
+            model.touser = openId;
+            model.news.articles.AddRange(list);
+
+            var appId = _settingService.GetSettingByKey<string>(WeChatSettingNames.AppId);
+            var appSecret = _settingService.GetSettingByKey<string>(WeChatSettingNames.AppSecret);
+            string msgUrl = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}";
+            var token = GetAccessToken(appId, appSecret);
+            string url = string.Format(msgUrl, token.access_token);
+
+            var msg = Newtonsoft.Json.JsonConvert.SerializeObject(model);
+            var result = Framework.HttpUtility.CreatePostHttpResponse(url: url, data: msg);
+            Logger.Debug("post result :" + result);
+
+        }
+
         #endregion
 
-        
+
 
     }
 }

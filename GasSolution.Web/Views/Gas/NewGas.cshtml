@@ -1,0 +1,267 @@
+﻿@model GasSolution.Web.Models.Gas.GasStationCustomModel
+@{
+    ViewBag.Title = "添加加油站";
+}
+
+@Html.IncludeScript("/Scripts/admin.common.js")
+@Html.IncludeScript("http://api.map.baidu.com/api?v=2.0&ak=yccG7GWikwgRd7f3mZ26NQ4tsbeXmiga")
+@Html.IncludeScript("/Scripts/sweetalert/sweet-alert.min.js")
+@Html.IncludeStyle("/Scripts/sweetalert/sweet-alert.css")
+@Html.IncludeScript("/Scripts/mobiscroll-2.13.2.full.min.js")
+@Html.IncludeScript("/Scripts/mobiscroll.list-2.13.2.js")
+@Html.IncludeScript("/Scripts/mobiscroll.core-2.13.2-zh.js")
+@Html.IncludeStyle("/Content/mobiscroll.animation-2.13.2.css")
+@Html.IncludeStyle("/Content/mobiscroll-2.13.2.full.min.css")
+@Html.IncludeStyle("/Content/mobiscroll.scroller.ios7-2.13.2.css")
+@Html.IncludeScript("/Scripts/jquery.bootstrap-touchspin.js")
+@Html.IncludeStyle("/Content/jquery.bootstrap-touchspin.css")
+<style>
+    #allmap {
+        width: 100%;
+        height: 100%;
+    }
+
+    .new-gas-page .modal-dialog {
+        width: 100%;
+        height: 90%;
+    }
+
+    .new-gas-page .modal-content {
+        height: 100%;
+        width: 96%;
+        margin: 0 2%;
+    }
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#@Html.FieldIdFor(model => model.FixedPromotion)").click(activatePromotions);
+        activatePromotions();
+    });
+
+    function activatePromotions() {
+        if ($('#@Html.FieldIdFor(model => model.FixedPromotion)').is(':checked'))
+            $('.fixed-panel').hide();
+        else
+            $('.fixed-panel').show();
+    }
+
+</script>
+<div class="new-gas-page">
+    <div class="page-header">
+        <h4>爆料加油站</h4>
+    </div>
+    <div class="content-wrapper">
+        @using (Html.BeginForm("NewGas", "Gas", FormMethod.Post, new { @id = "gas-new-form", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav-tabs nav">
+                <li class="active">
+                    <a href="#gas_basic" data-toggle="tab">基本信息</a>
+                </li>
+                <li>
+                    <a href="#gas_profile" data-toggle="tab">详细信息</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                @{
+                    var validationSummary = Html.ValidationSummary();
+                    if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
+                    {
+                        <div class="message-error">@validationSummary</div>
+                    }
+                }
+                <div class="tab-pane fade in active" id="gas_basic">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AreaId, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.DropDownListFor(model => model.AreaId, Model.AvailableAreas, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.AreaId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("gas", "加油站", new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @*<a class="btn btn-info btn-xs"href="@Url.Action("Map","Common")"  data-target="#map-modal" data-toggle="modal">
+                                    选择位置
+                                </a>*@
+
+                            <a class="btn btn-info" data-target="#map-modal" data-toggle="modal">
+                                选择位置
+                            </a>
+                            @Html.HiddenFor(model => model.Longitude)
+                            @Html.HiddenFor(model => model.Dimension)
+                            @Html.ValidationMessageFor(model=>model.Longitude)
+                            @Html.ValidationMessageFor(model => model.Dimension)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.GasEditorFor(model => model.Address)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsClose, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.CheckBoxFor(model => model.IsClose)
+                            @Html.ValidationMessageFor(model => model.IsClose)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Contacts, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.GasEditorFor(model => model.Contacts)
+                            @Html.ValidationMessageFor(model => model.Contacts)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Tel, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.GasEditorFor(model => model.Tel)
+                            @Html.ValidationMessageFor(model => model.Contacts)
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gas_profile" class="tab-pane fade">
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FixedPromotion, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.CheckBoxFor(model => model.FixedPromotion)
+                        </div>
+                    </div>
+                    <div class="form-group fixed-panel">
+                        @Html.LabelFor(model => model.StartTime, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.GasEditorFor(model => model.StartTime)
+                        </div>
+                    </div>
+                    <div class="form-group fixed-panel">
+                        @Html.LabelFor(model => model.EndTime, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.GasEditorFor(model => model.EndTime)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gasoline_Ninety_Two, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.GasEditorFor(model => model.Gasoline_Ninety_Two)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gasoline_Ninety_Fine, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.GasEditorFor(model => model.Gasoline_Ninety_Fine)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gasoline_Ninety_Eight, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.GasEditorFor(model => model.Gasoline_Ninety_Eight)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Natural, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.GasEditorFor(model => model.Natural)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Notice, new { @class = "col-xs-3 control-label" })
+                        <div class="col-xs-9">
+                            @Html.TextAreaFor(model => model.Notice, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <nav class="navbar navbar-fixed-bottom">
+                <button class="btn btn-danger btn-block navbar-brand">爆料</button>
+            </nav>
+                    }
+
+        <div class="modal fade" id="map-modal" tabindex="-1" role="dialog" aria-labelledby="modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                        <h4 class="modal-title">请选择加油站位置</h4>
+                    </div>
+                    <div id="allmap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    map.centerAndZoom(new BMap.Point(114.518578, 38.04885), 11);  // 初始化地图,设置中心点坐标和地图级别
+
+
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+    map.addControl(new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_LARGE }));
+    map.addControl(new BMap.ScaleControl());
+    map.addControl(new BMap.OverviewMapControl());
+
+
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function (result) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            map.centerAndZoom(new BMap.Point(result.point.lng, result.point.lat), 20);  //初始化地图,设置中心点坐标和地图级别
+        }
+    });
+    //单击选择位置
+    function selectAddress(e) {
+
+        var addres = "";
+        var myGeo = new BMap.Geocoder();
+        myGeo.getLocation(new BMap.Point(e.point.lng, e.point.lat), function (result) {
+            $("#@Html.FieldIdFor(model=>model.Address)").val(result.address);
+            var addComp = result.addressComponents;
+            address = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+        });
+
+        swal({
+            title: "是否选定当前位置？",
+            text: address,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定！",
+            cancelButtonText:"取消",
+            closeOnConfirm: false
+        },
+            function () {
+                swal("选择成功！", "您选的位置为：" + address, "success");
+
+                $("#@Html.FieldIdFor(model=>model.Longitude)").val(e.point.lat);
+                $("#@Html.FieldIdFor(model=>model.Dimension)").val(e.point.lng);
+
+                $('#map-modal').modal('toggle');
+            });
+
+    }
+    map.addEventListener("click", selectAddress);
+</script>

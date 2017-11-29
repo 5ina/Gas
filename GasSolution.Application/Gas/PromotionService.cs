@@ -29,7 +29,7 @@ namespace GasSolution.Gas
         /// <summary>
         /// 促销缓存{0} 为日期
         /// </summary>
-        private readonly string CACHE_PROMOTION_DATE = "gas.cache.promotion.date-{0}";
+        private readonly string CACHE_PROMOTION_AUDIT = "gas.cache.promotion.audit-{0}";
 
         /// <summary>
         /// 促销缓存{0}日期 {1} 加油站
@@ -61,8 +61,8 @@ namespace GasSolution.Gas
             _cacheManager.GetCache(station_key).Remove(station_key);
             if (entity.StartTime.HasValue)
             {
-                var date_key = string.Format(CACHE_PROMOTION_DATE,
-                    entity.StartTime.Value.ToString("yyyy-MM-dd"));
+                var date_key = string.Format(CACHE_PROMOTION_AUDIT,
+                   entity.Audit);
                 _cacheManager.GetCache(date_key).Remove(date_key);
 
                 var da_st_key = string.Format(CACHE_PROMOTION_DATE_STATION, entity.StartTime.Value.ToString("yyyy-MM-dd"), entity.GasStationId);
@@ -73,8 +73,7 @@ namespace GasSolution.Gas
         }
 
         public IPagedResult<Promotion> GetAllPromotions(int stationId = 0,
-            string keywords = "", DateTime? promotionTime = null,
-            GasSort? sort = null,
+            int? audit = null,
             int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = _promotionRepository.GetAll();
@@ -82,28 +81,10 @@ namespace GasSolution.Gas
             if (stationId > 0)
                 query = query.Where(p => p.GasStationId == stationId);
 
-            if (!String.IsNullOrWhiteSpace(keywords))
-                query = query.Where(p => p.Notice.Contains(keywords));
+            if (audit.HasValue)
+                query = query.Where(p => p.Audit == audit.Value);
 
-            if (promotionTime.HasValue)
-                query = query.Where(p => p.StartTime < promotionTime.Value && p.EndTime > promotionTime.Value);
-
-            if (sort.HasValue)
-            {
-                switch (sort.Value)
-                {
-                    case GasSort.Long:
-                        query = query.OrderByDescending(p => p.EndTime);
-                        break;
-                    case GasSort.Time:
-                    default:
-                        query = query.OrderByDescending(p => p.CreationTime);
-                        break;
-
-                }
-            }
-            else
-                query = query.OrderByDescending(p => p.CreationTime);
+            query = query.OrderByDescending(p => p.CreationTime);
             return new PagedResult<Promotion>(query, pageIndex, pageSize);
 
         }
@@ -135,6 +116,16 @@ namespace GasSolution.Gas
             });
         }
 
+        public int GetPromotionByAudit(int audit)
+        {
+            var key = string.Format(CACHE_PROMOTION_AUDIT, audit);
+            return _cacheManager.GetCache(key).Get(key, () => {
+                var items = _promotionRepository.GetAllList(p => p.Audit == audit);
+
+                return items.Count();
+            });
+        }
+
         public Promotion GetPromotionById(int promotionId)
         {
             var key = string.Format(CACHE_PROMOTION_ID, promotionId);
@@ -149,7 +140,13 @@ namespace GasSolution.Gas
         public int InsertPromotion(Promotion promotion)
         {
             if (promotion != null)
+            {
+                var date_key = string.Format(CACHE_PROMOTION_AUDIT,
+                    promotion.Audit);
+                _cacheManager.GetCache(date_key).Remove(date_key);
                 return _promotionRepository.InsertAndGetId(promotion);
+            }
+
             return 0;
         }
 
@@ -165,8 +162,8 @@ namespace GasSolution.Gas
                 _cacheManager.GetCache(station_key).Remove(station_key);
                 if (promotion.StartTime.HasValue)
                 {
-                    var date_key = string.Format(CACHE_PROMOTION_DATE,
-                        promotion.StartTime.Value.ToString("yyyy-MM-dd"));
+                    var date_key = string.Format(CACHE_PROMOTION_AUDIT,
+                        promotion.Audit);
                     _cacheManager.GetCache(date_key).Remove(date_key);
 
                 }

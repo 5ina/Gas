@@ -62,7 +62,7 @@ namespace GasSolution.Gas
             if (isNatural.HasValue)
                 query = query.Where(s => s.IsNatural == isNatural.Value);
 
-            if(areaId.HasValue)
+            if (areaId.HasValue && areaId.Value > 0) 
                 query = query.Where(s => s.AreaId == areaId.Value);
 
 

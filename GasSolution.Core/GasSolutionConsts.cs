@@ -15,6 +15,7 @@
         /// </summary>
         public const string CACHE_SETTINGS = "gas.cache.settings.{0}";
 
+        public const string CACHE_WEATHER_DATE = "gas.cache.weather.{0}";
 
     }
 }

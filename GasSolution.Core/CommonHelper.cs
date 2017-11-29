@@ -3,6 +3,7 @@ using GasSolution.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
@@ -591,5 +592,6 @@ namespace GasSolution
             return "";
         }
         #endregion
+        
     }
 }

@@ -1,5 +1,39 @@
-﻿@model dynamic 
-<div class="ii">
+﻿@model  GasSolution.Web.Models.Common.WeatherModel
+@{
 
-    @Model.alarm.101090101
+    ViewBag.Title = "【石家庄天气】";
+}
+<div class="weather">
+    <div class="page-header">
+        <h3>石家庄天气</h3>
+    </div>
+    <div class="content">
+
+        [@Model.result.date] [@Model.result.week] [@Model.result.city]
+
+        <ul class="weather-list clearfix">
+            <li class="weather-real">
+                <h2 class="temperature">@(Model.result.temp)℃</h2>
+                <span>风向：@Model.result.winddirect , @Model.result.windpower ,@Model.result.windspeed</span>
+                <span>PM2.5：@(Model.result.aqi.quality), @(Model.result.aqi.pm2_5)</span>
+            </li>
+            <li class="weather-info">
+
+                <img src="~/images/weather/@(Model.result.img).png" />
+                <span>@Model.result.weather</span>
+                <span class="temperature">@(Model.result.templow)℃ - @(Model.result.temphigh)℃</span>
+            </li>
+        </ul>
+        <div class="index">
+            @foreach (var item in Model.result.index)
+            {  <div class="index-item">
+                <h4>@item.iname</h4>
+                <div class="content-wrapper">
+                    <span>@item.ivalue</span>
+                    <span>@item.detail</span>
+                </div>
+            </div>}
+
+        </div>
+    </div>
 </div>

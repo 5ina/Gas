@@ -1,0 +1,158 @@
+﻿@model GasSolution.Web.Models.Gas.PromotionModel
+@{
+    ViewBag.Title = "我要爆料";
+    var result = Convert.ToBoolean(ViewData["Result"]);    
+}
+@Html.IncludeScript("/Scripts/admin.common.js")
+@Html.IncludeScript("/Scripts/mobiscroll-2.13.2.full.min.js")
+@Html.IncludeScript("/Scripts/mobiscroll.list-2.13.2.js")
+@Html.IncludeScript("/Scripts/mobiscroll.core-2.13.2-zh.js")
+@Html.IncludeStyle("/Content/mobiscroll.animation-2.13.2.css")
+@Html.IncludeStyle("/Content/mobiscroll-2.13.2.full.min.css")
+@Html.IncludeStyle("/Content/mobiscroll.scroller.ios7-2.13.2.css")
+@Html.IncludeScript("/Scripts/jquery.bootstrap-touchspin.js")
+@Html.IncludeStyle("/Content/jquery.bootstrap-touchspin.css")
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#@Html.FieldIdFor(model => model.FixedPromotion)").click(activatePromotions);
+        activatePromotions();
+    });
+
+    function activatePromotions() {
+        if ($('#@Html.FieldIdFor(model => model.FixedPromotion)').is(':checked'))
+            $('.fixed-panel').hide();
+        else
+            $('.fixed-panel').show();
+    }
+
+</script>
+
+<div class="promotion-page">
+
+    @if (result)
+    {
+
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>提交成功!</strong> 您的爆料已经存储，请等待我们审核
+        </div>
+    }
+    @using (Html.BeginForm("Promotion", "Gas", FormMethod.Post, new { @id = "promotion-form", @class = "form-horizontal" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.CustomerId)
+        var validationSummary = Html.ValidationSummary();
+        if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
+        {
+            <div class="message-error">@validationSummary</div>
+        }
+
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.AreaId, new { @class = "col-xs-3 control-label" })
+            <div class="col-xs-9">
+                @Html.DropDownListFor(model => model.AreaId, Model.AvailableAreas, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AreaId)
+            </div>
+        </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.GasStationId, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    <select id="@Html.FieldIdFor(model => model.GasStationId)" name="@Html.FieldIdFor(model => model.GasStationId)" class="form-control">
+                        <option value="0">请选择加油站</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group gas-panel">
+                @Html.LabelFor(model => model.GasName, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    @Html.GasEditorFor(model => model.GasName)
+                </div>
+            </div>
+            <div class="form-group gas-panel">
+                @Html.LabelFor(model => model.Address, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    @Html.GasEditorFor(model => model.Address)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FixedPromotion, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    @Html.CheckBoxFor(model => model.FixedPromotion)
+                </div>
+            </div>
+            <div class="form-group fixed-panel">
+                @Html.LabelFor(model => model.StartTime, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    @Html.GasEditorFor(model => model.StartTime)
+                </div>
+            </div>
+            <div class="form-group fixed-panel">
+                @Html.LabelFor(model => model.EndTime, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    @Html.GasEditorFor(model => model.EndTime)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gasoline_Ninety_Two, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    @Html.GasEditorFor(model => model.Gasoline_Ninety_Two)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gasoline_Ninety_Fine, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    @Html.GasEditorFor(model => model.Gasoline_Ninety_Fine)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gasoline_Ninety_Eight, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    @Html.GasEditorFor(model => model.Gasoline_Ninety_Eight)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Notice, new { @class = "col-xs-3 control-label" })
+                <div class="col-xs-9">
+                    @Html.TextAreaFor(model => model.Notice, new { @class = "form-control" })
+                </div>
+            </div>
+
+                <nav class="navbar navbar-fixed-bottom">
+                    <button class="btn btn-danger btn-block navbar-brand">爆料</button>
+                </nav>
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#@Html.FieldIdFor(model=>model.AreaId)").change(function () {
+            if ($(this).val()) {
+                var data = { AreaId: $(this).val() };
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("GetGasByAreaId","Gas")",
+                    data: addAntiForgeryToken(data),
+                    success: function (result) {
+                        $("#@Html.FieldIdFor(model=>model.GasStationId)").html("");
+                        $.each(result, function (idt, item) {
+                            $("#@Html.FieldIdFor(model=>model.GasStationId)").append("<option value=" + item.Value + ">" + item.Text + "</option>");
+                        });
+                        $("#@Html.FieldIdFor(model=>model.GasStationId)").append("<option value='-1'>新增加油站</option>");
+                    }
+                });
+            }
+        });
+
+        $("#@Html.FieldIdFor(model=>model.GasStationId)").change(function () {
+            if ($(this).val() == "-1") {
+                $(".form-group.gas-panel").show();
+            }
+            else {
+                $(".form-group.gas-panel").hide(); }
+        });
+    })
+</script>

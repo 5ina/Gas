@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "车系管理";
+}
+
+<section class="content-header">
+    <h1>车系管理</h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="@Url.Action("List", "CarBrand")">加油站管理</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-lg-offset-10 col-md-2">
+                @using (Html.BeginForm("Update", "CarBrand", FormMethod.Post, new { @id = "brand-update" }))
+                {
+                    @Html.AntiForgeryToken()
+                <button class="btn btn-danger">更新车系</button>
+                }
+            </div>
+        </div>
+        <div id="brand-grid"></div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#brand-grid").kendoGrid({
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("List", "CarBrand"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: addAntiForgeryToken
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                error: function (e) {
+                    display_kendoui_grid_error(e);
+                    // Cancel the changes
+                    this.cancelChanges();
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: false,
+                serverSorting: false
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: [10, 20, 50]
+            },
+            scrollable: false,
+            columns: [
+                {
+                    field: "Id",
+                    title: "Id",
+                    width: 60,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "Name",
+                    title: "名称",
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                }, {
+                    field: "Logo",
+                    title: "Logo",
+                    width: 190,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                    template: "<img src='#=Logo#' width='50' />",
+                },  {
+                    field: "Id",
+                    title: "操作",
+                    width: 200,
+                    template: '<a class="btn btn-success" href="Edit/#=Id#">编辑</a><a class="btn btn-danger">删除</a>'
+                }
+            ]
+        });
+        
+    });
+
+    window.onload = function () {
+        lingth_sidebar("car-brand-list", "vehicle");
+    };
+
+</script>

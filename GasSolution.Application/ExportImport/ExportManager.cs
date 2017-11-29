@@ -34,14 +34,7 @@ namespace GasSolution.ExportImport
         }
 
         #endregion
-
-        private GasStation GetGasStationById(int gasId)
-        {
-            return _gasRepository.GetStationById(gasId);
-        }
-
-
-
+        
         protected virtual void SetCaptionStyle(ExcelStyle style)
         {
             style.Fill.PatternType = ExcelFillStyle.Solid;
@@ -87,17 +80,23 @@ namespace GasSolution.ExportImport
 
         #region Method
 
-        public byte[] ExportPromotionsToXlsx(IEnumerable<Promotion> Promotions)
-        {
+        public byte[] ExportPromotionsToXlsx(IEnumerable<GasStation> Promotions)
+        {        
 
             var properties = new[]
            {
-                new PropertyByName<Promotion>("加油站名称", p =>{ return GetGasStationById(p.GasStationId).GasName; }),
-                new PropertyByName<Promotion>("位置", p =>{ return GetGasStationById(p.GasStationId).Address; }),
-                new PropertyByName<Promotion>("#92", p => p.Gasoline_Ninety_Two),
-                new PropertyByName<Promotion>("#95", p => p.Gasoline_Ninety_Fine),
-                new PropertyByName<Promotion>("#98", p => p.Gasoline_Ninety_Eight),
-                new PropertyByName<Promotion>("备注", p => p.Notice),
+                new PropertyByName<GasStation>("加油站名称", p =>p.GasName),
+                new PropertyByName<GasStation>("位置", p => p.Address),
+                new PropertyByName<GasStation>("#92", p => p.Gasoline_Ninety_Two),
+                new PropertyByName<GasStation>("#95", p => p.Gasoline_Ninety_Fine),
+                new PropertyByName<GasStation>("#98", p => p.Gasoline_Ninety_Eight),
+                new PropertyByName<GasStation>("活动时间", p =>{
+                    if(p.FixedPromotion)
+                        return "长期活动";
+                    else
+                        return string.Format("{0}至{1}",p.StartTime.Value.ToString("MM/dd"),p.EndTime.Value.ToString("MM/dd"));
+                }),
+                new PropertyByName<GasStation>("备注", p => p.Notice),
             };
 
             var PromotionList = Promotions.ToList();            

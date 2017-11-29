@@ -9,7 +9,14 @@ body {
     margin: 0;
     padding: 0
 }
-
+.promotion-page .form-horizontal .form-group, 
+.new-gas-page .form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+    .promotion-page .form-horizontal .form-group.gas-panel {
+display:none;
+    }
 .promotion-page .promotion-title {
     text-align: center;
     border-bottom: 1px #ffd800 solid;
@@ -82,8 +89,9 @@ body {
             .promotion-page .promotion-content .promotions li h5 {
                 font-weight: 700;
             }
-
-
+.new-gas-page .form-horizontal .tab-content{
+    margin-top:15px
+}
 /* Error Page*/
 .error-page, .error-page .error-title {
     padding: 0;

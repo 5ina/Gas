@@ -3,160 +3,204 @@
 @{
     ViewBag.Title = "公共配置";
 }
-@using (Html.BeginForm("Common", "Setting", FormMethod.Post, new { id = "common-form" }))
-{
-    @Html.AntiForgeryToken()
 
-    <section class="content-header">
-        <h1 class="pull-left">公共配置</h1>
-        <div class="pull-right"><input type="submit" name="save" class="btn btn-primary" value="保存" /></div>
-    </section>
-    <section class="content">
+<script>
+    $(document).ready(function () {
+        bindBootstrapTabSelectEvent('common-edit');
+    });
+</script>
+<div id="common-edit">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-        <div id="attribute-edit" class="nav-tabs-custom">
+        <section class="content-header">
+            <h1 class="pull-left">公共配置</h1>
+            <div class="pull-right"><input type="submit" name="save" class="btn btn-primary" value="保存" /></div>
+        </section>
+        <section class="content">
 
-            <ul class="nav-tabs nav">
-                <li class="active">
-                    <a href="#tab-common" data-toggle="tab" data-tab-name="tab-common">公共配置</a>
-                </li>
+            <div id="attribute-edit" class="nav-tabs-custom">
 
-                <li>
-                    <a href="#tab-reply" data-toggle="tab" data-tab-name="tab-reply">微信回复配置</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div id="tab-common" class="active tab-pane">
-                    <div class="panel-group">
-                        <div class="panel panel-default">
-                            <table class="adminContent">
+                <ul class="nav-tabs nav">
+                    @Html.RenderBootstrapTabHeader("tab-common", "公共配置", true)
+                    @Html.RenderBootstrapTabHeader("tab-reply", "微信回复配置")
+                    @Html.RenderBootstrapTabHeader("tab-oil", "今日油价")
 
-                                <tr>
-                                    <td class="adminTitle">
-                                        @Html.LabelFor(model => model.Title):
-                                    </td>
-                                    <td class="adminData">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
-                                            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.Title)
-                                        </div>
-                                    </td>
-                                </tr>
 
-                                <tr>
-                                    <td class="adminTitle">
-                                        @Html.LabelFor(model => model.Keywords):
-                                    </td>
-                                    <td class="adminData">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
-                                            @Html.TextBoxFor(model => model.Keywords, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.Keywords)
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="adminTitle">
-                                        @Html.LabelFor(model => model.Description):
-                                    </td>
-                                    <td class="adminData">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
-                                            @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.Description)
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="adminTitle">
-                                        @Html.LabelFor(model => model.No_Ninety_Two):
-                                    </td>
-                                    <td class="adminData">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
-                                            @Html.TextBoxFor(model => model.No_Ninety_Two, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.No_Ninety_Two)
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="adminTitle">
-                                        @Html.LabelFor(model => model.No_Ninety_Fine):
-                                    </td>
-                                    <td class="adminData">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
-                                            @Html.TextBoxFor(model => model.No_Ninety_Fine, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.No_Ninety_Fine)
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="adminTitle">
-                                        @Html.LabelFor(model => model.No_Ninety_Eight):
-                                    </td>
-                                    <td class="adminData">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
-                                            @Html.TextBoxFor(model => model.No_Ninety_Eight, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.No_Ninety_Eight)
-                                        </div>
-                                    </td>
-                                </tr>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-common" class="active tab-pane">
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <table class="adminContent">
 
-                            </table>
+                                    <tr>
+                                        <td class="adminTitle">
+                                            @Html.LabelFor(model => model.Title):
+                                        </td>
+                                        <td class="adminData">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Title)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="adminTitle">
+                                            @Html.LabelFor(model => model.Keywords):
+                                        </td>
+                                        <td class="adminData">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                                @Html.TextBoxFor(model => model.Keywords, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Keywords)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="adminTitle">
+                                            @Html.LabelFor(model => model.Description):
+                                        </td>
+                                        <td class="adminData">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                                @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Description)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
+                    </div>
+                    <div id="tab-reply" class="tab-pane">
+                        <table class="adminContent">
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.LabelFor(model => model.CONTACT_US):
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                        @Html.TextAreaFor(model => model.CONTACT_US, 5, 80, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.CONTACT_US)
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.LabelFor(model => model.First_Subscribe):
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                        @Html.TextAreaFor(model => model.First_Subscribe, 10, 80, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.First_Subscribe)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="adminTitle">
+                                    @Html.LabelFor(model => model.Keywords_NoMatch):
+                                </td>
+                                <td class="adminData">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                        @Html.TextAreaFor(model => model.Keywords_NoMatch, 10, 80, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Keywords_NoMatch)
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="tab-oil" class="tab-pane">
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="box">
+                                            <table class="adminContent">
+                                                <tr>
+                                                    <td class="adminTitle">
+                                                        @Html.LabelFor(model => model.No_Zero):
+                                                    </td>
+                                                    <td class="adminData">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                                            @Html.TextBoxFor(model => model.No_Zero, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.No_Zero)
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="adminTitle">
+                                                        @Html.LabelFor(model => model.No_Ninety_Two):
+                                                    </td>
+                                                    <td class="adminData">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                                            @Html.TextBoxFor(model => model.No_Ninety_Two, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.No_Ninety_Two)
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="adminTitle">
+                                                        @Html.LabelFor(model => model.No_Ninety_Fine):
+                                                    </td>
+                                                    <td class="adminData">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                                            @Html.TextBoxFor(model => model.No_Ninety_Fine, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.No_Ninety_Fine)
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="adminTitle">
+                                                        @Html.LabelFor(model => model.No_Ninety_Eight):
+                                                    </td>
+                                                    <td class="adminData">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
+                                                            @Html.TextBoxFor(model => model.No_Ninety_Eight, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.No_Ninety_Eight)
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="box">
+                                            <div class="box-body">
+                                                <input type="submit" name="save-continue" class="btn btn-primary btn-success" value="保存并编辑" />
+                                                <span class="tooltip">
+                                                    该数据为第三方提供的省际数据，每天获取最新数据。
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-                <div id="tab-reply" class="tab-pane">
-                    <table class="adminContent">
 
-                        <tr>
-                            <td class="adminTitle">
-                                @Html.LabelFor(model => model.CONTACT_US):
-                            </td>
-                            <td class="adminData">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
-                                    @Html.TextAreaFor(model => model.CONTACT_US, 5, 80, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.CONTACT_US)
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="adminTitle">
-                                @Html.LabelFor(model => model.First_Subscribe):
-                            </td>
-                            <td class="adminData">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
-                                    @Html.TextAreaFor(model => model.First_Subscribe, 10, 80, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.First_Subscribe)
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="adminTitle">
-                                @Html.LabelFor(model => model.Keywords_NoMatch):
-                            </td>
-                            <td class="adminData">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-amazon"></i></span>
-                                    @Html.TextAreaFor(model => model.Keywords_NoMatch, 10, 80, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Keywords_NoMatch)
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
             </div>
 
-        </div>
+        </section>
 
-    </section>
-}
+        <input type="hidden" id="selected-tab-name" name="selected-tab-name" value="@(Html.GetSelectedTabName())">
 
+    }
+</div>
 
 
 

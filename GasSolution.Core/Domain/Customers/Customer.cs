@@ -11,6 +11,8 @@ namespace GasSolution.Domain.Customers
     /// </summary>
     public class Customer : Entity, IHasCreationTime, IHasModificationTime
     {
+        [Required]
+        public Guid CustomerGuid { get; set; }
         /// <summary>
         /// 手机号
         /// </summary>

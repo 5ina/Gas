@@ -1,11 +1,14 @@
 ﻿using Abp.AutoMapper;
+using Abp.Runtime.Caching;
 using Abp.Web.Security.AntiForgery;
+using GasSolution.Domain;
 using GasSolution.Domain.Gas;
 using GasSolution.ExportImport;
 using GasSolution.Gas;
 using GasSolution.Web.Areas.Admin.Models.Promotions;
 using GasSolution.Web.Framework.Controllers;
 using GasSolution.Web.Framework.DataGrids;
+using GasSolution.Web.Framework.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,25 +24,27 @@ namespace GasSolution.Web.Areas.Admin.Controllers
         #region ctor && Fields
         private readonly IPromotionService _promotionService;
         private readonly IGasStationService _gasService;
-        private readonly IExportManager _exportManager;
-
+        private readonly ICacheManager _cacheManager;
+        private const string CACHE_PROMOTION_STATISTICAL_OVERVIEW = "gas.cache.promotion.statistical.overview";
+        
         public PromotionController(IPromotionService promotionService, 
             IGasStationService gasService,
-            IExportManager exportManager)
+            ICacheManager cacheManager)
         {
             this._promotionService = promotionService;
             this._gasService = gasService;
-            this._exportManager = exportManager;
+            this._cacheManager = cacheManager;
         }
         #endregion
-
-
 
         #region Method
 
         public ActionResult List()
         {
             var model = new PromotionListModel();
+            model.AvailableAudits = Audit.None.ToSelectListItem();
+            model.AvailableAudits.Insert(0, new SelectListItem
+            { Text = "全部状态", Value = "", Selected = true });
             return View(model);
         }
 
@@ -47,10 +52,9 @@ namespace GasSolution.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult List(DataSourceRequest command, PromotionListModel model)
         {
-            var promotions = _promotionService.GetAllPromotions(keywords: model.Keywords,
-                                                                promotionTime: model.Time,
-                                                                pageIndex: command.Page - 1,
-                                                                pageSize: command.PageSize);
+            var promotions = _promotionService.GetAllPromotions(
+                pageIndex: command.Page - 1,                                                                
+                pageSize: command.PageSize);
 
             var jsonData = new DataSourceResult
             {
@@ -121,49 +125,33 @@ namespace GasSolution.Web.Areas.Admin.Controllers
             return AbpJson("ok");
         }
 
+
         #endregion
 
-        #region  Export
-        
+        #region Statistical Report
 
-
-        [HttpPost]
-        public virtual ActionResult ExportExcelSelectedToday()
+        [ChildActionOnly]
+        public ActionResult PromotionStatisticalOverview()
         {
+            var model = _cacheManager.GetCache(CACHE_PROMOTION_STATISTICAL_OVERVIEW)
+                  .Get(CACHE_PROMOTION_STATISTICAL_OVERVIEW, () => {
 
-            var promotions = _promotionService.GetAllPromotions(promotionTime: DateTime.Now);
-
-            try
-            {
-                var bytes = _exportManager.ExportPromotionsToXlsx(promotions.Items);
-
-                return File(bytes, MimeTypes.TextXlsx, "promotion.xlsx");
-            }
-            catch (Exception exc)
-            {
-                return RedirectToAction("List");
-            }
+                      var promotions = _promotionService.GetAllPromotions(audit:(int)Audit.None);
+                      var view = new PromotionStatisticalOverviewModel();
+                      view.TotalCountNone = promotions.TotalCount;
+                      return view;
+                  });
+            return PartialView(model);
         }
 
-
-        [HttpPost]
-        public virtual ActionResult ExportExcelSelectedAll()
+        [ChildActionOnly]
+        public ActionResult GetPromotionByAudit(Audit audit = Audit.None)
         {
-
-            var promotions = _promotionService.GetAllPromotions();
-
-            try
-            {
-                var bytes = _exportManager.ExportPromotionsToXlsx(promotions.Items);
-
-                return File(bytes, MimeTypes.TextXlsx, "promotion.xlsx");
-            }
-            catch (Exception exc)
-            {
-                return RedirectToAction("List");
-            }
+            var result = _promotionService.GetPromotionByAudit((int)audit);
+            return Content(result.ToString());
         }
         #endregion
+
 
     }
 }

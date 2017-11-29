@@ -144,7 +144,7 @@
                         enableMessage: false
                     };
 
-                    var infoWindow = new BMap.InfoWindow("<div class='info-txt2'><i class='am-icon-map-marker'></i> 距离您 " + dist + "米</div><div class='info-txt2'><i class='am-icon-home'></i> " + val.Address + "</div><div>" + val.Promotion + "</div><div class='notice'>" + val.Notice + "</div><div class='info-btn'><a href='http://api.map.baidu.com/marker?location=" + val.Dimension + "," + val.Longitude + "&title=" + val.GasName + "&content=" + val.Address + "&output=html'><div class='info-btn-r btn btn-success'><i class='am-icon-map-marker'></i> 一键导航</div></a></div>", opts);
+                    var infoWindow = new BMap.InfoWindow("<div class='info-txt2'><i class='am-icon-map-marker'></i> 距离您 " + dist + "米</div><div class='info-txt2'><i class='am-icon-home'></i> " + val.Address + "</div><div>" + val.Promotion + "</div><div class='info-btn'><a href='http://api.map.baidu.com/marker?location=" + val.Dimension + "," + val.Longitude + "&title=" + val.GasName + "&content=" + val.Address + "&output=html'><div class='info-btn-r btn btn-success'><i class='am-icon-map-marker'></i> 一键导航</div></a></div>", opts);
                     
 
                     addClickHandler(marker, infoWindow);
